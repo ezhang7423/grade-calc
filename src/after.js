@@ -6,12 +6,15 @@ input.addEventListener("keyup", function(event) {
     print(input.value);
     event.preventDefault();
     localStorage.setItem("grc-name", input.value);
+    location.reload();
   }
 });
 
 if (name !== null) {
   print("name exists");
+
   let nameE = create(`<div>Hello there, ${name}</div>`);
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");
+  //add change name functionality
 }
