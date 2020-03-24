@@ -28,7 +28,7 @@
 }
 
 .naked:hover {
-  color: rgb(255, 142, 142);
+  color: rgb(255, 153, 153);
 }
 .name-container {
   width: 90%;
@@ -55,7 +55,7 @@
   font-size: 30px;
   width: 10vw;
   /* width = 80 / no of classes */
-  background: red;
+  background-color: rgb(255, 153, 153);
 }
 .hidden {
   display: none;

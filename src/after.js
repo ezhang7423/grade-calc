@@ -14,14 +14,8 @@ function addClassCallback(e) {
   numClasses = Object.keys(store).length;
   untitled = numUntitled();
   let x = new Course(`untitled course ${untitled}`, [100]);
-  tmp = create(`<div class="course">untitled course ${untitled}</div>`);
-  classContainer.appendChild(tmp);
   save(x, "course");
-  editCSS(`.course{ width: ${80 / (numClasses + 1)}vw;}`);
-  if (numClasses + 1 >= 8) {
-    addClass.removeEventListener("click", addClassCallback);
-    addClass.classList.add("disabled");
-  }
+  location.reload();
 }
 
 if (numClasses < 8) {
@@ -60,7 +54,7 @@ colors = getColors(numClasses);
 
 let counter = 0;
 for (let x of Object.keys(store)) {
-  print(colors[counter]);
+  // print(colors[counter]);
   tmp = create(`<div class="course ${alph(counter)}">${x}</div>`);
   classContainer.appendChild(tmp);
   editCSS(`.${alph(counter)}.course{background-color: ${colors[counter]};}`);

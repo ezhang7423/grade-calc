@@ -7,6 +7,9 @@ let alph = num => {
 };
 
 function getColors(num) {
+  if (num < 2) {
+    num = 2;
+  }
   let act = [];
   let colors = colormap({
     colormap: "autumn", //allow user customization
