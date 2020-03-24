@@ -13,9 +13,11 @@
 .disabled {
   color: grey;
   transition: none;
+  cursor: not-allowed;
 }
 .naked.disabled:hover {
   color: grey;
+  cursor: not-allowed;
 }
 .naked {
   text-decoration: none;
@@ -30,6 +32,33 @@
 .naked:hover {
   color: rgb(255, 153, 153);
 }
+
+.course-naked.disabled:hover {
+  color: grey;
+}
+.course-naked {
+  text-decoration: none;
+  border: none;
+  background: none;
+  width: fit-content;
+  outline: none;
+  padding-bottom: 1.2px;
+  transition: all 0.5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.25, 1);
+}
+.linebreak {
+  margin: 0 1vw;
+  border: 1px solid black;
+  background-color: black;
+}
+.course-naked:hover {
+  background-color: rgba(197, 217, 255, 0.247);
+}
+.course-naked:active {
+  background-color: rgb(197, 217, 255);
+  transform: translateY(8px);
+}
+
 .name-container {
   width: 90%;
   text-align: center;
@@ -47,14 +76,25 @@
 .main-content {
   display: flex;
   justify-content: space-around;
-  height: 80vh;
+  height: 75vh;
 }
 .components {
   text-align: left;
+  margin: 1vw;
+  font-size: 2vw;
 }
 
 .ar {
   float: right;
+}
+smallbr {
+  margin: 1vh 0;
+}
+.bor {
+  position: absolute;
+  bottom: 2vh;
+  right: 2vw;
+  font-size: 10px;
 }
 .course {
   max-width: 30vw;
@@ -67,6 +107,7 @@
   box-shadow: 0px 4px 20px 20px #eeeeee;
   /* width = 80 / no of classes */
   background-color: rgb(255, 153, 153);
+  position: relative;
 }
 .hidden {
   display: none;
