@@ -49,7 +49,13 @@
   justify-content: space-around;
   height: 80vh;
 }
+.components {
+  text-align: left;
+}
 
+.ar {
+  float: right;
+}
 .course {
   max-width: 30vw;
   font-size: 3vw;
