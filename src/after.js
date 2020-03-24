@@ -57,11 +57,13 @@ if (name !== null) {
 }
 
 colors = getColors(numClasses);
+
 let counter = 0;
 for (let x of Object.keys(store)) {
+  print(colors[counter]);
   tmp = create(`<div class="course ${alph(counter)}">${x}</div>`);
   classContainer.appendChild(tmp);
   editCSS(`.${alph(counter)}.course{background-color: ${colors[counter]};}`);
   counter++;
 }
-counter = 0;
+//counter = 0;
