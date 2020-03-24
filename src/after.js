@@ -4,8 +4,10 @@ let nameContainer = document.querySelector(".name-container");
 let classContainer = document.querySelector(".main-content");
 let addClass = document.querySelector(".add-class");
 store = JSON.parse(localStorage.getItem("gc-datastore"));
+numClasses = Object.keys(store).length;
 let tmp;
-addClass.addEventListener("click", function(e) {
+
+function addClassCallback(e) {
   e.preventDefault();
   store = JSON.parse(localStorage.getItem("gc-datastore"));
   numClasses = Object.keys(store).length;
@@ -14,12 +16,18 @@ addClass.addEventListener("click", function(e) {
   tmp = create(`<div class="course">untitled course ${untitled}</div>`);
   classContainer.appendChild(tmp);
   save(x, "course");
-  print(numClasses + 1);
   editCSS(`.course{ width: ${80 / (numClasses + 1)}vw;}`);
-  // i need to adjust the vw
-  // i need to save the class
-  // i need to disable this after 8 classes
-});
+  if (numClasses + 1 >= 8) {
+    addClass.removeEventListener("click", addClassCallback);
+    addClass.classList.add("disabled");
+  }
+}
+
+if (numClasses < 8) {
+  addClass.addEventListener("click", addClassCallback);
+} else {
+  addClass.classList.add("disabled");
+}
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     print(input.value);

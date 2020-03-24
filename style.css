@@ -10,6 +10,13 @@
   display: flex;
 }
 
+.disabled {
+  color: grey;
+  transition: none;
+}
+.naked.disabled:hover {
+  color: grey;
+}
 .naked {
   text-decoration: none;
   border: none;

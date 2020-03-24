@@ -1,6 +1,7 @@
 let store = JSON.parse(localStorage.getItem("gc-datastore"));
 if (store === null) {
   localStorage.setItem("gc-datastore", "{}");
+  let numClasses = 0;
 } else {
   let numClasses = Object.keys(store).length;
   editCSS(`.course{ width: ${80 / numClasses}vw;}`);
