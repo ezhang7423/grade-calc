@@ -12,6 +12,18 @@ function create(htmlStr) {
   return frag;
 }
 
+function editCSS(rule) {
+  for (const sheet of document.styleSheets) {
+    if (sheet.href.includes("style.css")) {
+      var styling = sheet;
+      break;
+    }
+  }
+  sel = document.all ? "rules" : "cssRules";
+  stylingL = Object.keys(styling[sel]).length;
+  styling.insertRule(rule, stylingL);
+}
+
 function save(data, type) {
   if (type === "course") {
     store[data.name] = data.export();

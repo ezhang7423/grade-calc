@@ -13,10 +13,13 @@
 .main-content {
   display: flex;
   justify-content: space-around;
+  height: 80vh;
 }
 
 .course {
-  font-size: 35px;
+  font-size: 30px;
+  width: 10vw;
+  background: red;
 }
 .hidden {
   display: none;
