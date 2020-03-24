@@ -4,8 +4,14 @@ if (store === null) {
   let numClasses = 0;
 } else {
   let numClasses = Object.keys(store).length;
+  let containerWidth = 80 / numClasses;
 
-  editCSS(`.course{ width: ${80 / numClasses}vw;}`);
+  editCSS(
+    `.course { 
+      width: ${containerWidth}vw; 
+      font-size: ${numClasses > 2 ? containerWidth / 10 : 3}vw;
+    }`
+  );
 }
 
 class GradeComponent {

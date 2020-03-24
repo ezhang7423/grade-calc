@@ -34,7 +34,7 @@
   width: 90%;
   text-align: center;
   padding-left: 10%;
-  font-size: 50px;
+  font-size: 4vw;
 }
 
 .right-header {
@@ -52,7 +52,8 @@
 
 .course {
   max-width: 30vw;
-  font-size: 30px;
+  font-size: 3vw;
+  text-align: center;
   width: 10vw;
   /* width = 80 / no of classes */
   background-color: rgb(255, 153, 153);
