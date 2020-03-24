@@ -2,6 +2,18 @@ function print(thing) {
   console.log(thing);
 }
 
+let alph = num => {
+  return String.fromCharCode(97 + num);
+};
+function getColors(num) {
+  return colormap({
+    colormap: "autumn", //or cool
+    nshades: num,
+    format: "rgbaString",
+    alpha: 1
+  });
+}
+
 function create(htmlStr) {
   var frag = document.createDocumentFragment(),
     temp = document.createElement("div");

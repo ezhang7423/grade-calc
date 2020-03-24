@@ -56,7 +56,12 @@ if (name !== null) {
   //add change name functionality
 }
 
+colors = getColors(numClasses);
+let counter = 0;
 for (let x of Object.keys(store)) {
-  tmp = create(`<div class="course">${x}</div>`);
+  tmp = create(`<div class="course ${alph(counter)}">${x}</div>`);
   classContainer.appendChild(tmp);
+  editCSS(`.${alph(counter)}.course{background-color: ${colors[counter]};}`);
+  counter++;
 }
+counter = 0;
