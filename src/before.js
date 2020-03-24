@@ -1,7 +1,18 @@
+let store = localStorage.getItem("gc-datastore");
+if (store === null) {
+  localStorage.setItem("gc-datastore", JSON.stringify({}));
+}
+
 class GradeComponent {
-  constructor(name, grade) {
+  constructor(name, grade, weight) {
     this.name = name;
     this.grade = grade;
+    this.weight = weight;
+    for (let x in grade) {
+      if (grade[x] < 1) {
+        throw "fcked-grades";
+      }
+    }
     this.isList = Array.isArray(this.grade);
   }
   get calc() {
@@ -19,13 +30,13 @@ class Course {
     if (weights.reduce((a, b) => a + b, 0) != 100) {
       throw "fcked-weights";
     }
-
     this.name = name;
     this.weights = {};
     for (let x in weights) {
-      this.weights[weights[x]] = new GradeComponent("untitled", 100);
+      this.weights[x] = new GradeComponent("untitled", 100, weights[x]);
     }
   }
+  export() {
+    return JSON.stringify(this.weights);
+  }
 }
-
-let x = new Course("x", [12, 90]);

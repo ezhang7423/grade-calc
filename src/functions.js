@@ -11,3 +11,15 @@ function create(htmlStr) {
   }
   return frag;
 }
+
+function save(data, type) {
+  if (type === "course") {
+    store[data.name] = data.export();
+  }
+  //   if (type === "gc") {
+  //       let toChange = store[]
+  //     if (data.isList){
+
+  //     }
+  //   }
+}
