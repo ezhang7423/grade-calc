@@ -32,18 +32,12 @@ if (numClasses < 8) {
 
 exportData.addEventListener("click", function(e) {
   e.preventDefault();
-  // make call to firefox someday
-  axios
-    .post(
-      "https://cors-anywhere.herokuapp.com/https://pastebin.com/api/api_post.php",
-      `api_option=paste&api_dev_key=abda9d3928449752be204cc2bc7e18ed&api_paste_code='${JSON.stringify(
-        store
-      )}'&api_paste_name='${name}'s-courses'`
-    )
-    .then(res => {
-      let url = res.data.split("/").slice(-1)[0];
-      window.open(`https://pastebin.com/dl/${url}`);
-    });
+  let textToSave = JSON.stringify(store);
+  let hiddenElement = document.createElement("a");
+  hiddenElement.href = "data:attachment/text," + encodeURI(textToSave);
+  hiddenElement.target = "_blank";
+  hiddenElement.download = `${name}'s courses.json`;
+  hiddenElement.click();
 });
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
