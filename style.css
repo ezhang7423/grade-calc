@@ -3,13 +3,25 @@
   font-family: "Baloo Chettan 2", Arial, Helvetica, sans-serif;
 }
 
-.name-container {
+.header {
   width: 100%;
-  font-size: 50px;
-  text-align: center;
+  align-items: center;
   margin: 20px 0;
+  display: flex;
 }
 
+.name-container {
+  width: 90%;
+  text-align: center;
+  padding-left: 10%;
+  font-size: 50px;
+}
+
+.right-header {
+  width: 10%;
+  /* display: flex; */
+  /* justify-content: center; */
+}
 .main-content {
   display: flex;
   justify-content: space-around;
