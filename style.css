@@ -1,5 +1,22 @@
 * {
   box-sizing: border-box;
+  font-family: "Baloo Chettan 2", Arial, Helvetica, sans-serif;
+}
+
+.name-container {
+  width: 100%;
+  font-size: 50px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.course {
+  font-size: 35px;
 }
 .hidden {
   display: none;

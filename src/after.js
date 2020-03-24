@@ -13,7 +13,7 @@ input.addEventListener("keyup", function(event) {
 
 if (name !== null) {
   print("name exists");
-  let nameE = create(`<div>Hello there, ${name}</div>`);
+  let nameE = create(`<div>Welcome back ${name}</div>`);
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");
   //add change name functionality
