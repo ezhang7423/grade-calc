@@ -3,6 +3,7 @@ let name = localStorage.getItem("grc-name");
 let nameContainer = document.querySelector(".name-container");
 let classContainer = document.querySelector(".main-content");
 let addClass = document.querySelector(".add-class");
+let exportData = document.querySelector(".export-data");
 store = JSON.parse(localStorage.getItem("gc-datastore"));
 numClasses = Object.keys(store).length;
 let tmp;
@@ -28,6 +29,22 @@ if (numClasses < 8) {
 } else {
   addClass.classList.add("disabled");
 }
+
+exportData.addEventListener("click", function(e) {
+  e.preventDefault();
+  // make call to firefox someday
+  axios
+    .post(
+      "https://cors-anywhere.herokuapp.com/https://pastebin.com/api/api_post.php",
+      `api_option=paste&api_dev_key=abda9d3928449752be204cc2bc7e18ed&api_paste_code='${JSON.stringify(
+        store
+      )}'&api_paste_name="${name}'s courses"`
+    )
+    .then(res => {
+      let url = res.data.split("/")[-1];
+      window.open(`https://pastebin.com/dl/${url}`);
+    });
+});
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     print(input.value);
