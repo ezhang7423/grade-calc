@@ -1,8 +1,9 @@
-let store = localStorage.getItem("gc-datastore");
+let store = JSON.parse(localStorage.getItem("gc-datastore"));
 if (store === null) {
   localStorage.setItem("gc-datastore", JSON.stringify({}));
 } else {
-  print(store);
+  let numClasses = Object.keys(store).length;
+  editCSS(`.course{ width: ${80 / numClasses}vw;}`);
 }
 
 class GradeComponent {
