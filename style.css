@@ -13,8 +13,15 @@
 .naked {
   text-decoration: none;
   border: none;
+  /* border-radius: 50%; */
   background: none;
   width: fit-content;
+  outline: none;
+  transition: all 0.5s;
+}
+
+.naked:hover {
+  color: rgb(255, 142, 142);
 }
 .name-container {
   width: 90%;
