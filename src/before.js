@@ -4,7 +4,7 @@ if (store === null) {
   let numClasses = 0;
 } else {
   let numClasses = Object.keys(store).length;
-  let containerWidth = 80 / numClasses;
+  let containerWidth = 100 / numClasses;
 
   editCSS(
     `.course { 
