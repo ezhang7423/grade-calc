@@ -1,20 +1,7 @@
 function print(thing) {
   console.log(thing);
 }
-function RGBToHSL(r, g, b) {
-  let sep = rgb.indexOf(",") > -1 ? "," : " ";
-  // Turn "rgb(r,g,b)" into [r,g,b]
-  rgb = rgb
-    .substr(5)
-    .split(")")[0]
-    .split(sep);
-
-  let r = (+rgb[0]).toString(16),
-    g = (+rgb[1]).toString(16),
-    b = (+rgb[2]).toString(16);
-  print(r);
-  print(g);
-  print(b);
+function RGBToHSL(r, g, b, a) {
   if (r.length == 1) r = "0" + r;
   if (g.length == 1) g = "0" + g;
   if (b.length == 1) b = "0" + b;
@@ -71,7 +58,17 @@ function getColors(num) {
   for (let x of colors) {
     [h, s, l] = RGBToHSL(x);
     print(h);
-    act.push("hsla(" + h + "," + s + "%," + String(parseInt(l) + 30) + "%)");
+    act.push(
+      "hsla(" +
+        h +
+        "," +
+        s +
+        "%," +
+        String(parseInt(l) + 30) +
+        "%," +
+        x[3] +
+        "%)"
+    );
   }
   return act;
 }
@@ -125,11 +122,4 @@ function save(data, type) {
     store[data.name] = data.export();
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
-
-  //   if (type === "gc") {
-  //       let toChange = store[]
-  //     if (data.isList){
-
-  //     }
-  //   }
 }
