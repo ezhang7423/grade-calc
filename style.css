@@ -44,8 +44,10 @@
 }
 
 .course {
+  max-width: 30vw;
   font-size: 30px;
   width: 10vw;
+  /* width = 80 / no of classes */
   background: red;
 }
 .hidden {

@@ -25,9 +25,12 @@ function editCSS(rule) {
 }
 
 function save(data, type) {
+  store = JSON.parse(localStorage.getItem("gc-datastore"));
   if (type === "course") {
     store[data.name] = data.export();
+    localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
+
   //   if (type === "gc") {
   //       let toChange = store[]
   //     if (data.isList){

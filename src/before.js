@@ -1,6 +1,8 @@
 let store = localStorage.getItem("gc-datastore");
 if (store === null) {
   localStorage.setItem("gc-datastore", JSON.stringify({}));
+} else {
+  print(store);
 }
 
 class GradeComponent {
@@ -37,6 +39,6 @@ class Course {
     }
   }
   export() {
-    return JSON.stringify(this.weights);
+    return this.weights;
   }
 }
