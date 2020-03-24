@@ -38,10 +38,10 @@ exportData.addEventListener("click", function(e) {
       "https://cors-anywhere.herokuapp.com/https://pastebin.com/api/api_post.php",
       `api_option=paste&api_dev_key=abda9d3928449752be204cc2bc7e18ed&api_paste_code='${JSON.stringify(
         store
-      )}'&api_paste_name="${name}'s courses"`
+      )}'&api_paste_name='${name}'s-courses'`
     )
     .then(res => {
-      let url = res.data.split("/")[-1];
+      let url = res.data.split("/").slice(-1)[0];
       window.open(`https://pastebin.com/dl/${url}`);
     });
 });
