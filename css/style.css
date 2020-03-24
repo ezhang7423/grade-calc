@@ -19,11 +19,15 @@
   color: grey;
   cursor: not-allowed;
 }
+.course-title {
+  margin-top: 2vh;
+  text-align: center;
+}
 .course {
   height: fit-content;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   max-width: 30vw;
   font-size: 3vw;
-  text-align: center;
   /* width: 10vw; */
   width: 30vw;
   border: 1px solid rgba(224, 224, 224, 0.4);

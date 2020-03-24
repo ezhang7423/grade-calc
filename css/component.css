@@ -1,4 +1,5 @@
 .ar {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   float: right;
 }
 
@@ -57,16 +58,30 @@
   height: 75vh;
 }
 .components {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: left;
   margin: 1vw;
   font-size: 2vw;
-  color: rgb(49, 49, 49);
+  color: rgb(73, 62, 62);
+}
+.nakinput {
+  background: none;
+  border: none;
+  font-size: 2vw;
+  color: rgb(73, 62, 62);
+}
+::placeholder {
+  color: black;
+}
+.nakinput:focus {
+  outline: none;
+}
+.component {
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .total {
   text-align: left;
   margin: 1vw;
   font-size: 2.5vw;
-}
-.total-container {
-  margin-top: 10vh;
 }
