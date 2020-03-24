@@ -24,6 +24,17 @@ function editCSS(rule) {
   styling.insertRule(rule, stylingL);
 }
 
+let addFake = () => {
+  let x = new Course("MATH4B", [10, 20, 70]);
+  let y = new Course("PSTAT120A", [30, 20, 20, 15, 15]);
+  save(x, "course");
+  save(y, "course");
+  location.reload();
+};
+let cClear = () => {
+  localStorage.removeItem("gc-datastore");
+  location.reload();
+};
 function numUntitled() {
   store = JSON.parse(localStorage.getItem("gc-datastore"));
   counter = 0;

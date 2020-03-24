@@ -3,6 +3,7 @@ let name = localStorage.getItem("grc-name");
 let nameContainer = document.querySelector(".name-container");
 let classContainer = document.querySelector(".main-content");
 let addClass = document.querySelector(".add-class");
+store = JSON.parse(localStorage.getItem("gc-datastore"));
 let tmp;
 addClass.addEventListener("click", function(e) {
   e.preventDefault();
@@ -40,8 +41,3 @@ for (let x of Object.keys(store)) {
   tmp = create(`<div class="course">${x}</div>`);
   classContainer.appendChild(tmp);
 }
-// // for testing
-// let x = new Course("MATH4B", [10, 20, 70]);
-// let y = new Course("PSTAT120A", [30, 20, 20, 15, 15]);
-// save(x, "course");
-// save(y, "course");
