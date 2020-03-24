@@ -24,6 +24,16 @@ function editCSS(rule) {
   styling.insertRule(rule, stylingL);
 }
 
+function numUntitled() {
+  store = JSON.parse(localStorage.getItem("gc-datastore"));
+  counter = 0;
+  for (let x of Object.keys(store)) {
+    if (x.includes("untitled")) {
+      counter++;
+    }
+  }
+  return counter;
+}
 function save(data, type) {
   store = JSON.parse(localStorage.getItem("gc-datastore"));
   if (type === "course") {
