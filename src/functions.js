@@ -40,11 +40,10 @@ function reconstruct() {
     for (let course of Object.keys(store)) {
       let weights = [];
       for (let component of Object.keys(store[course])) {
-        print(component);
         weights.push(store[course][component].weight);
       }
       act[course] = new Course(course, weights);
-      for (let component of Object.keys(course)) {
+      for (let component of Object.keys(store[course])) {
         act[course].weights[component].grade = store[course][component].grad;
       }
     }
