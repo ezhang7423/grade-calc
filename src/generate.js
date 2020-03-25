@@ -30,7 +30,11 @@ function makeResponsive(numClasses) {
       `
     );
     editCSS(
-      `.bor{font-size: .9vw;}
+      `.bor button{font-size: .9vw;}
+        `
+    );
+    editCSS(
+      `.bor {font-size: .9vw;}
         `
     );
   } else if (numClasses > 5) {
@@ -39,7 +43,7 @@ function makeResponsive(numClasses) {
       .components{font-size: .9vw;}`);
     editCSS(`.total{font-size: 1vw;}`);
     editCSS(
-      `.bor{font-size: .8vw;}
+      `.bor button{font-size: .8vw;}
         `
     );
     editCSS(
@@ -49,6 +53,10 @@ function makeResponsive(numClasses) {
     editCSS(
       `.nakinput{font-size: .9vw;}
       `
+    );
+    editCSS(
+      `.bor {font-size: .9vw;}
+        `
     );
   }
 }

@@ -11,10 +11,16 @@
 
 .bor {
   margin: 0 1vw 1vw 0;
-  font-size: 1vw;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 1.25vw;
   text-align: right;
 }
 
+.bor button {
+  font-size: 1.25vw;
+}
 .course-naked.disabled:hover {
   color: grey;
 }
@@ -124,5 +130,6 @@
 .total {
   text-align: left;
   margin: 1vw;
-  font-size: 2.5vw;
+  margin-bottom: 10vh;
+  font-size: 2.25vw;
 }
