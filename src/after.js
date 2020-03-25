@@ -50,7 +50,7 @@ if (name !== null) {
   );
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");
-  //add change name functionality
+  //add change name functionality test
 }
 
 let canChanges = document.querySelectorAll(".cc");
