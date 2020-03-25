@@ -20,7 +20,6 @@ class GradeComponent {
     }
   }
   get grade() {
-    print("i go tcalled!");
     if (Array.isArray(this.grad)) {
       let gSum = this.grad.reduce((a, b) => a + b, 0);
       return gSum / this.grad.length;

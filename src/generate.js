@@ -30,10 +30,10 @@ function createComponents(data) {
   let childNode, iter, calcGrade;
   let listType = `<i class="fas fa-list-ul"></i>`;
   let simpleType = `<i class="fas fa-check-square"></i>`;
-
-  for (let i of Object.keys(data)) {
-    iter = data[i];
+  for (let i of Object.keys(data.weights)) {
+    iter = data.weights[i];
     calcGrade = calcGrad(iter.grade, iter.weight);
+
     childNode = `<div class = "component">
         ${iter.isList ? listType : simpleType}
         <span class="cc" name="component">${iter.name}</span>
@@ -63,8 +63,8 @@ function createAdder() {
 
 function createTotal(data) {
   let sum = 0;
-  for (let i of Object.keys(data)) {
-    sum += calcGrad(data[i].grade, data[i].weight);
+  for (let i of Object.keys(data.weights)) {
+    sum += calcGrad(data.weights[i].grade, data.weights[i].weight);
   }
   let node = `
     <div class="total-container">
