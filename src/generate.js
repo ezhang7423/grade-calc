@@ -66,6 +66,8 @@ function createParent(component, store, count) {
   <div class="course ${alph(count)}">
     <div class = "course-title cc" name = "course-title">${component}</div>
     ${createComponents(component, store[component])}
+    ${createTotal(store[component])}
+    ${createSanD()}
   </div>`;
   return parentNode;
 }
@@ -105,6 +107,28 @@ function createAdder() {
   return node;
 }
 
-function createTotal() {}
+function createTotal(data) {
+  let sum = 0;
+  for (let i of Object.keys(data)) {
+    sum += calcGrad(data[i].grade, data[i].weight);
+  }
+  let node = `
+    <div class="total-container">
+  <hr class="linebreak" />
+  <div class="total">Total <span class="ar">${sum}/100%</span></div>
+</div>
+    `;
+  return node;
+}
 
-function createSanD() {}
+function createSanD() {
+  let node = `
+    <div class="bor">
+  <button title="save" class="course-naked">&#xf0c7;</button>
+  &nbsp;
+  <button title="delete" class="course-naked">&#xf00d;</button>
+</div>
+
+    `;
+  return node;
+}
