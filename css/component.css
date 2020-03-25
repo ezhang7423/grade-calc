@@ -86,7 +86,7 @@
   color: rgb(73, 62, 62);
   margin-bottom: 1vh;
   margin-right: 0.2vw;
-  width: 20%;
+  width: 100%;
 }
 ::placeholder {
   color: black;
