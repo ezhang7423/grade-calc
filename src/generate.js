@@ -19,13 +19,13 @@ function createParent(component, store, count) {
   let parentNode = `
   <div class="course ${alph(count)}">
     <div class = "course-title cc" name = "course-title">${component}</div>
-    ${createComponents(component, store[component])}
+    ${createComponents(store[component])}
     ${createTotal(store[component])}
     ${createSanD()}
   </div>`;
   return parentNode;
 }
-function createComponents(component, data) {
+function createComponents(data) {
   let parentNode = `<div class = "components">`;
   let childNode, iter, calcGrade;
   let listType = `<i class="fas fa-list-ul"></i>`;
