@@ -27,6 +27,7 @@
   height: fit-content;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   max-width: 30vw;
+  min-height: 60vh;
   font-size: 3vw;
   /* width: 10vw; */
   width: 30vw;

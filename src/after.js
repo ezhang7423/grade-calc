@@ -4,6 +4,7 @@ let nameContainer = document.querySelector(".name-container");
 let classContainer = document.querySelector(".main-content");
 let addClass = document.querySelector(".add-class");
 let exportData = document.querySelector(".export-data");
+
 store = JSON.parse(localStorage.getItem("gc-datastore"));
 numClasses = Object.keys(store).length;
 let tmp;
@@ -44,12 +45,18 @@ input.addEventListener("keyup", function(event) {
 
 if (name !== null) {
   // print("name exists");
-  let nameE = create(`<div>Welcome back ${name}</div>`);
+  let nameE = create(
+    `<div>Welcome back <span class = "cc">${name}</span></div>`
+  );
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");
   //add change name functionality
 }
 
+let canChanges = document.querySelectorAll(".cc");
+for (let x of canChanges) {
+  x.addEventListener("click", changeMe);
+}
 colors = getColors(numClasses);
 
 let counter = 0;

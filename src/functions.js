@@ -46,6 +46,11 @@ function editCSS(rule) {
   styling.insertRule(rule, stylingL);
 }
 
+function changeMe(e) {
+  e.preventDefault();
+  print(e.target);
+}
+
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   let y = new Course("PSTAT120A", [30, 20, 20, 15, 15]);

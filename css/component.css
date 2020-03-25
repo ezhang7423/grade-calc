@@ -64,6 +64,13 @@
   font-size: 2vw;
   color: rgb(73, 62, 62);
 }
+.cc {
+  transition: all 1s;
+}
+.cc:hover {
+  cursor: pointer;
+  background: rgba(143, 188, 255, 0.2);
+}
 .nakinput {
   background: none;
   border: none;
