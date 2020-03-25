@@ -85,11 +85,26 @@ function createComponents(component, data) {
     </div>`;
     parentNode += childNode;
   }
+  parentNode += createAdder();
   return parentNode + `</div>`;
 }
 
-function createAdder() {}
+function createAdder() {
+  let node = `
+    <div class="add-component">
+    <select
+      title="Select the list type for components that span multiple works, and the checkmark for singular works. For example, homework should be list type, and midterm should be checkmark type."
+      id="ac-sel"
+    >
+      <option class="ac-sel-option" value="list"> &#xf14a;</option>
+      <option class="ac-sel-option" value="list"> &#xf03a;</option>
+    </select>
+    <input spellcheck="false" class="nakinput" placeholder="Add" />
+  </div>
+    `;
+  return node;
+}
 
-function createTota() {}
+function createTotal() {}
 
 function createSanD() {}
