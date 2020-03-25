@@ -19,7 +19,8 @@
   color: grey;
 }
 .course-naked {
-  font-family: "Font Awesome\ 5 Free", monospace;
+  font-family: "Font Awesome\ 5 Free", "Baloo Chettan 2", Arial, Helvetica,
+    sans-serif;
   text-decoration: none;
   border: none;
   background: none;
@@ -92,7 +93,8 @@
   align-items: center;
 }
 #ac-sel {
-  font-family: "Font Awesome\ 5 Free", monospace;
+  font-family: "Font Awesome\ 5 Free", Verdana, "Baloo Chettan 2", Arial,
+    Helvetica, sans-serif;
   border: none;
   background: none;
   padding: 0;
