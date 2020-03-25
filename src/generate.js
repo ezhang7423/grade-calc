@@ -44,13 +44,16 @@
 </div>
 </div>
 `;
+function calcGrad(grade, weight) {
+  let num = (grade / 100) * weight;
+  return Math.round((num + Number.EPSILON) * 100) / 100;
+}
 function generate(store, numClasses) {
   colors = getColors(numClasses);
   let count = 0;
-  print(store);
   for (let component of Object.keys(store)) {
-    print(component);
-    let tmp = `<div class="course ${alph(count)}">${component}</div>`;
+    // let tmp = `<div class="course ${alph(count)}">${component}</div>`;
+    let tmp = createParent(component, store, count);
     tmp = create(tmp);
     classContainer.appendChild(tmp);
     editCSS(`.${alph(count)}.course{background-color: ${colors[count]};}`);
@@ -58,9 +61,32 @@ function generate(store, numClasses) {
   }
 }
 
-function createParent() {}
-
-function createComponents() {}
+function createParent(component, store, count) {
+  let parentNode = `
+  <div class="course ${alph(count)}">
+    <div class = "course-title cc" name = "course-title">${component}</div>
+    ${createComponents(component, store[component])}
+  </div>`;
+  return parentNode;
+}
+function createComponents(component, data) {
+  let parentNode = `<div class = "components">`;
+  let childNode, iter, calcGrade;
+  let listType = `<i class="fas fa-list-ul"></i>`;
+  let simpleType = `<i class="fas fa-check-square"></i>`;
+  print(data[0]);
+  for (let i of Object.keys(data)) {
+    iter = data[i];
+    calcGrade = calcGrad(iter.grade, iter.weight);
+    childNode = `<div class = "component">
+        ${iter.isList ? listType : simpleType}
+        <span class="cc" name="component">${iter.name}</span>
+        <span class="ar">${calcGrade}/${iter.weight}%</span>
+    </div>`;
+    parentNode += childNode;
+  }
+  return parentNode + `</div>`;
+}
 
 function createAdder() {}
 

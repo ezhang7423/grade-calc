@@ -10,6 +10,9 @@
   display: flex;
 }
 
+.fake {
+  display: none;
+}
 .disabled {
   color: grey;
   transition: none;
