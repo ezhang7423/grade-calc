@@ -13,8 +13,45 @@ function generate(store, numClasses) {
     editCSS(`.${alph(count)}.course{background-color: ${colors[count]};}`);
     count++;
   }
+  makeResponsive(numClasses);
 }
-
+function makeResponsive(numClasses) {
+  if (numClasses === 5) {
+    print("numclasses 5");
+    editCSS(`
+      .components{font-size: 1.5vw;}`);
+    editCSS(`.total{font-size: 2vw;}`);
+    editCSS(
+      `#ac-sel{font-size: 1.5vw;}
+      `
+    );
+    editCSS(
+      `.nakinput{font-size: 1.5vw;}
+      `
+    );
+    editCSS(
+      `.bor{font-size: .9vw;}
+        `
+    );
+  } else if (numClasses > 5) {
+    print("numclasses greater than 6");
+    editCSS(`
+      .components{font-size: .9vw;}`);
+    editCSS(`.total{font-size: 1vw;}`);
+    editCSS(
+      `.bor{font-size: .8vw;}
+        `
+    );
+    editCSS(
+      `#ac-sel{font-size: .9vw;}
+      `
+    );
+    editCSS(
+      `.nakinput{font-size: .9vw;}
+      `
+    );
+  }
+}
 function createParent(component, store, count) {
   let parentNode = `
   <div class="course ${alph(count)}">
@@ -42,12 +79,13 @@ function createComponents(data) {
     parentNode += childNode;
   }
   parentNode += createAdder();
+
   return parentNode + `</div>`;
 }
 
 function createAdder() {
   let node = `
-    <div class="add-component">
+    <div class="add-component component">
     <select
       title="Select the list type for components that span multiple works, and the checkmark for singular works. For example, homework should be list type, and midterm should be checkmark type."
       id="ac-sel"
