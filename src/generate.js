@@ -30,7 +30,7 @@ function createComponents(data) {
   let childNode, iter, calcGrade;
   let listType = `<i class="fas fa-list-ul"></i>`;
   let simpleType = `<i class="fas fa-check-square"></i>`;
-  print(data[0]);
+
   for (let i of Object.keys(data)) {
     iter = data[i];
     calcGrade = calcGrad(iter.grade, iter.weight);

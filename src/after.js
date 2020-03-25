@@ -1,17 +1,17 @@
 let input = document.querySelector(".name-input");
-let name = localStorage.getItem("grc-name");
+let name = localStorage.getItem("gc-name");
 let nameContainer = document.querySelector(".name-container");
 let classContainer = document.querySelector(".main-content");
 let addClass = document.querySelector(".add-class");
 let exportData = document.querySelector(".export-data");
 
-store = JSON.parse(localStorage.getItem("gc-datastore"));
+store = reconstruct();
 numClasses = Object.keys(store).length;
 let tmp;
 
 function addClassCallback(e) {
   e.preventDefault();
-  store = JSON.parse(localStorage.getItem("gc-datastore"));
+  store = reconstruct();
   numClasses = Object.keys(store).length;
   untitled = numUntitled();
   let x = new Course(`untitled course ${untitled}`, [100]);
@@ -38,7 +38,7 @@ input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     print(input.value);
     event.preventDefault();
-    localStorage.setItem("grc-name", input.value);
+    localStorage.setItem("gc-name", input.value);
     location.reload();
   }
 });

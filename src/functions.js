@@ -33,7 +33,26 @@ function create(htmlStr) {
   }
   return frag;
 }
-
+function reconstruct() {
+  let store = JSON.parse(localStorage.getItem("gc-datastore"));
+  let act = {};
+  if (store !== null) {
+    for (let course of Object.keys(store)) {
+      let weights = [];
+      for (let component of Object.keys(store[course])) {
+        print(component);
+        weights.push(store[course][component].weight);
+      }
+      act[course] = new Course(course, weights);
+      for (let component of Object.keys(course)) {
+        act[course].weights[component].grade = store[course][component].grad;
+      }
+    }
+    return act;
+  } else {
+    return null;
+  }
+}
 function editCSS(rule) {
   for (const sheet of document.styleSheets) {
     if (sheet.href.includes("style.css")) {
@@ -64,7 +83,10 @@ function changeMe(e) {
 
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
+  x.weights[0].grade = [100, 90, 80, 90];
+  x.weights[2].grade = 11.1203;
   let y = new Course("PSTAT120A", [30, 20, 20, 15, 15]);
+  y.weights[0].grade = 23;
   save(x, "course");
   save(y, "course");
   location.reload();
