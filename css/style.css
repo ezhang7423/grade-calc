@@ -10,6 +10,25 @@
   display: flex;
 }
 
+.name-container {
+  width: 90%;
+  text-align: center;
+  margin-left: 10%;
+  font-size: 4vw;
+}
+
+.right-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.right-tools {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 1vw;
+}
 .disabled {
   color: grey;
   transition: none;
@@ -23,11 +42,15 @@
   margin-top: 2vh;
   text-align: center;
 }
+.logo {
+  color: black;
+  font-size: 5vh;
+  margin-right: 1vw;
+}
 .course {
-  height: fit-content;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   max-width: 30vw;
-  min-height: 60vh;
+  max-height: 80vh;
   font-size: 3vw;
   /* width: 10vw; */
   width: 30vw;

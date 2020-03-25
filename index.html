@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="modules/css/fontawesome.min.css" />
     <link rel="stylesheet" href="modules/css/solid.min.css" />
+    <link rel="stylesheet" href="modules/css/brands.min.css" />
     <link href="css/font.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/component.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -24,23 +25,32 @@
         <input class="name-input" placeholder="ur name bruh" type="text" />
       </div>
       <div class="right-header">
-        <div>
-          <button title="Add Class" class="naked add-class">
-            <i class="fas fa-plus-square"></i>
-          </button>
-        </div>
-        <div>
-          <button title="Export data" class="naked export-data">
-            <i class="fas fa-download"></i>
-          </button>
-        </div>
-        <div>
-          <button title="Theme" class="naked" onclick="">
-            <i class="fas fa-moon"></i>
-          </button>
-        </div>
+        <a
+          href="https://github.com/ezhang7423/grade-calc"
+          target="_blank"
+          class="logo"
+          ><i class="fab fa-github"></i
+        ></a>
         <button class="naked" onclick="addFake()">Add Fake</button>
         <button class="naked" onclick="cClear()">Clear</button>
+
+        <div class="right-tools">
+          <div>
+            <button title="Add Class" class="naked add-class">
+              <i class="fas fa-plus-square"></i>
+            </button>
+          </div>
+          <div>
+            <button title="Export data" class="naked export-data">
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+          <div>
+            <button title="Theme" class="naked" onclick="">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
