@@ -46,7 +46,7 @@ input.addEventListener("keyup", function(event) {
 if (name !== null) {
   // print("name exists");
   let nameE = create(
-    `<div>Welcome back <span class = "cc">${name}</span></div>`
+    `<div>Welcome back <span name="gc-name" class = "cc">${name}</span></div>`
   );
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");

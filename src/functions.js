@@ -48,7 +48,18 @@ function editCSS(rule) {
 
 function changeMe(e) {
   e.preventDefault();
-  print(e.target);
+  let id = e.target.getAttribute("name");
+  // print(id);
+  if (id === "gc-name") {
+    print("change name here");
+  } else if (id === "course-title") {
+    print(e.target.innerText);
+  } else if (id === "component") {
+    print(e.target.innerText);
+    let parent =
+      e.target.parentElement.parentElement.parentElement.firstElementChild;
+    print(parent.innerText);
+  }
 }
 
 let addFake = () => {
