@@ -19,7 +19,10 @@ function makeResponsive(numClasses) {
   if (numClasses === 5) {
     print("numclasses 5");
     editCSS(`
-      .compcc{font-size: 1.5vw;}`);
+      .nakinput.compcc{font-size: 1.5vw;}`);
+    editCSS(`
+      .component{font-size: 1.5vw;}`);
+
     editCSS(`.total{font-size: 2vw;}`);
     editCSS(
       `#ac-sel{font-size: 1.5vw;}
@@ -40,7 +43,10 @@ function makeResponsive(numClasses) {
   } else if (numClasses > 5) {
     print("numclasses greater than 6");
     editCSS(`
-      .compcc{font-size: .9vw;}`);
+      .nakinput.compcc{font-size: .9vw;}`);
+    editCSS(`
+      .component{font-size: .9vw;}`);
+
     editCSS(`.total{font-size: 1vw;}`);
     editCSS(
       `.bor button{font-size: .8vw;}
@@ -80,11 +86,13 @@ function createComponents(data) {
     calcGrade = calcGrad(iter.grade, iter.weight);
 
     childNode = `<div class = "component">
+        <span class="ar">${calcGrade}/${iter.weight}%</span>
+        <div class = 'left-comp'>
         ${iter.isList ? listType : simpleType}
         <input class="cc nakinput compcc" name="component" placeholder="${
           iter.name
         }" />
-        <span class="ar">${calcGrade}/${iter.weight}%</span>
+        </div>
     </div>`;
     parentNode += childNode;
   }
