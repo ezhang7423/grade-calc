@@ -69,7 +69,20 @@ function changeMe(e) {
   let id = e.target.getAttribute("name");
   // print(id);
   if (id === "gc-name") {
-    print("change name here");
+    e.target.replaceWith(
+      create(
+        `<input name = "gc-name" class="rep nakinput" style = "text-align: center; margin-bottom: 0; width: 20%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
+      )
+    );
+    let input = document.querySelector('[name="gc-name"]');
+    print(input);
+    input.addEventListener("onblur", saveMe);
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        localStorage.setItem("gc-name", input.value);
+      }
+    });
   } else if (id === "course-title") {
     print(e.target.innerText);
   } else if (id === "component") {
@@ -80,6 +93,15 @@ function changeMe(e) {
   }
 }
 
+function saveMe(e) {
+  print("working");
+  e.preventDefault();
+  let id = e.target.getAttribute("name");
+  if (id === "gc-name") {
+    print(e.target.value);
+    localStorage.setItem("gc-name", e.target.value);
+  }
+}
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   x.weights[0].grade = [100, 90, 80, 90];

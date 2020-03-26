@@ -52,10 +52,9 @@ if (name !== null) {
   input.classList.add("hidden");
   //add change name functionality test
 }
+generate(store, numClasses);
 
 let canChanges = document.querySelectorAll(".cc");
 for (let x of canChanges) {
   x.addEventListener("click", changeMe);
 }
-
-generate(store, numClasses);

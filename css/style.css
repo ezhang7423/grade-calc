@@ -42,6 +42,13 @@
   margin-top: 2vh;
   text-align: center;
 }
+
+.rep {
+  transition: all 1s;
+}
+.rep:hover {
+  background: rgba(143, 188, 255, 0.2);
+}
 .logo {
   color: black;
   font-size: 5vh;
