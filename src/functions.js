@@ -71,16 +71,16 @@ function changeMe(e) {
   if (id === "gc-name") {
     e.target.replaceWith(
       create(
-        `<input name = "gc-name" class="rep nakinput" style = "text-align: center; margin-bottom: 0; width: 20%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
+        `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
       )
     );
     let input = document.querySelector('[name="gc-name"]');
-    print(input);
-    input.addEventListener("onblur", saveMe);
+    input.addEventListener("blur", saveMe);
     input.addEventListener("keyup", function(event) {
       if (event.keyCode === 13) {
         event.preventDefault();
         localStorage.setItem("gc-name", input.value);
+        input.style.width = `${input.value.length * 3}%`;
       }
     });
   } else if (id === "course-title") {
@@ -94,11 +94,9 @@ function changeMe(e) {
 }
 
 function saveMe(e) {
-  print("working");
   e.preventDefault();
   let id = e.target.getAttribute("name");
   if (id === "gc-name") {
-    print(e.target.value);
     localStorage.setItem("gc-name", e.target.value);
   }
 }

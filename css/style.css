@@ -54,6 +54,9 @@
   font-size: 5vh;
   margin-right: 1vw;
 }
+
+/* // add margin right 2vw for viewport less than half */
+
 .course {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   max-width: 30vw;
