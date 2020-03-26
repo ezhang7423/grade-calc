@@ -100,9 +100,14 @@ function saveMeEnter(e) {
       localStorage.setItem("gc-name", e.target.value);
       // e.target.setAttribute("size", e.target.value.length);
       e.target.style.width = `${e.target.value.length}rem`;
+    } else if (id === "course-title") {
+      let name = e.target.getAttribute("placeholder");
+      store[name].name = e.target.value;
+      save(store[name], "course");
+      delete store[name];
     }
-    print("enter called");
   }
+  print("enter called");
 }
 
 function saveMeBlur(e) {
@@ -112,7 +117,13 @@ function saveMeBlur(e) {
     localStorage.setItem("gc-name", e.target.value);
     // e.target.setAttribute("size", e.target.value.length);
     e.target.style.width = `${e.target.value.length}rem`;
+  } else if (id === "course-title") {
+    let name = e.target.getAttribute("placeholder");
+    store[name].name = e.target.value;
+    save(store[name], "course");
+    delete store[name];
   }
+
   print("blur called");
 }
 
@@ -121,12 +132,13 @@ function saveMe(e) {
   let id = e.target.getAttribute("name");
   let input = e.target;
   if (id === "gc-name") {
-    Tout = !Tout;
     input.style.width = `40vw`;
     input.addEventListener("blur", saveMeBlur);
     input.addEventListener("keyup", saveMeEnter);
   } else if (id === "course-title") {
-    print(e.target.innerText);
+    print(e.target.getAttribute("placeholder"));
+    input.addEventListener("blur", saveMeBlur);
+    input.addEventListener("keyup", saveMeEnter);
   } else if (id === "component") {
     print(e.target.innerText);
     let parent =
