@@ -70,7 +70,7 @@ function editCSS(rule) {
 //   let id = e.target.getAttribute("name");
 //   if (id === "gc-name") {
 //     e.target.style["margin-right"] = `${38 - name.length}vw`;
-//     setTimeout(() => {
+//     setTimeTout(() => {
 //       e.target.replaceWith(
 //         create(
 //           `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; padding: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
@@ -91,22 +91,49 @@ function editCSS(rule) {
 //   }
 // }
 
-// function saveMeEnter(event) {
-//   if (event.keyCode === 13) {
-//     event.preventDefault();
-//     localStorage.setItem("gc-name", event.target.value);
-//     event.target.style.width = `${event.target.value.length * 2.5}%`;
-//   }
-// }
+function saveMeEnter(e) {
+  e.preventDefault();
+  let id = e.target.getAttribute("name");
+  if (e.keyCode === 13) {
+    if (id === "gc-name") {
+      e.preventDefault();
+      localStorage.setItem("gc-name", e.target.value);
+      // e.target.setAttribute("size", e.target.value.length);
+      e.target.style.width = `${e.target.value.length}rem`;
+    }
+    print("enter called");
+  }
+}
 
-// function saveMeBlur(e) {
-//   e.preventDefault();
-//   let id = e.target.getAttribute("name");
-//   if (id === "gc-name") {
-//     localStorage.setItem("gc-name", e.target.value);
-//     e.target.style.width = `${e.target.value.length * 3}%`;
-//   }
-// }
+function saveMeBlur(e) {
+  e.preventDefault();
+  let id = e.target.getAttribute("name");
+  if (id === "gc-name") {
+    localStorage.setItem("gc-name", e.target.value);
+    // e.target.setAttribute("size", e.target.value.length);
+    e.target.style.width = `${e.target.value.length}rem`;
+  }
+  print("blur called");
+}
+
+function saveMe(e) {
+  e.preventDefault();
+  let id = e.target.getAttribute("name");
+  let input = e.target;
+  if (id === "gc-name") {
+    Tout = !Tout;
+    input.style.width = `40vw`;
+    input.addEventListener("blur", saveMeBlur);
+    input.addEventListener("keyup", saveMeEnter);
+  } else if (id === "course-title") {
+    print(e.target.innerText);
+  } else if (id === "component") {
+    print(e.target.innerText);
+    let parent =
+      e.target.parentElement.parentElement.parentElement.firstElementChild;
+    print(parent.innerText);
+  }
+}
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   x.weights[0].grade = [100, 90, 80, 90];
