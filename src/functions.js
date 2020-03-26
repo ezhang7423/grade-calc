@@ -65,48 +65,48 @@ function editCSS(rule) {
 }
 
 // need to make responsive, not for now
-function changeMe(e) {
-  e.preventDefault();
-  let id = e.target.getAttribute("name");
-  if (id === "gc-name") {
-    e.target.style["margin-right"] = `${38 - name.length}vw`;
-    setTimeout(() => {
-      e.target.replaceWith(
-        create(
-          `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; padding: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
-        )
-      );
-      let input = document.querySelector('[name="gc-name"]');
-      input.addEventListener("blur", saveMeBlur);
-      input.addEventListener("keyup", saveMeEnter);
-      print("syntax?");
-    }, 1000);
-  } else if (id === "course-title") {
-    print(e.target.innerText);
-  } else if (id === "component") {
-    print(e.target.innerText);
-    let parent =
-      e.target.parentElement.parentElement.parentElement.firstElementChild;
-    print(parent.innerText);
-  }
-}
+// function changeMe(e) {
+//   e.preventDefault();
+//   let id = e.target.getAttribute("name");
+//   if (id === "gc-name") {
+//     e.target.style["margin-right"] = `${38 - name.length}vw`;
+//     setTimeout(() => {
+//       e.target.replaceWith(
+//         create(
+//           `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; padding: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
+//         )
+//       );
+//       let input = document.querySelector('[name="gc-name"]');
+//       input.addEventListener("blur", saveMeBlur);
+//       input.addEventListener("keyup", saveMeEnter);
+//       print("syntax?");
+//     }, 1000);
+//   } else if (id === "course-title") {
+//     print(e.target.innerText);
+//   } else if (id === "component") {
+//     print(e.target.innerText);
+//     let parent =
+//       e.target.parentElement.parentElement.parentElement.firstElementChild;
+//     print(parent.innerText);
+//   }
+// }
 
-function saveMeEnter(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    localStorage.setItem("gc-name", event.target.value);
-    event.target.style.width = `${event.target.value.length * 2.5}%`;
-  }
-}
+// function saveMeEnter(event) {
+//   if (event.keyCode === 13) {
+//     event.preventDefault();
+//     localStorage.setItem("gc-name", event.target.value);
+//     event.target.style.width = `${event.target.value.length * 2.5}%`;
+//   }
+// }
 
-function saveMeBlur(e) {
-  e.preventDefault();
-  let id = e.target.getAttribute("name");
-  if (id === "gc-name") {
-    localStorage.setItem("gc-name", e.target.value);
-    e.target.style.width = `${e.target.value.length * 3}%`;
-  }
-}
+// function saveMeBlur(e) {
+//   e.preventDefault();
+//   let id = e.target.getAttribute("name");
+//   if (id === "gc-name") {
+//     localStorage.setItem("gc-name", e.target.value);
+//     e.target.style.width = `${e.target.value.length * 3}%`;
+//   }
+// }
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   x.weights[0].grade = [100, 90, 80, 90];
