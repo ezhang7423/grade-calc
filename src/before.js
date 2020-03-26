@@ -1,6 +1,5 @@
 let store = reconstruct();
 let name = localStorage.getItem("gc-name");
-let Tout = false;
 if (store === null) {
   localStorage.setItem("gc-datastore", "{}");
   let numClasses = 0;
