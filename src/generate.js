@@ -19,7 +19,7 @@ function makeResponsive(numClasses) {
   if (numClasses === 5) {
     print("numclasses 5");
     editCSS(`
-      .components{font-size: 1.5vw;}`);
+      .compcc{font-size: 1.5vw;}`);
     editCSS(`.total{font-size: 2vw;}`);
     editCSS(
       `#ac-sel{font-size: 1.5vw;}
@@ -40,7 +40,7 @@ function makeResponsive(numClasses) {
   } else if (numClasses > 5) {
     print("numclasses greater than 6");
     editCSS(`
-      .components{font-size: .9vw;}`);
+      .compcc{font-size: .9vw;}`);
     editCSS(`.total{font-size: 1vw;}`);
     editCSS(
       `.bor button{font-size: .8vw;}
@@ -63,7 +63,7 @@ function makeResponsive(numClasses) {
 function createParent(component, store, count) {
   let parentNode = `
   <div class="course ${alph(count)}">
-    <div class = "course-title cc" name = "course-title">${component}</div>
+    <input class = "course-title cc nakinput titlecc" name = "course-title" placeholder="${component}" />
     ${createComponents(store[component])}
     ${createTotal(store[component])}
     ${createSanD()}
@@ -81,7 +81,9 @@ function createComponents(data) {
 
     childNode = `<div class = "component">
         ${iter.isList ? listType : simpleType}
-        <span class="cc" name="component">${iter.name}</span>
+        <input class="cc nakinput compcc" name="component" placeholder="${
+          iter.name
+        }" />
         <span class="ar">${calcGrade}/${iter.weight}%</span>
     </div>`;
     parentNode += childNode;
@@ -101,7 +103,7 @@ function createAdder() {
       <option class="ac-sel-option" value="list"> &#xf14a;</option>
       <option class="ac-sel-option" value="list"> &#xf03a;</option>
     </select> -->
-    <input spellcheck="false" class="nakinput" placeholder="Add" />
+    <input spellcheck="false" class="addcc nakinput" placeholder="Add" />
   </div>
     `;
   return node;

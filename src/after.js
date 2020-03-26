@@ -46,7 +46,7 @@ input.addEventListener("keyup", function(event) {
 if (name !== null && name !== "") {
   // print("name exists");
   let nameE = create(
-    `<div>Welcome back <span name="gc-name" class = "cc">${name}</span></div>`
+    `<div>Welcome back <input name = "gc-name" class="nakinput cc namecc" spellcheck="false" placeholder="${name}" type="text" /></div>`
   );
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");
@@ -54,7 +54,7 @@ if (name !== null && name !== "") {
 }
 generate(store, numClasses);
 
-let canChanges = document.querySelectorAll(".cc");
-for (let x of canChanges) {
-  x.addEventListener("click", changeMe);
-}
+// let canChanges = document.querySelectorAll(".cc");
+// for (let x of canChanges) {
+//   x.addEventListener("click", saveMe);
+// }
