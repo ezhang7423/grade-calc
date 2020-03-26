@@ -43,7 +43,6 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-print(name);
 if (name !== null && name !== "") {
   // print("name exists");
   let nameE = create(
