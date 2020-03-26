@@ -43,7 +43,8 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-if (name !== null) {
+print(name);
+if (name !== null && name !== "") {
   // print("name exists");
   let nameE = create(
     `<div>Welcome back <span name="gc-name" class = "cc">${name}</span></div>`

@@ -69,20 +69,24 @@ function changeMe(e) {
   let id = e.target.getAttribute("name");
   // print(id);
   if (id === "gc-name") {
-    e.target.replaceWith(
-      create(
-        `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
-      )
-    );
-    let input = document.querySelector('[name="gc-name"]');
-    input.addEventListener("blur", saveMe);
-    input.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        localStorage.setItem("gc-name", input.value);
-        input.style.width = `${input.value.length * 3}%`;
-      }
-    });
+    e.target.style["margin-right"] = "28vw";
+    print(e.target.style.width);
+    setTimeout(() => {
+      e.target.replaceWith(
+        create(
+          `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
+        )
+      );
+      let input = document.querySelector('[name="gc-name"]');
+      input.addEventListener("blur", saveMe);
+      input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          localStorage.setItem("gc-name", input.value);
+          input.style.width = `${input.value.length * 3}%`;
+        }
+      });
+    }, 1000);
   } else if (id === "course-title") {
     print(e.target.innerText);
   } else if (id === "component") {
