@@ -2,6 +2,7 @@
 //add modal for delete and save
 // disallow same name of course, and same name of component
 // keep positions
+//disallow empty string as object key
 function calcGrad(grade, weight) {
   let num = (grade / 100) * weight;
   return Math.round((num + Number.EPSILON) * 100) / 100;
