@@ -35,16 +35,18 @@ function create(htmlStr) {
 }
 function reconstruct() {
   let store = JSON.parse(localStorage.getItem("gc-datastore"));
+  print(store);
   let act = {};
   if (store !== null) {
     for (let course of Object.keys(store)) {
       let weights = [];
-      for (let component of Object.keys(store[course])) {
-        weights.push(store[course][component].weight);
+      for (let component of Object.keys(store[course].weights)) {
+        weights.push(store[course].weights[component].weight);
       }
       act[course] = new Course(course, weights);
-      for (let component of Object.keys(store[course])) {
-        act[course].weights[component].grade = store[course][component].grad;
+      for (let component of Object.keys(store[course].weights)) {
+        act[course].weights[component].grade =
+          store[course].weights[component].grad;
       }
     }
     return act;
@@ -93,29 +95,8 @@ function editCSS(rule) {
 
 function saveMeEnter(e) {
   e.preventDefault();
-  let id = e.target.getAttribute("name");
   if (e.keyCode === 13) {
-    if (id === "gc-name") {
-      e.preventDefault();
-      localStorage.setItem("gc-name", e.target.value);
-      // e.target.setAttribute("size", e.target.value.length);
-      e.target.style.width = `${e.target.value.length}rem`;
-    } else if (id === "course-title") {
-      let name = e.target.getAttribute("placeholder");
-      print(e.target.value);
-      store[name].name = e.target.value;
-      save(store[name], "course");
-      store = JSON.parse(localStorage.getItem("gc-datastore"));
-      delete store[name];
-      localStorage.setItem("gc-datastore", JSON.stringify(store));
-      location.reload();
-    } else if (id === "component") {
-      let parent =
-        e.target.parentElement.parentElement.parentElement.parentElement
-          .firstElementChild;
-      let pName = parent.getAttribute("placeholder");
-      print(pName);
-    }
+    saveMe(e);
     print("enter called");
   }
 }
@@ -126,6 +107,12 @@ function saveCourse(e) {
 function saveMeBlur(e) {
   e.preventDefault();
   let id = e.target.getAttribute("name");
+  saveMe(e);
+  print("blur called");
+}
+
+function saveMe(e) {
+  let id = e.target.getAttribute("name");
   if (id === "gc-name") {
     localStorage.setItem("gc-name", e.target.value);
     // e.target.setAttribute("size", e.target.value.length);
@@ -135,7 +122,7 @@ function saveMeBlur(e) {
     print(e.target.value);
     store[name].name = e.target.value;
     save(store[name], "course");
-    store = JSON.parse(localStorage.getItem("gc-datastore"));
+    store = reconstruct();
     delete store[name];
     localStorage.setItem("gc-datastore", JSON.stringify(store));
     location.reload();
@@ -145,12 +132,10 @@ function saveMeBlur(e) {
     );
     let cname = e.target.getAttribute("placeholder");
     print(e.target.value);
-    store = JSON.parse(localStorage.getItem("gc-datastore"));
+    store = reconstruct();
     store[name].weights[cname].name = e.target.value;
   }
-  print("blur called");
 }
-
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   x.weights[0].grade = [100, 90, 80, 90];
@@ -166,7 +151,7 @@ let cClear = () => {
   location.reload();
 };
 function numUntitled() {
-  store = JSON.parse(localStorage.getItem("gc-datastore"));
+  store = reconstruct();
   counter = 0;
   for (let x of Object.keys(store)) {
     if (x.includes("untitled")) {
@@ -176,9 +161,11 @@ function numUntitled() {
   return counter;
 }
 function save(data, type) {
-  store = JSON.parse(localStorage.getItem("gc-datastore"));
+  store = reconstruct();
   if (type === "course") {
-    store[data.name] = data.export();
+    store[data.name] = {};
+    store[data.name].name = data.name;
+    store[data.name].weights = data.export();
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
 }
@@ -192,7 +179,7 @@ function deleteCourse(e) {
 }
 
 function del(name) {
-  store = JSON.parse(localStorage.getItem("gc-datastore"));
+  store = reconstruct();
   delete store[name];
   localStorage.setItem("gc-datastore", JSON.stringify(store));
   location.reload();
