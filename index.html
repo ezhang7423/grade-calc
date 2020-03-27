@@ -15,8 +15,9 @@
     <script src="modules/index.js"></script>
     <script src="modules/colors.js"></script>
     <!-- end the color libraries -->
-    <script src="src/classes.js"></script>
-    <script src="src/functions.js"></script>
+    <script src="src/abstractions/classes.js"></script>
+    <script src="src/abstractions/functions.js"></script>
+    <script src="src/abstractions/listeners.js"></script>
     <script src="src/before.js"></script>
   </head>
   <body>
@@ -54,7 +55,103 @@
       </div>
     </div>
 
-    <div class="main-content"></div>
+    <div class="main-content">
+      <div style="background: honeydew" class="course a">
+        <input
+          spellcheck="false"
+          class="course-title cc nakinput titlecc"
+          name="course-title"
+          placeholder="PSTAT120A"
+        />
+        <div class="components">
+          <div class="component">
+            <span class="ar">6.9/30%</span>
+            <div class="left-comp">
+              <i class="fas fa-check-square"></i>
+              <input
+                spellcheck="false"
+                class="cc nakinput compcc"
+                name="component"
+                placeholder="HW"
+              />
+            </div>
+          </div>
+          <div class="component">
+            <span class="ar">20/20%</span>
+            <div class="left-comp">
+              <i class="fas fa-check-square"></i>
+              <input
+                spellcheck="false"
+                class="cc nakinput compcc"
+                name="component"
+                placeholder="Midterm 1"
+              />
+            </div>
+          </div>
+          <div class="component">
+            <span class="ar">20/20%</span>
+            <div class="left-comp">
+              <i class="fas fa-check-square"></i>
+              <input
+                spellcheck="false"
+                class="cc nakinput compcc"
+                name="component"
+                placeholder="Midterm 2"
+              />
+            </div>
+          </div>
+          <div class="component">
+            <span class="ar">15/15%</span>
+            <div class="left-comp">
+              <i class="fas fa-check-square"></i>
+              <input
+                spellcheck="false"
+                class="cc nakinput compcc"
+                name="component"
+                placeholder="Proj 1"
+              />
+            </div>
+          </div>
+          <div class="component">
+            <span class="ar">15/15%</span>
+            <div class="left-comp">
+              <i class="fas fa-check-square"></i>
+              <input
+                spellcheck="false"
+                class="cc nakinput compcc"
+                name="component"
+                placeholder="Proj 2"
+              />
+            </div>
+          </div>
+          <div class="add-component component">
+            <!-- <select
+          title="Select the list type for components that span multiple works, and the checkmark for singular works. For example, homework should be list type, and midterm should be checkmark type."
+          id="ac-sel"
+        >
+          <option class="ac-sel-option" value="list"> &#xf14a;</option>
+          <option class="ac-sel-option" value="list"> &#xf03a;</option>
+        </select> -->
+            <input
+              spellcheck="false"
+              class="addcc nakinput"
+              placeholder="Add"
+            />
+          </div>
+        </div>
+
+        <div class="total-container">
+          <hr class="linebreak" />
+          <div class="total">Total <span class="ar">76.9/100%</span></div>
+        </div>
+
+        <div class="bor">
+          <button title="save" class="course-naked"></button>
+          &nbsp;
+          <button title="delete" class="course-naked"></button>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="src/generate.js"></script>
   <script src="src/after.js"></script>
