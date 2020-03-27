@@ -32,13 +32,9 @@ function saveMeEnter(e) {
     print("enter called");
   }
 }
-function saveCourse(e) {
-  print(e.target);
-}
 
 function saveMeBlur(e) {
   e.preventDefault();
-  let id = e.target.getAttribute("name");
   saveMe(e);
   print("blur called");
 }
@@ -67,6 +63,33 @@ function saveMe(e) {
     store = reconstruct();
     store[name].weights[cname].name = e.target.value;
   }
+}
+function addNew(e) {
+  e.preventDefault();
+  store = reconstruct();
+  numClasses = Object.keys(store).length;
+  untitled = numUntitled();
+  let x = new Course(`untitled course ${untitled}`, [100]);
+  save(x, "course");
+  location.reload();
+}
+
+function setName(e) {
+  if (e.keyCode === 13) {
+    print(input.value);
+    e.preventDefault();
+    localStorage.setItem("gc-name", input.value);
+    location.reload();
+  }
+}
+function exportt(e) {
+  e.preventDefault();
+  let textToSave = JSON.stringify(store);
+  let hiddenElement = document.createElement("a");
+  hiddenElement.href = "data:attachment/text," + encodeURI(textToSave);
+  hiddenElement.target = "_blank";
+  hiddenElement.download = `${name}'s courses.json`;
+  hiddenElement.click();
 }
 
 function deleteCourse(e) {
