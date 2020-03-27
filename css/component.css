@@ -72,6 +72,9 @@
   color: rgb(73, 62, 62);
 }
 
+.fa-check-square {
+  margin-right: 0.2vw;
+}
 .nakinput.namecc {
   margin-bottom: 0;
   padding: 0;
