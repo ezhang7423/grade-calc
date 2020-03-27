@@ -1,30 +1,3 @@
-// need to make responsive, not for now
-// function changeMe(e) {
-//   e.preventDefault();
-//   let id = e.target.getAttribute("name");
-//   if (id === "gc-name") {
-//     e.target.style["margin-right"] = `${38 - name.length}vw`;
-//     setTimeTout(() => {
-//       e.target.replaceWith(
-//         create(
-//           `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; padding: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
-//         )
-//       );
-//       let input = document.querySelector('[name="gc-name"]');
-//       input.addEventListener("blur", saveMeBlur);
-//       input.addEventListener("keyup", saveMeEnter);
-//       print("syntax?");
-//     }, 1000);
-//   } else if (id === "course-title") {
-//     print(e.target.innerText);
-//   } else if (id === "component") {
-//     print(e.target.innerText);
-//     let parent =
-//       e.target.parentElement.parentElement.parentElement.firstElementChild;
-//     print(parent.innerText);
-//   }
-// }
-
 function saveMeEnter(e) {
   e.preventDefault();
   if (e.keyCode === 13) {
@@ -41,26 +14,30 @@ function saveMeBlur(e) {
 
 function saveMe(e) {
   let id = e.target.getAttribute("name");
-  if (id === "gc-name") {
-    localStorage.setItem("gc-name", e.target.value);
-    let letterL = e.target.value.length;
-    letterL = Math.max(1, letterL);
-    e.target.style.width = `${letterL * 1.1}rem`;
-    e.target["placeholder"] = e.target.value;
-  } else if (id === "course-title") {
-    let name = e.target.getAttribute("placeholder");
-    print(e.target.value);
-    store[name].name = e.target.value;
-    save(store[name], "course");
-    del(name);
-  } else if (id === "component") {
-    let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
-      "placeholder"
-    );
-    let cname = searchComp(name, e.target.getAttribute("placeholder"));
-    store[name].weights[cname].name = e.target.value;
-    save(store[name], "component");
-    e.target["placeholder"] = e.target.value;
+  if (e.target.value !== "") {
+    if (id === "gc-name") {
+      localStorage.setItem("gc-name", e.target.value);
+      let letterL = e.target.value.length;
+      letterL = Math.max(1, letterL);
+      e.target.style.width = `${letterL * 1.1}rem`;
+      e.target["placeholder"] = e.target.value;
+      e.target.value = "";
+    } else if (id === "course-title") {
+      let name = e.target.getAttribute("placeholder");
+      print(e.target.value);
+      store[name].name = e.target.value;
+      save(store[name], "course");
+      del(name);
+    } else if (id === "component") {
+      let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
+        "placeholder"
+      );
+      let cname = searchComp(name, e.target.getAttribute("placeholder"));
+      store[name].weights[cname].name = e.target.value;
+      save(store[name], "component");
+      e.target["placeholder"] = e.target.value;
+      e.target.value = "";
+    }
   }
 }
 function addNew(e) {
