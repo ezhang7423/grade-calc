@@ -41,19 +41,20 @@
 .course-title {
   margin-top: 2vh;
   text-align: center;
+  font-size: 3vw;
 }
 
-.rep {
-  transition: all 1s;
-}
-.rep:hover {
-  background: rgba(143, 188, 255, 0.2);
-}
 .logo {
   color: black;
   font-size: 5vh;
   margin-right: 1vw;
 }
+@media only screen and (max-width: 768px) {
+  .logo {
+    margin-right: 2vw;
+  }
+}
+
 .course {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   max-width: 30vw;

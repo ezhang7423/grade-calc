@@ -37,7 +37,7 @@ class Course {
     this.name = name;
     this.weights = {};
     for (let x in weights) {
-      this.weights[x] = new GradeComponent("untitled", 100, weights[x]);
+      this.weights[x] = new GradeComponent(String(x), 100, weights[x]);
     }
   }
   export() {

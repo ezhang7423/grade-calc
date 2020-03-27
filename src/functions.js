@@ -12,7 +12,7 @@ function getColors(num) {
   }
   let act = [];
   let colors = colormap({
-    colormap: "autumn", //allow user customization
+    colormap: "summer", //allow user customization
     nshades: num,
     format: "rgba",
     alpha: 1
@@ -64,44 +64,93 @@ function editCSS(rule) {
   styling.insertRule(rule, stylingL);
 }
 
-function changeMe(e) {
+// need to make responsive, not for now
+// function changeMe(e) {
+//   e.preventDefault();
+//   let id = e.target.getAttribute("name");
+//   if (id === "gc-name") {
+//     e.target.style["margin-right"] = `${38 - name.length}vw`;
+//     setTimeTout(() => {
+//       e.target.replaceWith(
+//         create(
+//           `<input name = "gc-name" class="rep nakinput" style = "margin-bottom: 0; padding: 0; width: 50%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
+//         )
+//       );
+//       let input = document.querySelector('[name="gc-name"]');
+//       input.addEventListener("blur", saveMeBlur);
+//       input.addEventListener("keyup", saveMeEnter);
+//       print("syntax?");
+//     }, 1000);
+//   } else if (id === "course-title") {
+//     print(e.target.innerText);
+//   } else if (id === "component") {
+//     print(e.target.innerText);
+//     let parent =
+//       e.target.parentElement.parentElement.parentElement.firstElementChild;
+//     print(parent.innerText);
+//   }
+// }
+
+function saveMeEnter(e) {
   e.preventDefault();
   let id = e.target.getAttribute("name");
-  // print(id);
-  if (id === "gc-name") {
-    e.target.replaceWith(
-      create(
-        `<input name = "gc-name" class="rep nakinput" style = "text-align: center; margin-bottom: 0; width: 20%; font-size: 4vw" spellcheck="false" placeholder="${e.target.innerText}" type="text" />`
-      )
-    );
-    let input = document.querySelector('[name="gc-name"]');
-    print(input);
-    input.addEventListener("onblur", saveMe);
-    input.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        localStorage.setItem("gc-name", input.value);
-      }
-    });
-  } else if (id === "course-title") {
-    print(e.target.innerText);
-  } else if (id === "component") {
-    print(e.target.innerText);
-    let parent =
-      e.target.parentElement.parentElement.parentElement.firstElementChild;
-    print(parent.innerText);
+  if (e.keyCode === 13) {
+    if (id === "gc-name") {
+      e.preventDefault();
+      localStorage.setItem("gc-name", e.target.value);
+      // e.target.setAttribute("size", e.target.value.length);
+      e.target.style.width = `${e.target.value.length}rem`;
+    } else if (id === "course-title") {
+      let name = e.target.getAttribute("placeholder");
+      print(e.target.value);
+      store[name].name = e.target.value;
+      save(store[name], "course");
+      store = JSON.parse(localStorage.getItem("gc-datastore"));
+      delete store[name];
+      localStorage.setItem("gc-datastore", JSON.stringify(store));
+      location.reload();
+    } else if (id === "component") {
+      let parent =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .firstElementChild;
+      let pName = parent.getAttribute("placeholder");
+      print(pName);
+    }
+    print("enter called");
   }
+}
+function saveCourse(e) {
+  print(e.target);
 }
 
-function saveMe(e) {
-  print("working");
+function saveMeBlur(e) {
   e.preventDefault();
   let id = e.target.getAttribute("name");
   if (id === "gc-name") {
-    print(e.target.value);
     localStorage.setItem("gc-name", e.target.value);
+    // e.target.setAttribute("size", e.target.value.length);
+    e.target.style.width = `${e.target.value.length}rem`;
+  } else if (id === "course-title") {
+    let name = e.target.getAttribute("placeholder");
+    print(e.target.value);
+    store[name].name = e.target.value;
+    save(store[name], "course");
+    store = JSON.parse(localStorage.getItem("gc-datastore"));
+    delete store[name];
+    localStorage.setItem("gc-datastore", JSON.stringify(store));
+    location.reload();
+  } else if (id === "component") {
+    let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
+      "placeholder"
+    );
+    let cname = e.target.getAttribute("placeholder");
+    print(e.target.value);
+    store = JSON.parse(localStorage.getItem("gc-datastore"));
+    store[name].weights[cname].name = e.target.value;
   }
+  print("blur called");
 }
+
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   x.weights[0].grade = [100, 90, 80, 90];
@@ -132,4 +181,19 @@ function save(data, type) {
     store[data.name] = data.export();
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
+}
+
+function deleteCourse(e) {
+  e.preventDefault();
+  let name = e.target.parentElement.parentElement.firstElementChild.getAttribute(
+    "placeholder"
+  );
+  del(name);
+}
+
+function del(name) {
+  store = JSON.parse(localStorage.getItem("gc-datastore"));
+  delete store[name];
+  localStorage.setItem("gc-datastore", JSON.stringify(store));
+  location.reload();
 }

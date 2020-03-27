@@ -1,5 +1,4 @@
 let input = document.querySelector(".name-input");
-let name = localStorage.getItem("gc-name");
 let nameContainer = document.querySelector(".name-container");
 let classContainer = document.querySelector(".main-content");
 let addClass = document.querySelector(".add-class");
@@ -43,18 +42,13 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-if (name !== null) {
+if (name !== null && name !== "") {
   // print("name exists");
   let nameE = create(
-    `<div>Welcome back <span name="gc-name" class = "cc">${name}</span></div>`
+    `<div>Welcome back <input size = "1" name = "gc-name" class="nakinput cc namecc" spellcheck="false" placeholder="${name}" type="text" /></div>`
   );
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");
   //add change name functionality test
 }
 generate(store, numClasses);
-
-let canChanges = document.querySelectorAll(".cc");
-for (let x of canChanges) {
-  x.addEventListener("click", changeMe);
-}

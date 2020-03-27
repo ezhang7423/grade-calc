@@ -1,3 +1,7 @@
+//add unsaved indicator on courses
+//add modal for delete and save
+// disallow same name of course, and same name of component
+// keep positions
 function calcGrad(grade, weight) {
   let num = (grade / 100) * weight;
   return Math.round((num + Number.EPSILON) * 100) / 100;
@@ -14,12 +18,36 @@ function generate(store, numClasses) {
     count++;
   }
   makeResponsive(numClasses);
+  addListeners();
+}
+
+function addListeners() {
+  let canChanges = document.querySelectorAll(".cc");
+  document.querySelector(".namecc.cc").addEventListener("click", e => {
+    e.preventDefault();
+    e.target.style.width = `40vw`;
+  });
+  for (let x of canChanges) {
+    x.addEventListener("click", saveMeBlur);
+    x.addEventListener("click", saveMeEnter);
+  }
+  let saves = document.querySelectorAll("[title = 'save']");
+  for (let x of saves) {
+    x.addEventListener("click", saveCourse);
+  }
+  let deletes = document.querySelectorAll("[title = 'delete']");
+  for (let x of deletes) {
+    x.addEventListener("focusout", deleteCourse);
+  }
 }
 function makeResponsive(numClasses) {
   if (numClasses === 5) {
     print("numclasses 5");
     editCSS(`
-      .components{font-size: 1.5vw;}`);
+      .nakinput.compcc{font-size: 1.5vw;}`);
+    editCSS(`
+      .component{font-size: 1.5vw;}`);
+
     editCSS(`.total{font-size: 2vw;}`);
     editCSS(
       `#ac-sel{font-size: 1.5vw;}
@@ -40,7 +68,10 @@ function makeResponsive(numClasses) {
   } else if (numClasses > 5) {
     print("numclasses greater than 6");
     editCSS(`
-      .components{font-size: .9vw;}`);
+      .nakinput.compcc{font-size: .9vw;}`);
+    editCSS(`
+      .component{font-size: .9vw;}`);
+
     editCSS(`.total{font-size: 1vw;}`);
     editCSS(
       `.bor button{font-size: .8vw;}
@@ -63,7 +94,7 @@ function makeResponsive(numClasses) {
 function createParent(component, store, count) {
   let parentNode = `
   <div class="course ${alph(count)}">
-    <div class = "course-title cc" name = "course-title">${component}</div>
+    <input class = "course-title cc nakinput titlecc" name = "course-title" placeholder="${component}" />
     ${createComponents(store[component])}
     ${createTotal(store[component])}
     ${createSanD()}
@@ -80,9 +111,13 @@ function createComponents(data) {
     calcGrade = calcGrad(iter.grade, iter.weight);
 
     childNode = `<div class = "component">
-        ${iter.isList ? listType : simpleType}
-        <span class="cc" name="component">${iter.name}</span>
         <span class="ar">${calcGrade}/${iter.weight}%</span>
+        <div class = 'left-comp'>
+        ${iter.isList ? listType : simpleType}
+        <input class="cc nakinput compcc" name="component" placeholder="${
+          iter.name
+        }" />
+        </div>
     </div>`;
     parentNode += childNode;
   }
@@ -101,7 +136,7 @@ function createAdder() {
       <option class="ac-sel-option" value="list"> &#xf14a;</option>
       <option class="ac-sel-option" value="list"> &#xf03a;</option>
     </select> -->
-    <input spellcheck="false" class="nakinput" placeholder="Add" />
+    <input spellcheck="false" class="addcc nakinput" placeholder="Add" />
   </div>
     `;
   return node;
@@ -128,7 +163,6 @@ function createSanD() {
   &nbsp;
   <button title="delete" class="course-naked">&#xf00d;</button>
 </div>
-
     `;
   return node;
 }
