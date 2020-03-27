@@ -23,8 +23,13 @@ function generate(store, numClasses) {
 
 function addListeners() {
   let canChanges = document.querySelectorAll(".cc");
+  document.querySelector(".namecc.cc").addEventListener("click", e => {
+    e.preventDefault();
+    e.target.style.width = `40vw`;
+  });
   for (let x of canChanges) {
-    x.addEventListener("click", saveMe);
+    x.addEventListener("click", saveMeBlur);
+    x.addEventListener("click", saveMeEnter);
   }
   let saves = document.querySelectorAll("[title = 'save']");
   for (let x of saves) {

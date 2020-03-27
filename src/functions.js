@@ -109,6 +109,12 @@ function saveMeEnter(e) {
       delete store[name];
       localStorage.setItem("gc-datastore", JSON.stringify(store));
       location.reload();
+    } else if (id === "component") {
+      let parent =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .firstElementChild;
+      let pName = parent.getAttribute("placeholder");
+      print(pName);
     }
     print("enter called");
   }
@@ -133,31 +139,18 @@ function saveMeBlur(e) {
     delete store[name];
     localStorage.setItem("gc-datastore", JSON.stringify(store));
     location.reload();
+  } else if (id === "component") {
+    let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
+      "placeholder"
+    );
+    let cname = e.target.getAttribute("placeholder");
+    print(e.target.value);
+    store = JSON.parse(localStorage.getItem("gc-datastore"));
+    store[name].weights[cname].name = e.target.value;
   }
-
   print("blur called");
 }
 
-function saveMe(e) {
-  e.preventDefault();
-  let id = e.target.getAttribute("name");
-  let input = e.target;
-  if (id === "gc-name") {
-    input.style.width = `40vw`;
-    input.addEventListener("blur", saveMeBlur);
-    input.addEventListener("keyup", saveMeEnter);
-  } else if (id === "course-title") {
-    print(e.target.getAttribute("placeholder"));
-    input.addEventListener("blur", saveMeBlur);
-    input.addEventListener("keyup", saveMeEnter);
-  } else if (id === "component") {
-    print(e.target.getAttribute("placeholder"));
-    let parent =
-      e.target.parentElement.parentElement.parentElement.parentElement
-        .firstElementChild;
-    print(parent.getAttribute("placeholder"));
-  }
-}
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   x.weights[0].grade = [100, 90, 80, 90];
@@ -189,11 +182,16 @@ function save(data, type) {
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
 }
+
 function deleteCourse(e) {
   e.preventDefault();
   let name = e.target.parentElement.parentElement.firstElementChild.getAttribute(
     "placeholder"
   );
+  del(name);
+}
+
+function del(name) {
   store = JSON.parse(localStorage.getItem("gc-datastore"));
   delete store[name];
   localStorage.setItem("gc-datastore", JSON.stringify(store));

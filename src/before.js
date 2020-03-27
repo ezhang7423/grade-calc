@@ -3,6 +3,7 @@ let name = localStorage.getItem("gc-name");
 if (store === null) {
   localStorage.setItem("gc-datastore", "{}");
   let numClasses = 0;
+  k;
 } else {
   let numClasses = Object.keys(store).length;
   let containerWidth = 100 / numClasses;
