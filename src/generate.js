@@ -51,41 +51,19 @@ function makeResponsive(numClasses) {
   if (numClasses === 5) {
     print("numclasses 5");
     editCSS(`
-      .nakinput.compcc{font-size: 1.5vw;}`);
-    editCSS(`
-      .component{font-size: 1.5vw;}`);
-
-    editCSS(`.total{font-size: 2vw;}`);
-    editCSS(
-      `.nakinput{font-size: 1.5vw;}
-      `
-    );
+    .pcc, .nakinput, .nakinput.compcc, .addcc.naked, .component{font-size: 1.5vw;}`);
+    editCSS(`.titlecc, .total{font-size: 2vw;}`);
     editCSS(
       `.course-naked{font-size: .9vw;}
-        `
-    );
-    editCSS(
-      `.addcc.naked{font-size: 1.5vw;}
         `
     );
   } else if (numClasses > 5) {
     print("numclasses greater than 5");
     editCSS(`
-      .nakinput.compcc{font-size: .9vw;}`);
-    editCSS(`
-      .component{font-size: .9vw;}`);
-
-    editCSS(`.total{font-size: 1vw;}`);
+    .pcc, .component, .nakinput, .nakinput.compcc, .addcc.naked{font-size: .9vw;}`);
+    editCSS(`.titlecc, .total{font-size: 1vw;}`);
     editCSS(
       `.course-naked{font-size: .8vw;}
-        `
-    );
-    editCSS(
-      `.nakinput{font-size: .9vw;}
-      `
-    );
-    editCSS(
-      `.addcc.naked{font-size: .9vw;}
         `
     );
   }
@@ -104,26 +82,39 @@ function createParent(component, store, count) {
 function createComponents(data) {
   let parentNode = `<div class = "components">`;
   let childNode, iter, calcGrade;
-  let listType = `<i class="fas fa-list-ul"></i>`;
-  let simpleType = `<i class="fas fa-check-square"></i>`;
   for (let i of Object.keys(data.weights)) {
     iter = data.weights[i];
     calcGrade = calcGrad(iter.grade, iter.weight);
-
-    childNode = `<div class = "component">
-        <span onclick="openTooltip()" title="To edit weights click on Advanced below." class="tooltip ar">${calcGrade}/${
-      iter.weight
-    }%
-    <span class = "tooltiptext"><div>test</div>
-    </span>
-    </span>
+    if (iter.isList) {
+      childNode = `
+      <div class = "component">
         <div class = 'left-comp'>
-        ${iter.isList ? listType : simpleType}
-        <input spellcheck="false" class="cc nakinput compcc" name="component" placeholder="${
-          iter.name
-        }" />
+          <i class="fas fa-list-ul"></i>
+          <input spellcheck="false" style="margin-left: .52vw;" class="cc nakinput compcc" name="component" placeholder="${iter.name}" />
         </div>
-    </div>`;
+        <span onclick="openTooltip()" class="tooltip ar">${calcGrade}/${iter.weight}%
+          <span class = "tooltiptext"><div>test</div></span>
+        </span>
+      </div>`;
+    } else {
+      childNode = `
+      <div class = "component">
+        <div class = 'full-comp'>
+          <i class="fas fa-check-square"></i>
+          <input spellcheck="false" class="cc nakinput compcc" name="component" placeholder="${iter.name}" />
+          <span class="ar">
+          <input
+            spellcheck="false"
+            class="cc nakinput pcc"
+            name="component"
+            placeholder="${calcGrade}"
+          />
+          /${iter.weight}%</span
+        >
+        </div>
+      </div>
+      `;
+    }
     parentNode += childNode;
   }
   parentNode += createAdder();
@@ -148,18 +139,7 @@ function createTotal(data) {
   let node = `
     <div class="total-container">
   <hr class="linebreak" />
-  <div class="total">Total <span class="ar">${sum}/100%</span></div>
-</div>
-    `;
-  return node;
-}
-
-function createSanD() {
-  let node = `
-    <div class="bor">
-  <button title="save" class="course-naked">&#xf0c7;</button>
-  &nbsp;
-  <button title="delete" class="course-naked">&#xf00d;</button>
+  <div class="total">Total <span class="tar">${sum}/100%</span></div>
 </div>
     `;
   return node;

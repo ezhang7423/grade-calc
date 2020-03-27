@@ -23,6 +23,11 @@
 .left-comp {
   display: flex;
   align-items: center;
+}
+
+.full-comp {
+  display: flex;
+  align-items: center;
   width: 100%;
 }
 .bor button {
@@ -73,6 +78,10 @@
   font-size: 4vw;
 }
 
+.tar {
+  float: right;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .nakinput.compcc {
   width: 100%;
   font-size: 2vw;
