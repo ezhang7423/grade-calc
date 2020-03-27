@@ -1,6 +1,6 @@
 //add unsaved indicator on courses
 //add modal for delete and save
-// add warning when changing name to something else that already exists
+// disallow same name of course, and same name of component
 // keep positions
 function calcGrad(grade, weight) {
   let num = (grade / 100) * weight;

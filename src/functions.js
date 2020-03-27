@@ -151,10 +151,11 @@ function saveMe(e) {
     input.addEventListener("blur", saveMeBlur);
     input.addEventListener("keyup", saveMeEnter);
   } else if (id === "component") {
-    print(e.target.innerText);
+    print(e.target.getAttribute("placeholder"));
     let parent =
-      e.target.parentElement.parentElement.parentElement.firstElementChild;
-    print(parent.innerText);
+      e.target.parentElement.parentElement.parentElement.parentElement
+        .firstElementChild;
+    print(parent.getAttribute("placeholder"));
   }
 }
 let addFake = () => {
