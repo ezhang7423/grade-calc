@@ -53,23 +53,15 @@ function makeResponsive(numClasses) {
 
     editCSS(`.total{font-size: 2vw;}`);
     editCSS(
-      `#ac-sel{font-size: 1.5vw;}
-      `
-    );
-    editCSS(
       `.nakinput{font-size: 1.5vw;}
       `
     );
     editCSS(
-      `.bor button{font-size: .9vw;}
-        `
-    );
-    editCSS(
-      `.bor {font-size: .9vw;}
+      `.course-naked{font-size: .9vw;}
         `
     );
   } else if (numClasses > 5) {
-    print("numclasses greater than 6");
+    print("numclasses greater than 5");
     editCSS(`
       .nakinput.compcc{font-size: .9vw;}`);
     editCSS(`
@@ -77,20 +69,12 @@ function makeResponsive(numClasses) {
 
     editCSS(`.total{font-size: 1vw;}`);
     editCSS(
-      `.bor button{font-size: .8vw;}
+      `.course-naked{font-size: .8vw;}
         `
-    );
-    editCSS(
-      `#ac-sel{font-size: .9vw;}
-      `
     );
     editCSS(
       `.nakinput{font-size: .9vw;}
       `
-    );
-    editCSS(
-      `.bor {font-size: .9vw;}
-        `
     );
   }
 }
@@ -134,13 +118,6 @@ function createComponents(data) {
 function createAdder() {
   let node = `
     <div class="add-component component">
-    <!-- <select
-      title="Select the list type for components that span multiple works, and the checkmark for singular works. For example, homework should be list type, and midterm should be checkmark type."
-      id="ac-sel"
-    >
-      <option class="ac-sel-option" value="list"> &#xf14a;</option>
-      <option class="ac-sel-option" value="list"> &#xf03a;</option>
-    </select> -->
     <button class="cc addcc naked">Advanced</button>
   </div>
     `;
