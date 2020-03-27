@@ -117,6 +117,7 @@ function createComponents(data) {
           <input
             maxlength="5"
             spellcheck="false"
+            title="Enter the score you got out of 100 (your raw score)"
             class="cc nakinput pcc"
             name="percentage"
             placeholder="${calcGrade}"

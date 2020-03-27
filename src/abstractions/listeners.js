@@ -6,6 +6,14 @@ function saveMeEnter(e) {
   }
 }
 
+function openTooltip() {
+  print(document.querySelector(".tooltiptext"));
+  document.querySelector(".tooltiptext").classList.toggle("visible");
+}
+function toggleModal() {
+  document.querySelector(".modal").classList.toggle("show-modal");
+}
+
 function saveMeBlur(e) {
   e.preventDefault();
   saveMe(e);
@@ -50,7 +58,20 @@ function saveMe(e) {
           "placeholder"
         )
       );
-      print(cname);
+      let val = parseInt(e.target.value);
+      if (isNaN(val) || val < 0) {
+        alert("invalid value");
+        throw "ur dumb bruh";
+      } else {
+        store[name].weights[cname].grade = val;
+        save(store[name], "component");
+        // print(e.target.parentElement.innerText.slice(, -1));
+        e.target["placeholder"] = calcGrad(
+          e.target.value,
+          parseInt(e.target.parentElement.innerText.slice(1, -1))
+        );
+        e.target.value = "";
+      }
     }
   }
 }
