@@ -18,7 +18,7 @@ if (store === null) {
 if (name !== null && name !== "") {
   editCSS(
     `.nakinput.namecc{
-      width: ${name.length}rem;
+      width: ${name.length * 1.1}rem;
     }`
   );
 }

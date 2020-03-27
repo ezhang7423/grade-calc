@@ -18,7 +18,7 @@ if (numClasses < 8) {
 if (name !== null && name !== "") {
   // print("name exists");
   let nameE = create(
-    `<div>Welcome back <input size = "1" name = "gc-name" class="nakinput cc namecc" spellcheck="false" placeholder="${name}" type="text" /></div>`
+    `<div>Welcome back <input name = "gc-name" class="nakinput cc namecc" spellcheck="false" placeholder="${name}" type="text" /></div>`
   );
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");

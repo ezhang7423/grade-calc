@@ -28,8 +28,8 @@ function addListeners() {
     e.target.style.width = `40vw`;
   });
   for (let x of canChanges) {
-    x.addEventListener("click", saveMeBlur);
-    x.addEventListener("click", saveMeEnter);
+    x.addEventListener("focusout", saveMeBlur);
+    x.addEventListener("keyup", saveMeEnter);
   }
   let saves = document.querySelectorAll("[title = 'save']");
   for (let x of saves) {

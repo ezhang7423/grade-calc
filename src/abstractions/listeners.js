@@ -43,8 +43,10 @@ function saveMe(e) {
   let id = e.target.getAttribute("name");
   if (id === "gc-name") {
     localStorage.setItem("gc-name", e.target.value);
-    // e.target.setAttribute("size", e.target.value.length);
-    e.target.style.width = `${e.target.value.length}rem`;
+    let letterL = e.target.value.length;
+    letterL = Math.max(1, letterL);
+    e.target.style.width = `${letterL * 1.1}rem`;
+    e.target["placeholder"] = e.target.value;
   } else if (id === "course-title") {
     let name = e.target.getAttribute("placeholder");
     print(e.target.value);

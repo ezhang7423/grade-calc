@@ -74,7 +74,6 @@ function numUntitled() {
 
 function reconstruct() {
   let store = JSON.parse(localStorage.getItem("gc-datastore"));
-  print(store);
   let act = {};
   if (store !== null) {
     for (let course of Object.keys(store)) {
