@@ -90,7 +90,12 @@ function createComponents(data) {
       <div class = "component">
         <div class = 'left-comp'>
           <i class="fas fa-list-ul"></i>
-          <input spellcheck="false" class="cc nakinput compcc" name="component" placeholder="${iter.name}" />
+          <input spellcheck="false"
+           class="cc nakinput compcc" 
+           name="component" 
+           maxlength="10"
+           type="text"
+           placeholder="${iter.name}" />
         </div>
         <span onclick="openTooltip()" class="tooltip ar">${calcGrade}/${iter.weight}%
           <span class = "tooltiptext"><div>test</div></span>
@@ -101,12 +106,19 @@ function createComponents(data) {
       <div class = "component">
         <div class = 'full-comp'>
           <i class="fas fa-check-square"></i>
-          <input spellcheck="false" class="cc nakinput compcc" name="component" placeholder="${iter.name}" />
+          <input spellcheck="false" 
+          class="cc nakinput compcc" 
+          name="component" 
+          type="text"
+          maxlength="10"
+          placeholder="${iter.name}" />
+          
           <span class="ar">
           <input
+            maxlength="5"
             spellcheck="false"
             class="cc nakinput pcc"
-            name="component"
+            name="percentage"
             placeholder="${calcGrade}"
           />
           /${iter.weight}%</span

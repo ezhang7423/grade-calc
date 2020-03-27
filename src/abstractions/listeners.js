@@ -40,6 +40,17 @@ function saveMe(e) {
       save(store[name], "component");
       e.target["placeholder"] = e.target.value;
       e.target.value = "";
+    } else if (id === "percentage") {
+      let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
+        "placeholder"
+      );
+      let cname = searchComp(
+        name,
+        e.target.parentElement.parentElement.children[1].getAttribute(
+          "placeholder"
+        )
+      );
+      print(cname);
     }
   }
 }
