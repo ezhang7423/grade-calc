@@ -101,6 +101,7 @@
 }
 
 .addcc.naked:hover {
+  background: rgba(143, 188, 255, 0.2);
   color: black;
 }
 ::placeholder {

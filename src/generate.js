@@ -42,6 +42,13 @@ function addListeners() {
   for (let x of deletes) {
     x.addEventListener("focusout", deleteCourse);
   }
+  document.querySelector(".modal").addEventListener("click", toggleModal);
+  document
+    .querySelector(".close-button")
+    .addEventListener("click", toggleModal);
+  for (let x of document.querySelectorAll(".naked.addcc")) {
+    x.addEventListener("click", toggleModal);
+  }
 }
 function makeResponsive(numClasses) {
   if (numClasses === 5) {
@@ -127,7 +134,7 @@ function createComponents(data) {
 function createAdder() {
   let node = `
     <div class="add-component component">
-    <button class="cc addcc naked">Advanced</button>
+    <button class="addcc naked">Advanced</button>
   </div>
     `;
   return node;

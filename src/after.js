@@ -23,4 +23,5 @@ if (name !== null && name !== "") {
   nameContainer.insertBefore(nameE, input);
   input.classList.add("hidden");
 }
+
 generate(store, numClasses);

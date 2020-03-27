@@ -94,6 +94,10 @@ function reconstruct() {
     return null;
   }
 }
+function toggleModal() {
+  document.querySelector(".modal").classList.toggle("show-modal");
+}
+
 function save(data, type) {
   store = reconstruct();
   if (type === "course") {
