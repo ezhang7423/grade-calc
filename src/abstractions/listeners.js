@@ -52,10 +52,7 @@ function saveMe(e) {
     print(e.target.value);
     store[name].name = e.target.value;
     save(store[name], "course");
-    store = reconstruct();
-    delete store[name];
-    localStorage.setItem("gc-datastore", JSON.stringify(store));
-    location.reload();
+    del(name);
   } else if (id === "component") {
     let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
       "placeholder"
