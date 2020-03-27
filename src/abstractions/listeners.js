@@ -57,7 +57,7 @@ function saveMe(e) {
     let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
       "placeholder"
     );
-    let cname = e.target.getAttribute("placeholder");
+    let cname = searchComp(name, e.target.getAttribute("placeholder"));
     store[name].weights[cname].name = e.target.value;
     save(store[name], "component");
     e.target["placeholder"] = e.target.value;

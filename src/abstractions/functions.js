@@ -106,6 +106,14 @@ function save(data, type) {
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
 }
+function searchComp(course, name) {
+  let weights = store[course].weights;
+  for (let x of Object.keys(weights)) {
+    if (weights[x].name === name) {
+      return x;
+    }
+  }
+}
 function del(name) {
   store = reconstruct();
   delete store[name];
