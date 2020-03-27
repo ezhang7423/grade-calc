@@ -60,6 +60,10 @@ function makeResponsive(numClasses) {
       `.course-naked{font-size: .9vw;}
         `
     );
+    editCSS(
+      `.addcc.naked{font-size: 1.5vw;}
+        `
+    );
   } else if (numClasses > 5) {
     print("numclasses greater than 5");
     editCSS(`
@@ -76,15 +80,20 @@ function makeResponsive(numClasses) {
       `.nakinput{font-size: .9vw;}
       `
     );
+    editCSS(
+      `.addcc.naked{font-size: .9vw;}
+        `
+    );
   }
 }
 function createParent(component, store, count) {
   let parentNode = `
   <div class="course ${alph(count)}">
+  <div><button title="delete" class="course-naked">&#xf00d;</button></div>
     <input spellcheck="false" class = "course-title cc nakinput titlecc" name = "course-title" placeholder="${component}" />
     ${createComponents(store[component])}
     ${createTotal(store[component])}
-    ${createSanD()}
+    
   </div>`;
   return parentNode;
 }
