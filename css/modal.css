@@ -20,17 +20,26 @@
   width: 24rem;
   border-radius: 0.5rem;
 }
-.close-button {
-  float: right;
+.mc {
   width: 1.5rem;
   line-height: 1.5rem;
   text-align: center;
   cursor: pointer;
-  border-radius: 0.25rem;
-  background-color: lightgray;
+  font-family: "Font Awesome\ 5 Free", "Baloo Chettan 2", Arial, Helvetica,
+    sans-serif;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  transition: all 0.5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.25, 1);
+  color: #771d1d;
+  float: right;
+  font-size: 1.5vw;
+  margin: 0.8vw 0.8vw 0 0;
 }
-.close-button:hover {
-  background-color: darkgray;
+.mc:hover {
+  background: rgba(197, 217, 255, 0.247);
 }
 .show-modal {
   opacity: 1;

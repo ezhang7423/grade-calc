@@ -42,10 +42,7 @@ function addListeners() {
   for (let x of deletes) {
     x.addEventListener("focusout", deleteCourse);
   }
-  document.querySelector(".modal").addEventListener("click", toggleModal);
-  document
-    .querySelector(".close-button")
-    .addEventListener("click", toggleModal);
+
   for (let x of document.querySelectorAll(".naked.addcc")) {
     x.addEventListener("click", toggleModal);
   }

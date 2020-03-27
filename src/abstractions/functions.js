@@ -95,6 +95,7 @@ function reconstruct() {
   }
 }
 function toggleModal() {
+  print("i got called!!");
   document.querySelector(".modal").classList.toggle("show-modal");
 }
 
