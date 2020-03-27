@@ -37,11 +37,13 @@
   background: none;
   width: fit-content;
   outline: none;
-  padding-bottom: 2px;
+  padding: 0;
   transition: all 0.5s;
   transition-timing-function: cubic-bezier(0, 1, 0.25, 1);
-
   color: #771d1d;
+  float: right;
+  font-size: 1.5vw;
+  margin: 0.8vw 0.8vw 0 0;
 }
 .course-naked:hover {
   background-color: rgba(197, 217, 255, 0.247);
@@ -95,6 +97,10 @@
   width: 100%;
   margin-bottom: 1vh;
   margin-right: 0.2vw;
+}
+
+.addcc.naked:hover {
+  color: black;
 }
 ::placeholder {
   color: black;

@@ -114,7 +114,9 @@ function createComponents(data) {
     calcGrade = calcGrad(iter.grade, iter.weight);
 
     childNode = `<div class = "component">
-        <span class="ar">${calcGrade}/${iter.weight}%</span>
+        <span title="To edit weights click on Advanced below." class="ar">${calcGrade}/${
+      iter.weight
+    }%</span>
         <div class = 'left-comp'>
         ${iter.isList ? listType : simpleType}
         <input spellcheck="false" class="cc nakinput compcc" name="component" placeholder="${
@@ -139,7 +141,7 @@ function createAdder() {
       <option class="ac-sel-option" value="list"> &#xf14a;</option>
       <option class="ac-sel-option" value="list"> &#xf03a;</option>
     </select> -->
-    <input spellcheck="false" class="addcc nakinput" placeholder="Add" />
+    <button class="cc addcc naked">Advanced</button>
   </div>
     `;
   return node;
