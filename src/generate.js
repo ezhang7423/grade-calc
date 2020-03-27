@@ -144,11 +144,15 @@ function createAdder() {
   return node;
 }
 
-function createTotal(data) {
+function calcSum(data) {
   let sum = 0;
   for (let i of Object.keys(data.weights)) {
     sum += calcGrad(data.weights[i].grade, data.weights[i].weight);
   }
+  return Math.round((sum + Number.EPSILON) * 100) / 100;
+}
+function createTotal(data) {
+  let sum = calcSum(data);
   let node = `
     <div class="total-container">
   <hr class="linebreak" />

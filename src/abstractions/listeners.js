@@ -60,17 +60,26 @@ function saveMe(e) {
       );
       let val = parseInt(e.target.value);
       if (isNaN(val) || val < 0) {
-        alert("invalid value");
         throw "ur dumb bruh";
       } else {
+        print(store[name].weights[cname]);
         store[name].weights[cname].grade = val;
         save(store[name], "component");
         // print(e.target.parentElement.innerText.slice(, -1));
         e.target["placeholder"] = calcGrad(
           e.target.value,
-          parseInt(e.target.parentElement.innerText.slice(1, -1))
+          store[name].weights[cname].weight
         );
         e.target.value = "";
+        let courseChildren =
+          e.target.parentElement.parentElement.parentElement.parentElement
+            .parentElement.children;
+        print(courseChildren);
+        courseChildren[
+          courseChildren.length - 1
+        ].children[1].firstElementChild.innerText = `${calcSum(
+          store[name]
+        )}/100%`;
       }
     }
   }
