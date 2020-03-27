@@ -94,7 +94,7 @@ function makeResponsive(numClasses) {
 function createParent(component, store, count) {
   let parentNode = `
   <div class="course ${alph(count)}">
-    <input class = "course-title cc nakinput titlecc" name = "course-title" placeholder="${component}" />
+    <input spellcheck="false" class = "course-title cc nakinput titlecc" name = "course-title" placeholder="${component}" />
     ${createComponents(store[component])}
     ${createTotal(store[component])}
     ${createSanD()}
@@ -114,7 +114,7 @@ function createComponents(data) {
         <span class="ar">${calcGrade}/${iter.weight}%</span>
         <div class = 'left-comp'>
         ${iter.isList ? listType : simpleType}
-        <input class="cc nakinput compcc" name="component" placeholder="${
+        <input spellcheck="false" class="cc nakinput compcc" name="component" placeholder="${
           iter.name
         }" />
         </div>

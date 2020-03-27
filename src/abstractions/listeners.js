@@ -36,7 +36,7 @@ function saveMeEnter(e) {
 function saveMeBlur(e) {
   e.preventDefault();
   saveMe(e);
-  print("blur called");
+  print("focusout called");
 }
 
 function saveMe(e) {
@@ -58,9 +58,9 @@ function saveMe(e) {
       "placeholder"
     );
     let cname = e.target.getAttribute("placeholder");
-    print(e.target.value);
-    store = reconstruct();
     store[name].weights[cname].name = e.target.value;
+    save(store[name], "component");
+    e.target["placeholder"] = e.target.value;
   }
 }
 function addNew(e) {

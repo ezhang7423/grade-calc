@@ -99,6 +99,9 @@ function save(data, type) {
     store[data.name].name = data.name;
     store[data.name].weights = data.export();
     localStorage.setItem("gc-datastore", JSON.stringify(store));
+  } else if (type === "component") {
+    store[data.name] = data;
+    localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
 }
 function del(name) {
