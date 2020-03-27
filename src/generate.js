@@ -1,3 +1,7 @@
+//add unsaved indicator on courses
+//add modal for delete and save
+// add warning when changing name to something else that already exists
+// keep positions
 function calcGrad(grade, weight) {
   let num = (grade / 100) * weight;
   return Math.round((num + Number.EPSILON) * 100) / 100;
@@ -14,6 +18,22 @@ function generate(store, numClasses) {
     count++;
   }
   makeResponsive(numClasses);
+  addListeners();
+}
+
+function addListeners() {
+  let canChanges = document.querySelectorAll(".cc");
+  for (let x of canChanges) {
+    x.addEventListener("click", saveMe);
+  }
+  let saves = document.querySelectorAll("[title = 'save']");
+  for (let x of saves) {
+    x.addEventListener("click", saveCourse);
+  }
+  let deletes = document.querySelectorAll("[title = 'delete']");
+  for (let x of deletes) {
+    x.addEventListener("focusout", deleteCourse);
+  }
 }
 function makeResponsive(numClasses) {
   if (numClasses === 5) {
@@ -138,7 +158,6 @@ function createSanD() {
   &nbsp;
   <button title="delete" class="course-naked">&#xf00d;</button>
 </div>
-
     `;
   return node;
 }

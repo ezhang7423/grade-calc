@@ -12,7 +12,7 @@ function getColors(num) {
   }
   let act = [];
   let colors = colormap({
-    colormap: "autumn", //allow user customization
+    colormap: "summer", //allow user customization
     nshades: num,
     format: "rgba",
     alpha: 1
@@ -102,12 +102,19 @@ function saveMeEnter(e) {
       e.target.style.width = `${e.target.value.length}rem`;
     } else if (id === "course-title") {
       let name = e.target.getAttribute("placeholder");
+      print(e.target.value);
       store[name].name = e.target.value;
       save(store[name], "course");
+      store = JSON.parse(localStorage.getItem("gc-datastore"));
       delete store[name];
+      localStorage.setItem("gc-datastore", JSON.stringify(store));
+      location.reload();
     }
+    print("enter called");
   }
-  print("enter called");
+}
+function saveCourse(e) {
+  print(e.target);
 }
 
 function saveMeBlur(e) {
@@ -119,9 +126,13 @@ function saveMeBlur(e) {
     e.target.style.width = `${e.target.value.length}rem`;
   } else if (id === "course-title") {
     let name = e.target.getAttribute("placeholder");
+    print(e.target.value);
     store[name].name = e.target.value;
     save(store[name], "course");
+    store = JSON.parse(localStorage.getItem("gc-datastore"));
     delete store[name];
+    localStorage.setItem("gc-datastore", JSON.stringify(store));
+    location.reload();
   }
 
   print("blur called");
@@ -176,4 +187,14 @@ function save(data, type) {
     store[data.name] = data.export();
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
+}
+function deleteCourse(e) {
+  e.preventDefault();
+  let name = e.target.parentElement.parentElement.firstElementChild.getAttribute(
+    "placeholder"
+  );
+  store = JSON.parse(localStorage.getItem("gc-datastore"));
+  delete store[name];
+  localStorage.setItem("gc-datastore", JSON.stringify(store));
+  location.reload();
 }
