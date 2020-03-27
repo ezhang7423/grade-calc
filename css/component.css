@@ -97,6 +97,7 @@
   width: 100%;
   margin-bottom: 1vh;
   margin-right: 0.2vw;
+  padding: 0;
 }
 
 .addcc.naked:hover {

@@ -24,7 +24,6 @@ function saveMe(e) {
       e.target.value = "";
     } else if (id === "course-title") {
       let name = e.target.getAttribute("placeholder");
-      print(e.target.value);
       Object.defineProperty(
         store,
         e.target.value,
