@@ -32,7 +32,7 @@ function saveMe(e) {
       localStorage.setItem("gc-datastore", JSON.stringify(store));
       del(name);
     } else if (id === "component") {
-      let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
+      let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
       );
       let cname = searchComp(name, e.target.getAttribute("placeholder"));

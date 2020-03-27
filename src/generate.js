@@ -111,9 +111,12 @@ function createComponents(data) {
     calcGrade = calcGrad(iter.grade, iter.weight);
 
     childNode = `<div class = "component">
-        <span title="To edit weights click on Advanced below." class="ar">${calcGrade}/${
+        <span onclick="openTooltip()" title="To edit weights click on Advanced below." class="tooltip ar">${calcGrade}/${
       iter.weight
-    }%</span>
+    }%
+    <span class = "tooltiptext"><div>test</div>
+    </span>
+    </span>
         <div class = 'left-comp'>
         ${iter.isList ? listType : simpleType}
         <input spellcheck="false" class="cc nakinput compcc" name="component" placeholder="${
