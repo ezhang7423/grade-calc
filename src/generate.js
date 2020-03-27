@@ -51,7 +51,7 @@ function makeResponsive(numClasses) {
   if (numClasses === 5) {
     print("numclasses 5");
     editCSS(`
-    .pcc, .nakinput, .nakinput.compcc, .addcc.naked, .component{font-size: 1.5vw;}`);
+    .nakinput.pcc, .nakinput, .nakinput.compcc, .addcc.naked, .component{font-size: 1.5vw;}`);
     editCSS(`.titlecc, .total{font-size: 2vw;}`);
     editCSS(
       `.course-naked{font-size: .9vw;}
@@ -60,7 +60,7 @@ function makeResponsive(numClasses) {
   } else if (numClasses > 5) {
     print("numclasses greater than 5");
     editCSS(`
-    .pcc, .component, .nakinput, .nakinput.compcc, .addcc.naked{font-size: .9vw;}`);
+    .nakinput.pcc, .component, .nakinput, .nakinput.compcc, .addcc.naked{font-size: .9vw;}`);
     editCSS(`.titlecc, .total{font-size: 1vw;}`);
     editCSS(
       `.course-naked{font-size: .8vw;}

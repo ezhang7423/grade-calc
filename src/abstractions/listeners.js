@@ -47,8 +47,8 @@ function addNew(e) {
   e.preventDefault();
   store = reconstruct();
   numClasses = Object.keys(store).length;
-  untitled = numUntitled();
-  let x = new Course(`untitled course ${untitled}`, [100]);
+  untitled = largestUntitled();
+  let x = new Course(`untitled course ${untitled + 1}`, [100]);
   save(x, "course");
   location.reload();
 }

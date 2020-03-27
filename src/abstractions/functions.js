@@ -61,15 +61,17 @@ let cClear = () => {
   location.reload();
 };
 
-function numUntitled() {
+function largestUntitled() {
   store = reconstruct();
-  counter = 0;
+  let max = -1;
   for (let x of Object.keys(store)) {
     if (x.includes("untitled")) {
-      counter++;
+      if (parseInt(x.split(" ")[2]) > max) {
+        max = parseInt(x.split(" ")[2]);
+      }
     }
   }
-  return counter;
+  return max;
 }
 
 function reconstruct() {
