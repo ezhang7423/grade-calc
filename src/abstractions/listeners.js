@@ -25,8 +25,12 @@ function saveMe(e) {
     } else if (id === "course-title") {
       let name = e.target.getAttribute("placeholder");
       print(e.target.value);
-      store[name].name = e.target.value;
-      save(store[name], "course");
+      Object.defineProperty(
+        store,
+        e.target.value,
+        Object.getOwnPropertyDescriptor(store, name)
+      );
+      localStorage.setItem("gc-datastore", JSON.stringify(store));
       del(name);
     } else if (id === "component") {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.getAttribute(
@@ -70,7 +74,7 @@ function exportt(e) {
 
 function deleteCourse(e) {
   e.preventDefault();
-  let name = e.target.parentElement.parentElement.firstElementChild.getAttribute(
+  let name = e.target.parentElement.parentElement.children[1].getAttribute(
     "placeholder"
   );
   del(name);
