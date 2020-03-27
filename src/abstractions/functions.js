@@ -94,8 +94,12 @@ function reconstruct() {
     return null;
   }
 }
+
+function openTooltip() {
+  print(document.querySelector(".tooltiptext"));
+  document.querySelector(".tooltiptext").classList.toggle("visible");
+}
 function toggleModal() {
-  print("i got called!!");
   document.querySelector(".modal").classList.toggle("show-modal");
 }
 
