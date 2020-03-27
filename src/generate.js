@@ -3,6 +3,8 @@
 // disallow same name of course, and same name of component
 // keep positions
 //disallow empty string as object key
+// still to do: implement dropdown on grade, add unsaved(part of buttons), add modal or better idea, export
+// and fix the width of name
 function calcGrad(grade, weight) {
   let num = (grade / 100) * weight;
   return Math.round((num + Number.EPSILON) * 100) / 100;

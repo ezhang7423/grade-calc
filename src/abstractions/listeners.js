@@ -19,7 +19,7 @@ function saveMe(e) {
       localStorage.setItem("gc-name", e.target.value);
       let letterL = e.target.value.length;
       letterL = Math.max(1, letterL);
-      e.target.style.width = `${letterL * 1.1}rem`;
+      e.target.style.width = `${letterL * 0.6}em`;
       e.target["placeholder"] = e.target.value;
       e.target.value = "";
     } else if (id === "course-title") {
