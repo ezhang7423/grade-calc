@@ -101,7 +101,7 @@ function reconstruct() {
       for (let component of Object.keys(store[course].weights)) {
         weights.push(store[course].weights[component].weight);
       }
-      act[course] = new Course(course, weights);
+      act[course] = new Course(store[course].name, weights);
       for (let component of Object.keys(store[course].weights)) {
         act[course].weights[component].grade =
           store[course].weights[component].grad;
@@ -117,14 +117,24 @@ function reconstruct() {
 
 function save(data, type) {
   store = reconstruct();
+  let storelen = Object.keys(store).length;
   if (type === "course") {
-    store[data.name] = {};
-    store[data.name].name = data.name;
-    store[data.name].weights = data.export();
+    store[storelen] = {};
+    store[storelen].name = data.name;
+    store[storelen].weights = data.export();
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   } else if (type === "component") {
-    store[data.name] = data;
+    let courseKey = searchCourses(data.name);
+    store[courseKey] = data;
     localStorage.setItem("gc-datastore", JSON.stringify(store));
+  }
+}
+
+function searchCourses(name) {
+  for (let course of Object.keys(store)) {
+    if (store[course].name === name) {
+      return course;
+    }
   }
 }
 function searchComp(course, name) {
