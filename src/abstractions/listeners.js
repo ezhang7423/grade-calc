@@ -35,29 +35,26 @@ function saveMe(e) {
       e.target["placeholder"] = e.target.value;
       e.target.value = "";
     } else if (id === "course-title") {
-      let name = e.target.getAttribute("placeholder");
+      let name = e.target.placeholder;
       name = searchObj(store, name);
       store[name].name = e.target.value;
       localStorage.setItem("gc-datastore", JSON.stringify(store));
       e.target["placeholder"] = e.target.value;
       e.target.value = "";
     } else if (id === "component") {
-      let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
-        "placeholder"
-      );
+      let name =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .children[1].placeholder;
       name = searchObj(store, name);
-      let cname = searchObj(
-        store[name].weights,
-        e.target.getAttribute("placeholder")
-      );
+      let cname = searchObj(store[name].weights, e.target.placeholder);
       store[name].weights[cname].name = e.target.value;
       save(store[name], "component");
       e.target["placeholder"] = e.target.value;
       e.target.value = "";
     } else if (id === "percentage") {
-      let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
-        "placeholder"
-      );
+      let name =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .parentElement.children[1].placeholder;
       name = searchObj(store, name);
       let cname = searchObj(
         store[name].weights,
@@ -88,13 +85,13 @@ function saveMe(e) {
         )}/100%`;
       }
     } else if (id === "wcomp") {
-      let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
-        "placeholder"
-      );
+      let name =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .parentElement.parentElement.children[1].placeholder;
       name = searchObj(store, name);
-      let cname = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.children[1].getAttribute(
-        "placeholder"
-      );
+      let cname =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .firstElementChild.children[1].placeholder;
       cname = searchObj(store[name].weights, cname);
       let toUpdate = searchObj(
         store[name].weights[cname].grad,
@@ -105,7 +102,49 @@ function saveMe(e) {
       e.target["placeholder"] = e.target.value;
       e.target.value = "";
     } else if (id === "wpercent") {
-      print("bruh percent");
+      print(e.target);
+      let name =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .parentElement.parentElement.parentElement.children[1].placeholder;
+      name = searchObj(store, name);
+      let cname =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .parentElement.firstElementChild.children[1].placeholder;
+      cname = searchObj(store[name].weights, cname);
+      let toUpdate = searchObj(
+        store[name].weights[cname].grad,
+        e.target.parentElement.parentElement.firstElementChild.placeholder
+      );
+      let val = parseFloat(e.target.value);
+      if (isNaN(val) || val < 0 || val > 100) {
+        throw "bruh";
+      } else {
+        store[name].weights[cname].grad[toUpdate].gradie = val;
+        save(store[name], "component");
+        e.target["placeholder"] = val;
+        e.target.value = "";
+
+        let daddy = e.target.parentElement.parentElement.parentElement.parentElement.innerHTML.split(
+          "\n"
+        );
+        let daddychange = daddy[0].split("/");
+        daddychange[0] = String(
+          calcGrad(
+            store[name].weights[cname].grade,
+            store[name].weights[cname].weight
+          )
+        );
+        daddy[0] = daddychange.join("/");
+        print(daddy);
+        e.target.parentElement.parentElement.parentElement.parentElement.innerHTML = daddy.join(
+          "\n"
+        );
+        let canChanges = document.querySelectorAll(".cc");
+        for (let x of canChanges) {
+          x.addEventListener("focusout", saveMeBlur);
+          x.addEventListener("keyup", saveMeEnter);
+        }
+      }
     }
   }
 }
