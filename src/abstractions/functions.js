@@ -49,9 +49,11 @@ function editCSS(rule) {
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
   x.weights[0].grade = [100, 90, 80, 90];
-  x.weights[2].grade = 11.1203;
-  let y = new Course("PSTAT120A", [30, 20, 20, 15, 15]);
-  y.weights[0].grade = 23;
+  x.weights[2].grade = [10, 20, 30, 100];
+  let y = new Course("PSTAT120A", [1, 1, 2, 96]);
+  y.weights[0].grade = [1, 2, 3, 4, 5, 6, 7];
+  y.weights[1].grade = [1, 2, 3, 4, 50, 6, 7];
+  y.weights[2].grade = [1, 2, 30, 40, 5, 6, 70];
   save(x, "course");
   save(y, "course");
   location.reload();

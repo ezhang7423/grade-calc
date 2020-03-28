@@ -1,9 +1,8 @@
-//add unsaved indicator on courses
-//add modal for delete and save
+// add sorting for comps and for courses
 // disallow same name of course, and same name of component
 // keep positions
-//disallow empty string as object key
-// still to do: implement dropdown on grade, add unsaved(part of buttons), add modal or better idea, export
+// disallow empty string as object key
+// still to do: export
 // and fix the width of name
 function calcGrad(grade, weight) {
   let num = (grade / 100) * weight;
@@ -45,6 +44,9 @@ function addListeners() {
 
   for (let x of document.querySelectorAll(".naked.addcc")) {
     x.addEventListener("click", toggleModal);
+  }
+  for (let x of document.querySelectorAll(".tooltip")) {
+    x.addEventListener("click", openTooltip);
   }
 }
 function makeResponsive(numClasses) {
@@ -97,8 +99,10 @@ function createComponents(data) {
            type="text"
            placeholder="${iter.name}" />
         </div>
-        <span onclick="openTooltip()" class="tooltip ar">${calcGrade}/${iter.weight}%
-          <span class = "tooltiptext"><div>test</div></span>
+        <span class="tooltip ar">${calcGrade}/${iter.weight}%
+          <span class = "tooltiptext">
+          <div>${iter.weight}</div>
+          </span>
         </span>
       </div>`;
     } else {

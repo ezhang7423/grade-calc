@@ -6,12 +6,14 @@ function saveMeEnter(e) {
   }
 }
 
-function openTooltip() {
-  print(document.querySelector(".tooltiptext"));
-  document.querySelector(".tooltiptext").classList.toggle("visible");
+function openTooltip(e) {
+  let tooltip = e.target.firstElementChild;
+  print(tooltip);
+  tooltip.classList.toggle("visible");
 }
-function toggleModal() {
-  document.querySelector(".modal").classList.toggle("show-modal");
+function toggleModal(e) {
+  print(e.target);
+  e.target.classList.toggle("show-modal");
 }
 
 function saveMeBlur(e) {
