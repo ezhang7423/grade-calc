@@ -83,9 +83,9 @@ function largestUntitled() {
   store = reconstruct();
   let max = -1;
   for (let x of Object.keys(store)) {
-    if (x.includes("untitled")) {
-      if (parseInt(x.split(" ")[2]) > max) {
-        max = parseInt(x.split(" ")[2]);
+    if (store[x].name.includes("untitled")) {
+      if (parseInt(store[x].name.split(" ")[2]) > max) {
+        max = parseInt(store[x].name.split(" ")[2]);
       }
     }
   }
@@ -117,7 +117,10 @@ function reconstruct() {
 
 function save(data, type) {
   store = reconstruct();
-  let storelen = Object.keys(store).length;
+  let storelen = Object.keys(store).reduce((a, b) => {
+    return a > b ? a : b;
+  });
+  storelen++;
   if (type === "course") {
     store[storelen] = {};
     store[storelen].name = data.name;

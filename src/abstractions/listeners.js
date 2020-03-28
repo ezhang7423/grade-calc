@@ -39,10 +39,13 @@ function saveMe(e) {
       name = searchCourses(name);
       store[name].name = e.target.value;
       localStorage.setItem("gc-datastore", JSON.stringify(store));
+      e.target["placeholder"] = e.target.value;
+      e.target.value = "";
     } else if (id === "component") {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
       );
+      name = searchCourses(name);
       let cname = searchComp(name, e.target.getAttribute("placeholder"));
       store[name].weights[cname].name = e.target.value;
       save(store[name], "component");
@@ -52,6 +55,7 @@ function saveMe(e) {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
       );
+      name = searchCourses(name);
       let cname = searchComp(
         name,
         e.target.parentElement.parentElement.children[1].getAttribute(
@@ -84,6 +88,7 @@ function saveMe(e) {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
       );
+      name = searchCourses(name);
       let cname = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.children[1].getAttribute(
         "placeholder"
       );
@@ -98,9 +103,7 @@ function saveMe(e) {
 }
 function addNew(e) {
   e.preventDefault();
-  store = reconstruct();
-  numClasses = Object.keys(store).length;
-  untitled = largestUntitled();
+  let untitled = largestUntitled();
   let x = new Course(`untitled course ${untitled + 1}`, [100]);
   save(x, "course");
   location.reload();
@@ -129,6 +132,7 @@ function deleteCourse(e) {
   let name = e.target.parentElement.parentElement.children[1].getAttribute(
     "placeholder"
   );
+  name = searchCourses(name);
   del(name);
 }
 
