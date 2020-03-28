@@ -5,7 +5,9 @@
   display: flex;
   justify-content: flex-end;
 }
-
+.ar.weight {
+  font-size: 1.8vw;
+}
 .linebreak {
   margin: 0 1vw;
   border: 1px solid black;
@@ -89,6 +91,25 @@
   width: 100%;
   font-size: 2vw;
   margin-left: 1vw;
+}
+
+.nakinput.compcc.weight {
+  width: 60%;
+  font-size: 1.8vw;
+  color: white;
+}
+
+.compcc.weight::placeholder {
+  color: white;
+}
+
+.nakinput.weight.pcc {
+  font-size: 1.8vw;
+  color: white;
+}
+
+.weight.pcc::placeholder {
+  color: white;
 }
 .nakinput.pcc {
   width: 50%;

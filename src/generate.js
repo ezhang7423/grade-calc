@@ -81,6 +81,40 @@ function createParent(component, store, count) {
   </div>`;
   return parentNode;
 }
+
+function genTooltip(iter, calcGrade) {
+  return `<span class="tooltip ar"
+  >${calcGrade}/${iter.weight}%
+  <span class="tooltiptext">
+
+  <div class="full-comp">
+  
+  <input
+    spellcheck="false"
+    class="cc nakinput weight compcc"
+    name="component"
+    type="text"
+    maxlength="10"
+    placeholder="1"
+  />
+
+  <span class="weight ar">
+    <input
+      maxlength="5"
+      spellcheck="false"
+      title="Enter the score you got out of 100 (your raw score)"
+      class="cc nakinput weight pcc"
+      name="percentage"
+      placeholder="20"
+    />
+    /20%</span
+  >
+</div>
+
+  
+    </span>
+  </span>`;
+}
 function createComponents(data) {
   let parentNode = `<div class = "components">`;
   let childNode, iter, calcGrade;
@@ -99,37 +133,7 @@ function createComponents(data) {
            type="text"
            placeholder="${iter.name}" />
         </div>
-        <span class="tooltip ar"
-        >${calcGrade}/${iter.weight}%
-        <span class="tooltiptext">
-
-        <div class="full-comp">
-        
-        <input
-          spellcheck="false"
-          class="cc nakinput compcc"
-          name="component"
-          type="text"
-          maxlength="10"
-          placeholder="1"
-        />
-      
-        <span class="ar">
-          <input
-            maxlength="5"
-            spellcheck="false"
-            title="Enter the score you got out of 100 (your raw score)"
-            class="cc nakinput pcc"
-            name="percentage"
-            placeholder="20"
-          />
-          /20%</span
-        >
-      </div>
-      
-        
-          </span>
-        </span>
+        ${genTooltip(iter, calcGrade)}
       </div>`;
     } else {
       childNode = `
