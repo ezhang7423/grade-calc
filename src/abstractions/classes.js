@@ -3,15 +3,19 @@ class GradeComponent {
     this.name = name;
     this.grad = gradee;
     this.weight = weight;
-    for (let x in gradee) {
-      if (gradee[x] < 1) {
-        throw "fcked-grades";
+    if (typeof this.grad === "object") {
+      for (let x of gradee) {
+        if (gradee[x] < 1) {
+          throw "fcked-grades";
+        }
       }
+      this.isList = true;
+    } else {
+      this.isList = false;
     }
-    this.isList = Array.isArray(this.grad);
   }
   set grade(e) {
-    if (Array.isArray(e)) {
+    if (typeof e === "object") {
       this.grad = e;
       this.isList = true;
     } else {
