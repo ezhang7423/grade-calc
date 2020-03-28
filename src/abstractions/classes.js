@@ -16,7 +16,11 @@ class GradeComponent {
   }
   set grade(e) {
     if (typeof e === "object") {
-      this.grad = e;
+      this.grad = {};
+      let keys = Object.keys(e);
+      for (let i in keys) {
+        this.grad[i] = { name: keys[i], grade: e[keys[i]] };
+      }
       this.isList = true;
     } else {
       this.grad = e;

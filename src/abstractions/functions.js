@@ -103,8 +103,14 @@ function reconstruct() {
       }
       act[course] = new Course(store[course].name, weights);
       for (let component of Object.keys(store[course].weights)) {
-        act[course].weights[component].grade =
-          store[course].weights[component].grad;
+        if (typeof store[course].weights[component].grad === "object") {
+          act[course].weights[component].grad =
+            store[course].weights[component].grad;
+          this.isList = false;
+        } else {
+          act[course].weights[component].grade =
+            store[course].weights[component].grad;
+        }
         act[course].weights[component].name =
           store[course].weights[component].name;
       }
@@ -122,7 +128,7 @@ function save(data, type) {
       return a > b ? a : b;
     });
   } catch {
-    var storelen = 0;
+    var storelen = -1;
   }
   storelen++;
   if (type === "course") {

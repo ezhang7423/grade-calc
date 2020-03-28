@@ -88,7 +88,7 @@ function createParent(component, store, count) {
 function genTooltip(iter, calcGrade) {
   let tooltip = `<span class="tooltip ar"
   >${calcGrade}/${iter.weight}%
-  <span class="tooltiptext">
+  <span class="tooltiptext visible">
   `;
 
   for (let grade of Object.keys(iter.grad)) {
