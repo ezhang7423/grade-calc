@@ -36,7 +36,7 @@ function saveMe(e) {
       e.target.value = "";
     } else if (id === "course-title") {
       let name = e.target.getAttribute("placeholder");
-      name = searchCourses(name);
+      name = searchObj(store, name);
       store[name].name = e.target.value;
       localStorage.setItem("gc-datastore", JSON.stringify(store));
       e.target["placeholder"] = e.target.value;
@@ -45,8 +45,11 @@ function saveMe(e) {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
       );
-      name = searchCourses(name);
-      let cname = searchComp(name, e.target.getAttribute("placeholder"));
+      name = searchObj(store, name);
+      let cname = searchObj(
+        store[name].weights,
+        e.target.getAttribute("placeholder")
+      );
       store[name].weights[cname].name = e.target.value;
       save(store[name], "component");
       e.target["placeholder"] = e.target.value;
@@ -55,9 +58,9 @@ function saveMe(e) {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
       );
-      name = searchCourses(name);
-      let cname = searchComp(
-        name,
+      name = searchObj(store, name);
+      let cname = searchObj(
+        store[name].weights,
         e.target.parentElement.parentElement.children[1].getAttribute(
           "placeholder"
         )
@@ -66,7 +69,7 @@ function saveMe(e) {
       if (isNaN(val) || val < 0 || val > 100) {
         throw "bruh";
       } else {
-        print(store[name].weights[cname]);
+        // print(store[name].weights[cname]);
         store[name].weights[cname].grade = val;
         save(store[name], "component");
         e.target["placeholder"] = calcGrad(
@@ -77,7 +80,7 @@ function saveMe(e) {
         let courseChildren =
           e.target.parentElement.parentElement.parentElement.parentElement
             .parentElement.children;
-        print(courseChildren);
+        // print(courseChildren);
         courseChildren[
           courseChildren.length - 1
         ].children[1].firstElementChild.innerText = `${calcSum(
@@ -88,14 +91,19 @@ function saveMe(e) {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
       );
-      name = searchCourses(name);
+      name = searchObj(store, name);
       let cname = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.children[1].getAttribute(
         "placeholder"
       );
-      cname = searchComp(name, cname);
-      print(
-        store[name].weights[cname].grad[e.target.getAttribute("placeholder")]
+      cname = searchObj(store[name].weights, cname);
+      let toUpdate = searchObj(
+        store[name].weights[cname].grad,
+        e.target.placeholder
       );
+      store[name].weights[cname].grad[toUpdate].name = e.target.value;
+      save(store[name], "component");
+      e.target["placeholder"] = e.target.value;
+      e.target.value = "";
     } else if (id === "wpercent") {
       print("bruh percent");
     }
@@ -132,7 +140,7 @@ function deleteCourse(e) {
   let name = e.target.parentElement.parentElement.children[1].getAttribute(
     "placeholder"
   );
-  name = searchCourses(name);
+  name = searchObj(store, name);
   del(name);
 }
 

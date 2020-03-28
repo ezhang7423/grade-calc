@@ -137,24 +137,16 @@ function save(data, type) {
     store[storelen].weights = data.export();
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   } else if (type === "component") {
-    let courseKey = searchCourses(data.name);
+    let courseKey = searchObj(store, data.name);
     store[courseKey] = data;
     localStorage.setItem("gc-datastore", JSON.stringify(store));
   }
 }
 
-function searchCourses(name) {
+function searchObj(store, name) {
   for (let course of Object.keys(store)) {
     if (store[course].name === name) {
       return course;
-    }
-  }
-}
-function searchComp(course, name) {
-  let weights = store[course].weights;
-  for (let x of Object.keys(weights)) {
-    if (weights[x].name === name) {
-      return x;
     }
   }
 }
