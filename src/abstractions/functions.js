@@ -48,12 +48,28 @@ function editCSS(rule) {
 
 let addFake = () => {
   let x = new Course("MATH4B", [10, 20, 70]);
-  x.weights[0].grade = [100, 90, 80, 90];
-  x.weights[2].grade = [10, 20, 30, 100];
+  x.weights[0].grade = { hw1: 100, hw2: 90, hw3: 80, hw4: 90 };
+  x.weights[2].grade = { lab1: 100, lab2: 90, lab3: 80, lab4: 90 };
   let y = new Course("PSTAT120A", [1, 1, 2, 96]);
-  y.weights[0].grade = [1, 2, 3, 4, 5, 6, 7];
-  y.weights[1].grade = [1, 2, 3, 4, 50, 6, 7];
-  y.weights[2].grade = [1, 2, 30, 40, 5, 6, 70];
+  y.weights[0].grade = {
+    "0": 1,
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 5,
+    "5": 6,
+    "6": 7
+  };
+  y.weights[1].grade = { a: 1, b: 2, c: 3, d: 4, e: 50, f: 6, g: 7 };
+  y.weights[2].grade = {
+    "0": 1,
+    "-1": 2,
+    "-2": 30,
+    "-3": 40,
+    "-4": 5,
+    "-5": 6,
+    "-6": 70
+  };
   save(x, "course");
   save(y, "course");
   location.reload();
@@ -89,8 +105,6 @@ function reconstruct() {
       for (let component of Object.keys(store[course].weights)) {
         act[course].weights[component].grade =
           store[course].weights[component].grad;
-        act[course].weights[component].gradeNames =
-          store[course].weights[component].gradeNames;
         act[course].weights[component].name =
           store[course].weights[component].name;
       }

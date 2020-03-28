@@ -87,14 +87,8 @@ function genTooltip(iter, calcGrade) {
   >${calcGrade}/${iter.weight}%
   <span class="tooltiptext">
   `;
-  let counter = 0;
-  let corname;
-  for (let grade of iter.grad) {
-    try {
-      corname = iter.gradeNames[counter];
-    } catch (err) {
-      corname = String(err).slice(0, 5);
-    }
+
+  for (let grade of Object.keys(iter.grad)) {
     tooltip += `<div class="full-comp">
   
     <input
@@ -103,7 +97,7 @@ function genTooltip(iter, calcGrade) {
       name="component"
       type="text"
       maxlength="8"
-      placeholder="${corname}"
+      placeholder="${grade}"
     />
     <span class="weight ar">
       <input
@@ -112,7 +106,7 @@ function genTooltip(iter, calcGrade) {
         title="Enter the score you got out of 100 (your raw score)"
         class="cc nakinput weight pcc"
         name="percentage"
-        placeholder="${grade}"
+        placeholder="${iter.grad[grade]}"
       />
       /100%</span
     >
@@ -129,6 +123,7 @@ function createComponents(data) {
   let childNode, iter, calcGrade;
   for (let i of Object.keys(data.weights)) {
     iter = data.weights[i];
+    print(iter.grade);
     calcGrade = calcGrad(iter.grade, iter.weight);
     if (iter.isList) {
       childNode = `

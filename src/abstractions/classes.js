@@ -3,15 +3,19 @@ class GradeComponent {
     this.name = name;
     this.grad = gradee;
     this.weight = weight;
-    for (let x in gradee) {
-      if (gradee[x] < 1) {
-        throw "fcked-grades";
+    if (typeof this.grad === "object") {
+      for (let x of gradee) {
+        if (gradee[x] < 1) {
+          throw "fcked-grades";
+        }
       }
+      this.isList = true;
+    } else {
+      this.isList = false;
     }
-    this.isList = Array.isArray(this.grad);
   }
   set grade(e) {
-    if (Array.isArray(e)) {
+    if (typeof e === "object") {
       this.grad = e;
       this.isList = true;
     } else {
@@ -20,9 +24,12 @@ class GradeComponent {
     }
   }
   get grade() {
-    if (Array.isArray(this.grad)) {
-      let gSum = this.grad.reduce((a, b) => a + b, 0);
-      return gSum / this.grad.length;
+    if (typeof this.grad === "object") {
+      let sum = 0;
+      for (let x of Object.keys(this.grad)) {
+        sum += this.grad[x];
+      }
+      return sum / Object.keys(this.grad).length;
     } else {
       return this.grad;
     }
