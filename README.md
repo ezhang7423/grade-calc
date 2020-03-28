@@ -1,2 +1,2 @@
 # grade-calc
-calc ur grades bruh with cookies and stuff
+calc ur grades bruh with localstorage and stuff
