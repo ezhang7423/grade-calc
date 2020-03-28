@@ -74,7 +74,10 @@ function createParent(component, store, count) {
   let parentNode = `
   <div class="course ${alph(count)}">
   <div><button title="delete" class="course-naked">&#xf00d;</button></div>
-    <input spellcheck="false" class = "course-title cc nakinput titlecc" name = "course-title" placeholder="${component}" />
+    <input spellcheck="false"
+     class = "course-title cc nakinput titlecc"
+      name = "course-title"
+       placeholder="${store[component].name}" />
     ${createComponents(store[component])}
     ${createTotal(store[component])}
     
@@ -85,7 +88,7 @@ function createParent(component, store, count) {
 function genTooltip(iter, calcGrade) {
   let tooltip = `<span class="tooltip ar"
   >${calcGrade}/${iter.weight}%
-  <span class="visible tooltiptext">
+  <span class="tooltiptext">
   `;
 
   for (let grade of Object.keys(iter.grad)) {
