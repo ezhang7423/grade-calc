@@ -117,9 +117,13 @@ function reconstruct() {
 
 function save(data, type) {
   store = reconstruct();
-  let storelen = Object.keys(store).reduce((a, b) => {
-    return a > b ? a : b;
-  });
+  try {
+    var storelen = Object.keys(store).reduce((a, b) => {
+      return a > b ? a : b;
+    });
+  } catch {
+    var storelen = 0;
+  }
   storelen++;
   if (type === "course") {
     store[storelen] = {};

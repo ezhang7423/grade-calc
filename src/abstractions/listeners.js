@@ -62,7 +62,7 @@ function saveMe(e) {
           "placeholder"
         )
       );
-      let val = parseInt(e.target.value);
+      let val = parseFloat(e.target.value);
       if (isNaN(val) || val < 0 || val > 100) {
         throw "bruh";
       } else {
