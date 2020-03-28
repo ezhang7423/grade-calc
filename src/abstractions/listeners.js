@@ -102,7 +102,6 @@ function saveMe(e) {
       e.target["placeholder"] = e.target.value;
       e.target.value = "";
     } else if (id === "wpercent") {
-      print(e.target);
       let name =
         e.target.parentElement.parentElement.parentElement.parentElement
           .parentElement.parentElement.parentElement.children[1].placeholder;
@@ -135,7 +134,6 @@ function saveMe(e) {
           )
         );
         daddy[0] = daddychange.join("/");
-        print(daddy);
         e.target.parentElement.parentElement.parentElement.parentElement.innerHTML = daddy.join(
           "\n"
         );
