@@ -135,6 +135,7 @@ function searchComp(course, name) {
     }
   }
 }
+
 function del(name) {
   store = reconstruct();
   delete store[name];
