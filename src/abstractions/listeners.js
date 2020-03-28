@@ -62,12 +62,11 @@ function saveMe(e) {
       );
       let val = parseInt(e.target.value);
       if (isNaN(val) || val < 0 || val > 100) {
-        throw "ur dumb bruh";
+        throw "bruh";
       } else {
         print(store[name].weights[cname]);
         store[name].weights[cname].grade = val;
         save(store[name], "component");
-        // print(e.target.parentElement.innerText.slice(, -1));
         e.target["placeholder"] = calcGrad(
           e.target.value,
           store[name].weights[cname].weight

@@ -89,6 +89,8 @@ function reconstruct() {
       for (let component of Object.keys(store[course].weights)) {
         act[course].weights[component].grade =
           store[course].weights[component].grad;
+        act[course].weights[component].gradeNames =
+          store[course].weights[component].gradeNames;
         act[course].weights[component].name =
           store[course].weights[component].name;
       }

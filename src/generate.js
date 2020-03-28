@@ -83,37 +83,46 @@ function createParent(component, store, count) {
 }
 
 function genTooltip(iter, calcGrade) {
-  return `<span class="tooltip ar"
+  let tooltip = `<span class="tooltip ar"
   >${calcGrade}/${iter.weight}%
   <span class="tooltiptext">
-
-  <div class="full-comp">
+  `;
+  let counter = 0;
+  let corname;
+  for (let grade of iter.grad) {
+    try {
+      corname = iter.gradeNames[counter];
+    } catch (err) {
+      corname = String(err).slice(0, 5);
+    }
+    tooltip += `<div class="full-comp">
   
-  <input
-    spellcheck="false"
-    class="cc nakinput weight compcc"
-    name="component"
-    type="text"
-    maxlength="10"
-    placeholder="1"
-  />
-
-  <span class="weight ar">
     <input
-      maxlength="5"
       spellcheck="false"
-      title="Enter the score you got out of 100 (your raw score)"
-      class="cc nakinput weight pcc"
-      name="percentage"
-      placeholder="20"
+      class="cc nakinput weight compcc"
+      name="component"
+      type="text"
+      maxlength="8"
+      placeholder="${corname}"
     />
-    /20%</span
-  >
-</div>
-
-  
-    </span>
-  </span>`;
+    <span class="weight ar">
+      <input
+        maxlength="5"
+        spellcheck="false"
+        title="Enter the score you got out of 100 (your raw score)"
+        class="cc nakinput weight pcc"
+        name="percentage"
+        placeholder="${grade}"
+      />
+      /100%</span
+    >
+  </div>
+  `;
+  }
+  tooltip += `
+  </span>
+</span>`;
+  return tooltip;
 }
 function createComponents(data) {
   let parentNode = `<div class = "components">`;
