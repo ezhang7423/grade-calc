@@ -59,7 +59,7 @@ function saveMe(e) {
         )
       );
       let val = parseInt(e.target.value);
-      if (isNaN(val) || val < 0) {
+      if (isNaN(val) || val < 0 || val > 100) {
         throw "ur dumb bruh";
       } else {
         print(store[name].weights[cname]);
