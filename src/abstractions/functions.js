@@ -106,7 +106,7 @@ function reconstruct() {
         if (typeof store[course].weights[component].grad === "object") {
           act[course].weights[component].grad =
             store[course].weights[component].grad;
-          this.isList = false;
+          act[course].weights[component].isList = true;
         } else {
           act[course].weights[component].grade =
             store[course].weights[component].grad;

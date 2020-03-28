@@ -100,7 +100,7 @@ function genTooltip(iter, calcGrade) {
       name="wcomp"
       type="text"
       maxlength="8"
-      placeholder="${grade}"
+      placeholder="${iter.grad[grade].name}"
     />
     <span class="weight ar">
       <input
@@ -109,7 +109,7 @@ function genTooltip(iter, calcGrade) {
         title="Enter the score you got out of 100 (your raw score)"
         class="cc nakinput weight pcc"
         name="wpercent"
-        placeholder="${iter.grad[grade]}"
+        placeholder="${iter.grad[grade].gradie}"
       />
       /100%</span
     >

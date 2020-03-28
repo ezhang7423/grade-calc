@@ -19,7 +19,7 @@ class GradeComponent {
       this.grad = {};
       let keys = Object.keys(e);
       for (let i in keys) {
-        this.grad[i] = { name: keys[i], grade: e[keys[i]] };
+        this.grad[i] = { name: keys[i], gradie: e[keys[i]] };
       }
       this.isList = true;
     } else {
@@ -31,7 +31,7 @@ class GradeComponent {
     if (typeof this.grad === "object") {
       let sum = 0;
       for (let x of Object.keys(this.grad)) {
-        sum += this.grad[x];
+        sum += this.grad[x].gradie;
       }
       return sum / Object.keys(this.grad).length;
     } else {
