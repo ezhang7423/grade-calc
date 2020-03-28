@@ -85,7 +85,7 @@ function createParent(component, store, count) {
 function genTooltip(iter, calcGrade) {
   let tooltip = `<span class="tooltip ar"
   >${calcGrade}/${iter.weight}%
-  <span class="tooltiptext">
+  <span class="visible tooltiptext">
   `;
 
   for (let grade of Object.keys(iter.grad)) {
@@ -94,7 +94,7 @@ function genTooltip(iter, calcGrade) {
     <input
       spellcheck="false"
       class="cc nakinput weight compcc"
-      name="component"
+      name="wcomp"
       type="text"
       maxlength="8"
       placeholder="${grade}"
@@ -105,7 +105,7 @@ function genTooltip(iter, calcGrade) {
         spellcheck="false"
         title="Enter the score you got out of 100 (your raw score)"
         class="cc nakinput weight pcc"
-        name="percentage"
+        name="wpercent"
         placeholder="${iter.grad[grade]}"
       />
       /100%</span
@@ -123,7 +123,6 @@ function createComponents(data) {
   let childNode, iter, calcGrade;
   for (let i of Object.keys(data.weights)) {
     iter = data.weights[i];
-    print(iter.grade);
     calcGrade = calcGrad(iter.grade, iter.weight);
     if (iter.isList) {
       childNode = `

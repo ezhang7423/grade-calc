@@ -7,12 +7,14 @@ function saveMeEnter(e) {
 }
 
 function openTooltip(e) {
+  e.preventDefault();
   let tooltip = e.target.firstElementChild;
-  print(tooltip);
-  tooltip.classList.toggle("visible");
+  if (tooltip !== null) {
+    tooltip.classList.toggle("visible");
+  }
 }
 function toggleModal(e) {
-  print(e.target);
+  e.preventDefault();
   document.querySelector(".modal").classList.toggle("show-modal");
 }
 
@@ -82,6 +84,19 @@ function saveMe(e) {
           store[name]
         )}/100%`;
       }
+    } else if (id === "wcomp") {
+      let name = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
+        "placeholder"
+      );
+      let cname = e.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.children[1].getAttribute(
+        "placeholder"
+      );
+      cname = searchComp(name, cname);
+      print(
+        store[name].weights[cname].grad[e.target.getAttribute("placeholder")]
+      );
+    } else if (id === "wpercent") {
+      print("bruh percent");
     }
   }
 }
