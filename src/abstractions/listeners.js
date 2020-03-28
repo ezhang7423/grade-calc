@@ -13,7 +13,7 @@ function openTooltip(e) {
 }
 function toggleModal(e) {
   print(e.target);
-  e.target.classList.toggle("show-modal");
+  document.querySelector(".modal").classList.toggle("show-modal");
 }
 
 function saveMeBlur(e) {

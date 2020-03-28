@@ -162,7 +162,10 @@
       >
     </div> -->
 
-    <div onclick="toggleModal()" class="modal">
+    <div
+      onclick='document.querySelector(".modal").classList.toggle("show-modal");'
+      class="modal"
+    >
       <div class="modal-content">
         <span onfocusout="toggleModal()" class="mc">&#xf00d;</span>
         <h1>Hello, I am a modal!</h1>

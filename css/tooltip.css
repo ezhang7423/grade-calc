@@ -32,10 +32,6 @@
   border-color: transparent transparent #555 transparent;
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
 .tooltiptext.visible {
   visibility: visible;
   opacity: 1;

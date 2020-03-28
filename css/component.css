@@ -97,6 +97,7 @@
   width: 60%;
   font-size: 1.8vw;
   color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .compcc.weight::placeholder {
