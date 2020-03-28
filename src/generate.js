@@ -123,6 +123,7 @@ function createComponents(data) {
   let childNode, iter, calcGrade;
   for (let i of Object.keys(data.weights)) {
     iter = data.weights[i];
+    print(iter.grade);
     calcGrade = calcGrad(iter.grade, iter.weight);
     if (iter.isList) {
       childNode = `

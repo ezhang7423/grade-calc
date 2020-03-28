@@ -24,9 +24,12 @@ class GradeComponent {
     }
   }
   get grade() {
-    if (Array.isArray(this.grad)) {
-      let gSum = this.grad.reduce((a, b) => a + b, 0);
-      return gSum / this.grad.length;
+    if (typeof this.grad === "object") {
+      let sum = 0;
+      for (let x of Object.keys(this.grad)) {
+        sum += this.grad[x];
+      }
+      return sum / Object.keys(this.grad).length;
     } else {
       return this.grad;
     }
