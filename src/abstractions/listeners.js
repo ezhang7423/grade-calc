@@ -36,13 +36,9 @@ function saveMe(e) {
       e.target.value = "";
     } else if (id === "course-title") {
       let name = e.target.getAttribute("placeholder");
-      Object.defineProperty(
-        store,
-        e.target.value,
-        Object.getOwnPropertyDescriptor(store, name)
-      );
+      name = searchCourses(name);
+      store[name].name = e.target.value;
       localStorage.setItem("gc-datastore", JSON.stringify(store));
-      del(name);
     } else if (id === "component") {
       let name = e.target.parentElement.parentElement.parentElement.parentElement.children[1].getAttribute(
         "placeholder"
