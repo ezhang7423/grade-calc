@@ -10,7 +10,7 @@ function openTooltip(e) {
   e.preventDefault();
   let tooltip = e.target.firstElementChild;
   for (let x of document.querySelectorAll(".tooltip")) {
-    if (x.firstElementChild.className.includes("visible")) {
+    if (x.firstElementChild.className.includes("visible") && x != e.target) {
       x.firstElementChild.classList.toggle("visible");
     }
   }
