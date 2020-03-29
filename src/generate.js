@@ -80,7 +80,6 @@ function createParent(component, store, count) {
        placeholder="${store[component].name}" />
     ${createComponents(store[component])}
     ${createTotal(store[component])}
-    
   </div>`;
   return parentNode;
 }
