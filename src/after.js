@@ -28,3 +28,4 @@ if (name !== null && name !== "") {
 }
 
 generate(store, numClasses);
+document.querySelector(".addcc").click();
