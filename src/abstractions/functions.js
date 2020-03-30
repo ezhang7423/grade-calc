@@ -150,7 +150,48 @@ function searchObj(store, name) {
     }
   }
 }
+function calcSum(data) {
+  let sum = 0;
+  for (let i of Object.keys(data.weights)) {
+    sum += calcGrad(data.weights[i].grade, data.weights[i].weight);
+  }
+  return Math.round((sum + Number.EPSILON) * 100) / 100;
+}
 
+function letterGrade(data) {
+  let sum = 0;
+  for (let i of Object.keys(data.weights)) {
+    sum += calcGrad(data.weights[i].grade, data.weights[i].weight);
+  }
+
+  if (numbergrade >= 97) {
+    return "A+";
+  } else if (numbergrade >= 93) {
+    return "A";
+  } else if (numbergrade >= 90) {
+    return "A-";
+  } else if (numbergrade >= 87) {
+    return "B+";
+  } else if (numbergrade >= 83) {
+    return "B";
+  } else if (numbergrade >= 80) {
+    return "B-";
+  } else if (numbergrade >= 77) {
+    return "C+";
+  } else if (numbergrade >= 73) {
+    return "C";
+  } else if (numbergrade >= 70) {
+    return "C-";
+  } else if (numbergrade >= 67) {
+    return "D+";
+  } else if (numbergrade >= 63) {
+    return "D";
+  } else if (numbergrade >= 60) {
+    return "D-";
+  } else {
+    return "F";
+  }
+}
 function del(name) {
   store = reconstruct();
   delete store[name];

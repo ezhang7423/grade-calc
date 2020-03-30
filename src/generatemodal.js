@@ -95,7 +95,9 @@ function populateModal(name) {
 `;
   let modalContent = `<div class="modal-content">
 <span onclick="toggleModal()" class="mc">&#xf00d;</span>`;
-  modalContent += `<h1>${name}: 36% <span class="bad">(F)</span></h1>
+  modalContent += `<h1>${name}: ${calcSum(
+    store[searchObj(store, name)]
+  )}% <span class="bad">(F)</span></h1>
   <div class="mgrid">
   ${genComponents(name)}
   `;

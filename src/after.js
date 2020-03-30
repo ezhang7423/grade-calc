@@ -34,4 +34,4 @@ document.querySelector(".modal").addEventListener("click", e => {
   }
 });
 generate(store, numClasses);
-document.querySelector(".addcc").click();
+document.querySelectorAll(".addcc")[0].click();
