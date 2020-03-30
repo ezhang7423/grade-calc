@@ -74,20 +74,9 @@
 
     <div class="main-content"></div>
 
-    <!-- <div onclick="openTooltip()" class="tooltip">
-      Hover over me
-      <span class="tooltiptext"
-        ><a>hiejfksldjflakdsj</a>
-        <div>Tooltip text</div></span
-      >
-    </div> -->
-
-    <div
-      onclick='document.querySelector(".modal").classList.toggle("show-modal");'
-      class="modal"
-    >
+    <div class="modal">
       <div class="modal-content">
-        <span onfocusout="toggleModal()" class="mc">&#xf00d;</span>
+        <span onclick="toggleModal()" class="mc">&#xf00d;</span>
         <h1>PSTAT120A: 36% <span style="color: crimson">(F)</span></h1>
         <div
           style="
@@ -102,7 +91,7 @@
               homework
             </h2>
             <h4 style="margin: 0; padding: 0">
-              <div style=" ">weight: 30/100</div>
+              <div>weight: 30/100</div>
             </h4>
             <div>hw1<span style="float: right;">30</span></div>
             <div>hw1<span style="float: right;">30</span></div>

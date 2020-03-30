@@ -20,6 +20,13 @@ function openTooltip(e) {
 }
 function toggleModal(e) {
   e.preventDefault();
+  print(document.querySelector(".modal"));
+  document.querySelector(".modal").classList.toggle("show-modal");
+}
+
+print("tm defined");
+function toggleModal() {
+  print("wat");
   document.querySelector(".modal").classList.toggle("show-modal");
 }
 
