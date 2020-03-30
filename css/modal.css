@@ -61,6 +61,11 @@
 .mup {
   margin-top: 1vh;
 }
+
+.type-sel {
+  background: red;
+  width: 20vw;
+}
 .mc {
   width: 1.5rem;
   line-height: 1.5rem;
