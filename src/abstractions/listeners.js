@@ -20,17 +20,13 @@ function openTooltip(e) {
 }
 function togandPopModal(e) {
   e.preventDefault();
-  print(
-    e.target.parentElement.parentElement.parentElement.children[1].placeholder
-  );
-  populateModal();
-  document.querySelector(".modal").classList.toggle("show-modal");
+  let name =
+    e.target.parentElement.parentElement.parentElement.children[1].placeholder;
+  let modal = document.querySelector(".modal");
+  modal.innerHTML = populateModal(name);
+  modal.classList.toggle("show-modal");
 }
 
-function populateModal() {
-  print("how");
-}
-print("tm defined");
 function toggleModal() {
   document.querySelector(".modal").classList.toggle("show-modal");
 }
