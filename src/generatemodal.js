@@ -1,10 +1,5 @@
-$(document).ready(function() {
-  $(".type-sel").select2();
-});
-
 function populateModal(name) {
-  return ` 
-  <div class="modal-content">
+  ` <div class="modal-content">
   <span onclick="toggleModal()" class="mc">&#xf00d;</span>
   <h1>PSTAT120A: 36% <span class="bad">(F)</span></h1>
 <div class="mgrid">
@@ -98,4 +93,47 @@ function populateModal(name) {
 </div> 
 </div>
 `;
+  let modalContent = `<div class="modal-content">
+<span onclick="toggleModal()" class="mc">&#xf00d;</span>`;
+  modalContent += `<h1>${name}: 36% <span class="bad">(F)</span></h1>
+  <div class="mgrid">
+  ${genComponents(name)}
+  `;
+  modalContent += `<button class="naked madd">
+    add<i class="fas fa-plus-square"></i>
+  </button>
+  </div>
+  <div class="ri">
+  save
+  </div> 
+  </div>`;
+  let num = numComponents(name);
+  editCSS(
+    `.mgrid { grid-template-columns: ${Array(num + 1).join("1fr ")}0.1fr`
+  );
+  return modalContent;
 }
+
+function numComponents(name) {
+  let components = store[searchObj(store, name)];
+  return Object.keys(components.weights).length;
+}
+function genComponents(name) {
+  compString = ``;
+  let components = store[searchObj(store, name)];
+  for (let x of Object.keys(components.weights)) {
+    compString += genComponent(components.weights[x]);
+  }
+  return compString;
+}
+
+function genComponent(x) {
+  print(x);
+  if (x.isList) {
+    return `<div>List here</div>`;
+  } else {
+    return `<div>simple here</div>`;
+  }
+}
+
+//edit css of grid (for however many components there are)

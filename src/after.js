@@ -29,7 +29,7 @@ if (name !== null && name !== "") {
 
 document.querySelector(".modal").addEventListener("click", e => {
   e.preventDefault();
-  if (e.target == document.querySelector(".modal")) {
+  if (e.target === document.querySelector(".modal")) {
     document.querySelector(".modal").classList.toggle("show-modal");
   }
 });

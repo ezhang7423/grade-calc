@@ -6,6 +6,9 @@ if (store === null) {
 } else {
   let numClasses = Object.keys(store).length;
   let containerWidth = 100 / numClasses;
+  $(document).ready(function() {
+    $(".type-sel").select2();
+  });
 
   editCSS(
     `.course { 
