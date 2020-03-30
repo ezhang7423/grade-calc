@@ -43,7 +43,7 @@ function addListeners() {
   }
 
   for (let x of document.querySelectorAll(".naked.addcc")) {
-    x.addEventListener("click", toggleModal);
+    x.addEventListener("click", togandPopModal);
   }
   for (let x of document.querySelectorAll(".tooltip")) {
     x.addEventListener("click", openTooltip);

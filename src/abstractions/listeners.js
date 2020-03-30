@@ -18,15 +18,20 @@ function openTooltip(e) {
     tooltip.classList.toggle("visible");
   }
 }
-function toggleModal(e) {
+function togandPopModal(e) {
   e.preventDefault();
-  print(document.querySelector(".modal"));
+  print(
+    e.target.parentElement.parentElement.parentElement.children[1].placeholder
+  );
+  populateModal();
   document.querySelector(".modal").classList.toggle("show-modal");
 }
 
+function populateModal() {
+  print("how");
+}
 print("tm defined");
 function toggleModal() {
-  print("wat");
   document.querySelector(".modal").classList.toggle("show-modal");
 }
 
