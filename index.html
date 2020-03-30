@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="css/tooltip.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
     <!-- all these for color :( -->
     <script src="modules/index.js"></script>
@@ -78,7 +88,7 @@
     >
       <div class="modal-content">
         <span onfocusout="toggleModal()" class="mc">&#xf00d;</span>
-        <h1>PSTAT120A</h1>
+        <h1>PSTAT120A: 36% <span style="color: crimson">(F)</span></h1>
         <div
           style="
         height: 50vh; 
@@ -94,11 +104,11 @@
             <h4 style="margin: 0; padding: 0">
               <div style=" ">weight: 30/100</div>
             </h4>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
+            <div>hw1<span style="float: right;">30</span></div>
+            <div>hw1<span style="float: right;">30</span></div>
+            <div>hw1<span style="float: right;">30</span></div>
+            <div>hw1<span style="float: right;">30</span></div>
+            <div>hw1<span style="float: right;">30</span></div>
             <button class="naked" style=" height: 2vh; padding: 0;">
               <i class="fas fa-plus-square"></i>
             </button>
@@ -107,12 +117,13 @@
               <h4>Contribuition<span style="float: right;">9/100</span></h4>
             </div>
           </div>
+
           <div style="border: 1px solid black; padding: 1vw;">
             <h2 style="margin: 0" title="assuming equal weighting">
               homework
             </h2>
             <h4 style="margin: 0; padding: 0">
-              <div style=" ">weight: 30/100</div>
+              <div>weight: <span style="float: right">30/100</span></div>
             </h4>
             <div>hw1<span style="float: right;">30/100</span></div>
             <div>hw1<span style="float: right;">30/100</span></div>
@@ -127,34 +138,43 @@
               <h4>Contribuition<span style="float: right;">9/100</span></h4>
             </div>
           </div>
-          <div style="border: 1px solid black; padding: 1vw;">
-            <h2 style="margin: 0" title="assuming equal weighting">
-              homework
-            </h2>
-            <h4 style="margin: 0; padding: 0">
-              <div>weight:  <span style="float: right">30/100</span></div>
-            </h4>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <div>hw1<span style="float: right;">30/100</span></div>
-            <button class="naked" style=" height: 2vh; padding: 0;">
-              <i class="fas fa-plus-square"></i>
-            </button>
-            <div>
-              <h4>Total<span style="float: right;">30/100</span></h4>
-              <h4>Contribuition<span style="float: right;">9/100</span></h4>
-            </div>
-          </div>
-          <div style="border: 1px solid black; padding: 1vw;">
+          <div
+            style="border: 1px solid black; padding: 1vw; position: relative;"
+          >
             <h2 style="margin: 0" title="assuming equal weighting">
               final
             </h2>
-            <h4 style="margin: 0; padding: 0">
+            <h4 style="margin: 0; padding: 0; ">
               <div>Weight: <span style="float: right;">30/100</span></div>
               <div>Score: <span style="float: right;">30/100</span></div>
-              <div>Contribuition: <span style="float: right;">30/100</span></div>
+              <div>
+                Contribuition: <span style="float: right;">30/100</span>
+              </div>
+            </h4>
+          </div>
+          <div style="border: 1px solid black; padding: 1vw;">
+            <h2 style="margin: 0" title="assuming equal weighting">
+              new component
+            </h2>
+            <h4 style="margin: 0; padding: 0">
+              <div style=" ">weight: 0/100</div>
+            </h4>
+            <select class="type-sel" name="type-sel">
+              <option value="list">List</option>
+              <option value="simple">Simple</option>
+            </select>
+            <div>hw1<span style="float: right;">30/100</span></div>
+            <div>hw1<span style="float: right;">30/100</span></div>
+            <div>hw1<span style="float: right;">30/100</span></div>
+            <div>hw1<span style="float: right;">30/100</span></div>
+            <div>hw1<span style="float: right;">30/100</span></div>
+            <button class="naked" style=" height: 2vh; padding: 0;">
+              <i class="fas fa-plus-square"></i>
+            </button>
+            <div>
+              <h4>Total<span style="float: right;">30/100</span></h4>
+              <h4>Contribuition<span style="float: right;">9/100</span></h4>
+            </div>
           </div>
           <button class="naked" style="height: 2vh;">
             <i class="fas fa-plus-square"></i>
@@ -166,6 +186,11 @@
       </div>
     </div>
   </body>
+  <script>
+    $(document).ready(function() {
+      $(".type-sel").select2();
+    });
+  </script>
   <script src="src/generate.js"></script>
   <script src="src/after.js"></script>
 </html>
