@@ -24,6 +24,43 @@
   border-radius: 0.5rem;
 }
 
+.bad {
+  color: crimson;
+}
+.ok {
+  color: orange;
+}
+
+.good {
+  color: green;
+}
+.mgrid {
+  height: 50vh;
+  display: grid;
+  grid-gap: 2vw;
+  grid-template-columns: 1fr 1fr 1fr 1fr 0.1fr;
+}
+
+.bb {
+  border: 1px solid black;
+  padding: 1vw;
+  position: relative;
+}
+.ri {
+  float: right;
+}
+
+.nomargin {
+  margin: 0;
+  padding: 0;
+}
+
+.madd {
+  height: 2vh;
+}
+.mup {
+  margin-top: 1vh;
+}
 .mc {
   width: 1.5rem;
   line-height: 1.5rem;
