@@ -132,7 +132,6 @@ function genComponents(name) {
 }
 
 function genComponent(x) {
-  print(x);
   if (x.isList) {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     let comp = `<div class="bb">
@@ -140,19 +139,40 @@ function genComponent(x) {
       homework
     </h2>
     <h4 class="nomargin">
-      <div>weight: <span class="ri">${x.weight}%</span></div>
+      <div class = "full-comp">
+      weight: 
+      <input class="cc nakinput ric b"
+        title="Enter your grade. Example: If you got 89% enter 89"
+        placeholder="${x.weight}%" />
+      </div>
     </h4>`;
     for (let i of Object.keys(x.grad)) {
-      comp += `<div>${x.grad[i].name}<span class="ri">${x.grad[i].gradie}%</span></div>`;
+      comp += `<div class = "full-comp">
+      ${x.grad[i].name}
+      <input class="cc nakinput ric"
+        title="Enter your grade. Example: If you got 89% enter 89"
+        placeholder="${x.grad[i].gradie}%" />
+      </div>`;
     }
     comp += `<button class="naked nomargin">
       <i class="fas fa-plus-square"></i>
     </button>
     <div class="mup">
-      <h4 class="nomargin">Total<span class="ri">${num}%</span></h4>
-      <h4 class="nomargin">
-        Contribution<span class="ri">${(num * x.weight) / 100}%</span>
-      </h4>
+    <div class = "full-comp">
+    <strong>Total:</strong>
+    <input class="cc nakinput ric b"
+      title="Enter your grade. Example: If you got 89% enter 89"
+      placeholder="${num}%" />
+    </div>
+  
+
+
+    <div class = "full-comp">
+    <strong>Contribution:</strong>
+    <input class="cc nakinput ric b"
+      title="Enter your grade. Example: If you got 89% enter 89"
+      placeholder="${(num * x.weight) / 100}%" />
+      </div>
     </div>
   </div>`;
     return comp;

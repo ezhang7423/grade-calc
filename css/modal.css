@@ -50,6 +50,17 @@
   float: right;
 }
 
+.ric {
+  text-align: right;
+  width: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+.ric.b::-webkit-input-placeholder {
+  font-weight: bold;
+}
+
 .nomargin {
   margin: 0;
   padding: 0;
