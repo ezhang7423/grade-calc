@@ -134,39 +134,37 @@ function genComponents(name) {
 function genComponent(x) {
   print(x);
   if (x.isList) {
-    return `<div class="bb">
+    let comp = `<div class="bb">
     <h2 class="nomargin" title="assuming equal weighting">
       homework
     </h2>
     <h4 class="nomargin">
-      <div>weight: <span class="ri">${x.weight}/100</span></div>
-    </h4>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <button class="naked nomargin">
+      <div>weight: <span class="ri">${x.weight}%</span></div>
+    </h4>`;
+    for (let i of Object.keys(x.grad)) {
+      comp += `<div>${x.grad[i].name}<span class="ri">${x.grad[i].gradie}%</span></div>`;
+    }
+    comp += `<button class="naked nomargin">
       <i class="fas fa-plus-square"></i>
     </button>
     <div class="mup">
-      <h4 class="nomargin">Total<span class="ri">30/100</span></h4>
+      <h4 class="nomargin">Total<span class="ri">${x.grade}%</span></h4>
       <h4 class="nomargin">
-        Contribution<span class="ri">9/100</span>
+        Contribution<span class="ri">${(x.weight * x.grade) / 100}%</span>
       </h4>
     </div>
-  </div>
-    `;
+  </div>`;
+    return comp;
   } else {
     return `<div class="bb">
     <h2 class="nomargin" title="assuming equal weighting">
       final
     </h2>
     <h4 class="nomargin">
-      <div>Weight: <span class="ri">${x.weight}/100</span></div>
-      <div>Score: <span class="ri">${x.grade}/100</span></div>
-      <div>contribution: <span class="ri">${(x.weight * x.grade) /
-        100}/100</span></div>
+      <div>Weight: <span class="ri">${x.weight}%</span></div>
+      <div>Score: <span class="ri">${x.grade}%</span></div>
+      <div>Contribution: <span class="ri">${(x.weight * x.grade) /
+        100}%</span></div>
     </h4>
   </div>`;
   }
