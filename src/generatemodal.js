@@ -134,6 +134,7 @@ function genComponents(name) {
 function genComponent(x) {
   print(x);
   if (x.isList) {
+    let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     let comp = `<div class="bb">
     <h2 class="nomargin" title="assuming equal weighting">
       homework
@@ -148,26 +149,25 @@ function genComponent(x) {
       <i class="fas fa-plus-square"></i>
     </button>
     <div class="mup">
-      <h4 class="nomargin">Total<span class="ri">${x.grade}%</span></h4>
+      <h4 class="nomargin">Total<span class="ri">${num}%</span></h4>
       <h4 class="nomargin">
-        Contribution<span class="ri">${(x.weight * x.grade) / 100}%</span>
+        Contribution<span class="ri">${(num * x.weight) / 100}%</span>
       </h4>
     </div>
   </div>`;
     return comp;
   } else {
+    let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     return `<div class="bb">
     <h2 class="nomargin" title="assuming equal weighting">
       final
     </h2>
     <h4 class="nomargin">
       <div>Weight: <span class="ri">${x.weight}%</span></div>
-      <div>Score: <span class="ri">${x.grade}%</span></div>
-      <div>Contribution: <span class="ri">${(x.weight * x.grade) /
+      <div>Score: <span class="ri">${num}%</span></div>
+      <div>Contribution: <span class="ri">${(num * x.weight) /
         100}%</span></div>
     </h4>
   </div>`;
   }
 }
-
-//edit css of grid (for however many components there are)
