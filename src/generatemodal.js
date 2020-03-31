@@ -139,7 +139,7 @@ function genComponent(x) {
       homework
     </h2>
     <h4 class="nomargin">
-      <div>weight: <span class="ri">30/100</span></div>
+      <div>weight: <span class="ri">${x.weight}/100</span></div>
     </h4>
     <div>hw1<span class="ri">30</span></div>
     <div>hw1<span class="ri">30</span></div>
@@ -163,9 +163,10 @@ function genComponent(x) {
       final
     </h2>
     <h4 class="nomargin">
-      <div>Weight: <span class="ri">30/100</span></div>
-      <div>Score: <span class="ri">30/100</span></div>
-      <div>contribution: <span class="ri">30/100</span></div>
+      <div>Weight: <span class="ri">${x.weight}/100</span></div>
+      <div>Score: <span class="ri">${x.grade}/100</span></div>
+      <div>contribution: <span class="ri">${(x.weight * x.grade) /
+        100}/100</span></div>
     </h4>
   </div>`;
   }

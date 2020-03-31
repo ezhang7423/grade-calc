@@ -9,14 +9,15 @@ function saveMeEnter(e) {
 function openTooltip(e) {
   e.preventDefault();
   let tooltip = e.target.firstElementChild;
+  if (tooltip === null) {
+    return;
+  }
   for (let x of document.querySelectorAll(".tooltip")) {
     if (x.firstElementChild.className.includes("visible") && x != e.target) {
       x.firstElementChild.classList.toggle("visible");
     }
   }
-  if (tooltip !== null) {
-    tooltip.classList.toggle("visible");
-  }
+  tooltip.classList.toggle("visible");
 }
 function togandPopModal(e) {
   e.preventDefault();
