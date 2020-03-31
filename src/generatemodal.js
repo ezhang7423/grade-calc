@@ -1,69 +1,11 @@
 function populateModal(name) {
-  ` <div class="modal-content">
-  <span onclick="toggleModal()" class="mc">&#xf00d;</span>
-  <h1>PSTAT120A: 36% <span class="bad">(F)</span></h1>
-<div class="mgrid">
-  <div class="bb">
-    <h2 class="nomargin" title="assuming equal weighting">
-      homework
-    </h2>
-    <h4 class="nomargin">
-      <div>weight: <span class="ri">30/100</span></div>
-    </h4>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <button class="naked nomargin">
-      <i class="fas fa-plus-square"></i>
-    </button>
-    <div class="mup">
-      <h4 class="nomargin">Total<span class="ri">30/100</span></h4>
-      <h4 class="nomargin">
-        Contribution<span class="ri">9/100</span>
-      </h4>
-    </div>
-  </div>
-
-  <div class="bb">
-    <h2 class="nomargin" title="assuming equal weighting">
-      homework
-    </h2>
-    <h4 class="nomargin">
-      <div>weight: <span class="ri">30/100</span></div>
-    </h4>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <div>hw1<span class="ri">30</span></div>
-    <button class="naked nomargin">
-      <i class="fas fa-plus-square"></i>
-    </button>
-    <div class="mup">
-      <h4 class="nomargin">Total<span class="ri">30/100</span></h4>
-      <h4 class="nomargin">
-        Contribution<span class="ri">9/100</span>
-      </h4>
-    </div>
-  </div>
-  <div class="bb">
-    <h2 class="nomargin" title="assuming equal weighting">
-      final
-    </h2>
-    <h4 class="nomargin">
-      <div>Weight: <span class="ri">30/100</span></div>
-      <div>Score: <span class="ri">30/100</span></div>
-      <div>contribution: <span class="ri">30/100</span></div>
-    </h4>
-  </div>
+  ` 
   <div class="bb">
     <h2 class="nomargin" title="assuming equal weighting">
       new component
     </h2>
     <h4 class="nomargin">
-      <div>weight: 0/100</div>
+      <div>Weight: 0/100</div>
     </h4>
     <select style="width: 10vw;" class="type-sel" name="type-sel">
       <option value="simple">Simple</option>
@@ -140,7 +82,7 @@ function genComponent(x) {
     </h2>
     <h4 class="nomargin">
       <div class = "full-comp">
-      weight: 
+      Weight: 
       <input class="cc nakinput ric b"
         title="Enter your grade. Example: If you got 89% enter 89"
         placeholder="${x.weight}%" />
@@ -165,14 +107,12 @@ function genComponent(x) {
       placeholder="${num}%" />
     </div>
   
-
-
     <div class = "full-comp">
     <strong>Contribution:</strong>
     <input class="cc nakinput ric b"
       title="Enter your grade. Example: If you got 89% enter 89"
       placeholder="${(num * x.weight) / 100}%" />
-      </div>
+    </div>
     </div>
   </div>`;
     return comp;
@@ -183,10 +123,27 @@ function genComponent(x) {
       final
     </h2>
     <h4 class="nomargin">
-      <div>Weight: <span class="ri">${x.weight}%</span></div>
-      <div>Score: <span class="ri">${num}%</span></div>
-      <div>Contribution: <span class="ri">${(num * x.weight) /
-        100}%</span></div>
+    
+    <div class = "full-comp">
+    Weight: 
+    <input class="cc nakinput ric b"
+      title="Enter your grade. Example: If you got 89% enter 89"
+      placeholder="${x.weight}%" />
+    </div>
+
+    <div class = "full-comp">
+    <strong>Score:</strong>
+    <input class="cc nakinput ric b"
+      title="Enter your grade. Example: If you got 89% enter 89"
+      placeholder="${num}%" />
+    </div>
+  
+    <div class = "full-comp">
+    <strong>Contribution:</strong>
+    <input class="cc nakinput ric b"
+      title="Enter your grade. Example: If you got 89% enter 89"
+      placeholder="${(num * x.weight) / 100}%" />
+    </div>
     </h4>
   </div>`;
   }
