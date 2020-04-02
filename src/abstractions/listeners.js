@@ -41,7 +41,7 @@ function saveModal(e) {
   //do checks
   // do weights add up to 100?
   save(dad, "component");
-  if (document.querySelector(".unsaved").classList["hidden"] == undefined) {
+  if (!document.querySelector(".unsaved").classList.value.includes("hidden")) {
     document.querySelector(".unsaved").classList.toggle("hidden");
   }
 }
@@ -196,7 +196,6 @@ function saveMe(e) {
       e.target["placeholder"] = String(val) + "%";
       e.target.value = "";
       unsaved();
-      //update total score
     } else {
       print("id not found");
       print(e.target);
@@ -207,7 +206,7 @@ function saveMe(e) {
 }
 
 function unsaved() {
-  if (document.querySelector(".unsaved").classList["hidden"] == undefined) {
+  if (document.querySelector(".unsaved").classList.value.includes("hidden")) {
     document.querySelector(".unsaved").classList.toggle("hidden");
   }
 }

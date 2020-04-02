@@ -98,6 +98,7 @@ function genComponent(x) {
       comp += `<div class = "full-comp">
       ${x.grad[i].name}
       <input class="cc nakinput ric"
+      name="mcomp-grade"
         title="Enter your grade. Example: If you got 89% enter 89"
         placeholder="${x.grad[i].gradie}%" />
       </div>`;
@@ -115,9 +116,9 @@ function genComponent(x) {
   
     <div class = "full-comp">
     <strong>Contribution:</strong>
-    <input class="cc nakinput ric b"
-      title="Enter your grade. Example: If you got 89% enter 89"
-      placeholder="${(num * x.weight) / 100}%" />
+    <span style="font-weight: bold; margin-left: auto">
+      ${(num * x.weight) / 100}%
+     </span>
     </div>
     </div>
   </div>`;
@@ -142,15 +143,16 @@ function genComponent(x) {
     <div class = "full-comp">
     <strong>Score:</strong>
     <input class="cc nakinput ric b"
+    name="mscore"
       title="Enter your grade. Example: If you got 89% enter 89"
       placeholder="${num}%" />
     </div>
   
     <div class = "full-comp">
     <strong>Contribution:</strong>
-    <input class="cc nakinput ric b"
-      title="Enter your grade. Example: If you got 89% enter 89"
-      placeholder="${(num * x.weight) / 100}%" />
+    <span style="margin-left: auto">
+      ${(num * x.weight) / 100}%
+     </span>
     </div>
     </h4>
   </div>`;

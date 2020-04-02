@@ -59,6 +59,7 @@
 }
 .ri {
   float: right;
+  cursor: pointer;
 }
 
 .ric {
