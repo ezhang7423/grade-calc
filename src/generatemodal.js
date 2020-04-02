@@ -39,9 +39,11 @@ function populateModal(name) {
 <span onclick="toggleModal()" class="mc">&#xf00d;</span>`;
   let comp = store[searchObj(store, name)];
 
-  modalContent += `<h1>${name}: ${calcSum(comp)}% <span class=${
-    calcSum(comp) < 93 ? "bad" : "good"
-  }>${letterGrade(comp)}</span></h1>
+  modalContent += `<h1 class = "modalcoursename" >${name}: ${calcSum(
+    comp
+  )}% <span class=${calcSum(comp) < 93 ? "bad" : "good"}>${letterGrade(
+    comp
+  )}</span></h1>
   <div class="mgrid">
   ${genComponents(name)}
   `;
@@ -79,6 +81,7 @@ function genComponent(x) {
     let comp = `<div class="bb">
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
+    name = "mtitle"
     placeholder="${x.name}" />
     <h4 class="nomargin">
       <div class = "full-comp">
@@ -121,6 +124,7 @@ function genComponent(x) {
     return `<div class="bb">
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
+    name = "mtitle"
     placeholder="${x.name}" />
     <h4 class="nomargin">
     

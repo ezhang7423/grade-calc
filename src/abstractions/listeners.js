@@ -162,12 +162,28 @@ function saveMe(e) {
           x.addEventListener("keyup", saveMeEnter);
         }
       }
+    } else if (id === "mtitle") {
+      let name = getParentCourse();
+      let wname = e.target.getAttribute("placeholder");
+      let dad = store[searchObj(store, name)];
+      let toUpdate = dad.weights[searchObj(dad.weights, wname)];
+      let val = e.target.value;
+      toUpdate.name = val;
+      save(dad, "component");
+      e.target["placeholder"] = val;
+      e.target.value = "";
+    } else if (id === "mweight") {
     } else {
       print("id not found");
+      print(e.target);
     }
   } else {
     print("no change");
   }
+}
+
+function getParentCourse() {
+  return document.querySelector(".modalcoursename").innerText.split(":")[0];
 }
 function addNew(e) {
   e.preventDefault();

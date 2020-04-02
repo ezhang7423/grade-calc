@@ -46,6 +46,13 @@
   padding: 1vw;
   position: relative;
 }
+
+@media only screen and (min-width: 1300px) {
+  .mgrid {
+    width: 70%;
+    /* margin: 0 auto; */
+  }
+}
 .ri {
   float: right;
 }
