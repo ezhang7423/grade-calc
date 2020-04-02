@@ -47,6 +47,10 @@
   position: relative;
 }
 
+.unsaved {
+  font-style: italic;
+  color: darkgrey;
+}
 @media only screen and (min-width: 1300px) {
   .mgrid {
     width: 70%;

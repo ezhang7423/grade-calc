@@ -30,9 +30,21 @@ function togandPopModal(e) {
     x.addEventListener("focusout", saveMeBlur);
     x.addEventListener("keyup", saveMeEnter);
   }
+  document.querySelector(".modal-save").addEventListener("click", saveModal);
   modal.classList.toggle("show-modal");
 }
 
+function saveModal(e) {
+  e.preventDefault();
+  let course = getParentCourse();
+  let dad = store[searchObj(store, course)];
+  //do checks
+  // do weights add up to 100?
+  save(dad, "component");
+  if (document.querySelector(".unsaved").classList["hidden"] == undefined) {
+    document.querySelector(".unsaved").classList.toggle("hidden");
+  }
+}
 function toggleModal() {
   document.querySelector(".modal").classList.toggle("show-modal");
 }
@@ -164,15 +176,27 @@ function saveMe(e) {
       }
     } else if (id === "mtitle") {
       let name = getParentCourse();
-      let wname = e.target.getAttribute("placeholder");
+      let wname = e.target.placeholder;
       let dad = store[searchObj(store, name)];
       let toUpdate = dad.weights[searchObj(dad.weights, wname)];
       let val = e.target.value;
       toUpdate.name = val;
-      save(dad, "component");
       e.target["placeholder"] = val;
       e.target.value = "";
+      unsaved();
     } else if (id === "mweight") {
+      let name = getParentCourse();
+      let wname =
+        e.target.parentElement.parentElement.parentElement.firstElementChild
+          .placeholder;
+      let dad = store[searchObj(store, name)];
+      let toUpdate = dad.weights[searchObj(dad.weights, wname)];
+      let val = e.target.value;
+      toUpdate.weight = validNum(val);
+      e.target["placeholder"] = String(val) + "%";
+      e.target.value = "";
+      unsaved();
+      //update total score
     } else {
       print("id not found");
       print(e.target);
@@ -182,6 +206,20 @@ function saveMe(e) {
   }
 }
 
+function unsaved() {
+  if (document.querySelector(".unsaved").classList["hidden"] == undefined) {
+    document.querySelector(".unsaved").classList.toggle("hidden");
+  }
+}
+
+function validNum(val) {
+  val = parseFloat(val);
+  if (isNaN(val) || val < 0 || val > 100) {
+    throw "bruh";
+  } else {
+    return val;
+  }
+}
 function getParentCourse() {
   return document.querySelector(".modalcoursename").innerText.split(":")[0];
 }

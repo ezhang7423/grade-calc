@@ -31,7 +31,7 @@ function populateModal(name) {
   </button>
 </div>
 <div class="ri">
-  save
+save
 </div> 
 </div>
 `;
@@ -52,7 +52,9 @@ function populateModal(name) {
   </button>
   </div>
   <div class="ri">
-  save
+  <span class='unsaved hidden'>unsaved &nbsp;</span>
+  <span class = "modal-save">save</span>
+  
   </div> 
   </div>`;
   let num = numComponents(name);
@@ -87,6 +89,7 @@ function genComponent(x) {
       <div class = "full-comp">
       Weight: 
       <input class="cc nakinput ric b"
+        name = 'mweight'
         title="Enter your grade. Example: If you got 89% enter 89"
         placeholder="${x.weight}%" />
       </div>
@@ -131,6 +134,7 @@ function genComponent(x) {
     <div class = "full-comp">
     Weight: 
     <input class="cc nakinput ric b"
+      name = 'mweight'
       title="Enter your grade. Example: If you got 89% enter 89"
       placeholder="${x.weight}%" />
     </div>
