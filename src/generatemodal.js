@@ -77,9 +77,9 @@ function genComponent(x) {
   if (x.isList) {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     let comp = `<div class="bb">
-    <h2 class="nomargin" title="assuming equal weighting">
-      homework
-    </h2>
+    <input class="cc nakinput ric mheader"
+    title="Enter your grade. Example: If you got 89% enter 89"
+    placeholder="${x.name}" />
     <h4 class="nomargin">
       <div class = "full-comp">
       Weight: 
@@ -119,9 +119,9 @@ function genComponent(x) {
   } else {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     return `<div class="bb">
-    <h2 class="nomargin" title="assuming equal weighting">
-      final
-    </h2>
+    <input class="cc nakinput ric mheader"
+    title="Enter your grade. Example: If you got 89% enter 89"
+    placeholder="${x.name}" />
     <h4 class="nomargin">
     
     <div class = "full-comp">

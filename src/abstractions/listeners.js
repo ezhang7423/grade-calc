@@ -25,6 +25,11 @@ function togandPopModal(e) {
     e.target.parentElement.parentElement.parentElement.children[1].placeholder;
   let modal = document.querySelector(".modal");
   modal.innerHTML = populateModal(name);
+  let canChanges = document.querySelectorAll(".ric.cc");
+  for (let x of canChanges) {
+    x.addEventListener("focusout", saveMeBlur);
+    x.addEventListener("keyup", saveMeEnter);
+  }
   modal.classList.toggle("show-modal");
 }
 
@@ -157,7 +162,11 @@ function saveMe(e) {
           x.addEventListener("keyup", saveMeEnter);
         }
       }
+    } else {
+      print("id not found");
     }
+  } else {
+    print("no change");
   }
 }
 function addNew(e) {
