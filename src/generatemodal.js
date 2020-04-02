@@ -80,6 +80,13 @@ function genComponents(name) {
 function genComponent(x) {
   if (x.isList) {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
+    let contribuition = Math.round(num * x.weight + Number.EPSILON);
+    let lc = String(contribuition).replace(".", "").length;
+    print(contribuition);
+    print("hi");
+    print(Math.pow(10, lc - 4));
+    contribuition = Math.round(lc / Math.pow(10, lc - 4));
+    print(contribuition);
     let comp = `<div class="bb">
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
@@ -113,10 +120,11 @@ function genComponent(x) {
       ${num}%
      </span>
   </div>
+  
     <div class = "full-comp">
     <strong>Contribution:</strong>
     <span style="font-weight: bold; margin-left: auto">
-      ${(num * x.weight) / 100}%
+      ${contribuition * 10}%
      </span>
     </div>
     </div>
@@ -124,6 +132,9 @@ function genComponent(x) {
     return comp;
   } else {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
+    let contribuition =
+      Math.round((num * x.weight + Number.EPSILON) * 100) / 100;
+
     return `<div class="bb">
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
@@ -150,7 +161,7 @@ function genComponent(x) {
     <div class = "full-comp">
     <strong>Contribution:</strong>
     <span style="margin-left: auto">
-      ${(num * x.weight) / 100}%
+      ${contribuition / 100}%
      </span>
     </div>
     </h4>
