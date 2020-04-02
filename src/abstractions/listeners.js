@@ -40,6 +40,7 @@ function saveModal(e) {
   let dad = store[searchObj(store, course)];
   //do checks
   // do weights add up to 100?
+  // after update contribuitons and title score
   save(dad, "component");
   if (!document.querySelector(".unsaved").classList.value.includes("hidden")) {
     document.querySelector(".unsaved").classList.toggle("hidden");
@@ -193,6 +194,36 @@ function saveMe(e) {
       let toUpdate = dad.weights[searchObj(dad.weights, wname)];
       let val = e.target.value;
       toUpdate.weight = validNum(val);
+      e.target["placeholder"] = String(val) + "%";
+      e.target.value = "";
+      unsaved();
+    } else if (id === "mcomp-grade") {
+      let name = getParentCourse();
+      let wname =
+        e.target.parentElement.parentElement.firstElementChild.placeholder;
+      let dad = store[searchObj(store, name)];
+      let toUpdate = dad.weights[searchObj(dad.weights, wname)];
+      let val = e.target.value;
+      let ccname =
+        toUpdate.grad[
+          searchObj(toUpdate.grad, e.target.parentElement.innerText)
+        ];
+      ccname.gradie = validNum(val);
+      e.target["placeholder"] = String(val) + "%";
+      e.target.value = "";
+      unsaved();
+    } else if (id === "mscore") {
+      let name = getParentCourse();
+      let wname =
+        e.target.parentElement.parentElement.firstElementChild.placeholder;
+      let dad = store[searchObj(store, name)];
+      let toUpdate = dad.weights[searchObj(dad.weights, wname)];
+      let val = e.target.value;
+      let ccname =
+        toUpdate.grad[
+          searchObj(toUpdate.grad, e.target.parentElement.innerText)
+        ];
+      ccname.gradie = validNum(val);
       e.target["placeholder"] = String(val) + "%";
       e.target.value = "";
       unsaved();

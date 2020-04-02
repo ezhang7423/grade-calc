@@ -109,11 +109,10 @@ function genComponent(x) {
     <div class="mup">
     <div class = "full-comp">
     <strong>Total:</strong>
-    <input class="cc nakinput ric b"
-      title="Enter your grade. Example: If you got 89% enter 89"
-      placeholder="${num}%" />
-    </div>
-  
+    <span style="font-weight: bold; margin-left: auto">
+      ${num}%
+     </span>
+  </div>
     <div class = "full-comp">
     <strong>Contribution:</strong>
     <span style="font-weight: bold; margin-left: auto">
@@ -158,3 +157,4 @@ function genComponent(x) {
   </div>`;
   }
 }
+//add limits to inputs
