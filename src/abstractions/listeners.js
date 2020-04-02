@@ -214,16 +214,14 @@ function saveMe(e) {
       unsaved();
     } else if (id === "mscore") {
       let name = getParentCourse();
+      print(e.target);
       let wname =
-        e.target.parentElement.parentElement.firstElementChild.placeholder;
+        e.target.parentElement.parentElement.parentElement.firstElementChild
+          .placeholder;
       let dad = store[searchObj(store, name)];
       let toUpdate = dad.weights[searchObj(dad.weights, wname)];
       let val = e.target.value;
-      let ccname =
-        toUpdate.grad[
-          searchObj(toUpdate.grad, e.target.parentElement.innerText)
-        ];
-      ccname.gradie = validNum(val);
+      toUpdate.grad = validNum(val);
       e.target["placeholder"] = String(val) + "%";
       e.target.value = "";
       unsaved();
