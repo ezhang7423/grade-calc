@@ -46,7 +46,19 @@ function addcom(e) {
   let dad = store[searchObj(store, name)];
   let id = e.target.parentElement.getAttribute("name");
   if (id === "t") {
-    print("hi t");
+    try {
+      var storelen = Object.keys(dad.weights).reduce((a, b) => {
+        a = parseInt(a);
+        b = parseInt(b);
+        return a > b ? a : b;
+      });
+    } catch {
+      var storelen = -1;
+    }
+    storelen++;
+    dad.weights[storelen] = new GradeComponent(`untitled ${storelen}`, 100, 0);
+    $(".modal-save").click();
+    location.reload();
   } else {
     print("bad");
   }
