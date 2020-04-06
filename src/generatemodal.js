@@ -63,10 +63,12 @@ function genComponents(name) {
 function calcC(num, weight) {
   let contribuition = num * weight;
   let lc = String(contribuition).replace(".", "").length;
+  print(contribuition);
+  print(lc);
   if (lc > 4) {
     contribuition = Math.round(contribuition);
   }
-  return contribuition / 100;
+  return Math.round(contribuition * 100) / 10000;
 }
 function genComponent(x) {
   if (x.isList) {
@@ -74,17 +76,19 @@ function genComponent(x) {
     // print(num); //maxlen = 4
     //print(x.weight) // maxlen = 4
     let contribuition = calcC(num, x.weight);
-    let comp = `<div class="bb"><div class="del-com">&#xd7;</div>
-    <input class="cc nakinput ric mheader"
+
+    let comp = `
+    <div class="bb"><input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
     name = "mtitle"
     placeholder="${x.name}" />
+    <div class="del-com">&#xd7;</div>
     <h4 class="nomargin">
       <div class = "full-comp">
       Weight: 
       <input class="cc nakinput ric b"
-        name = 'mweight'
-        title="Enter your grade. Example: If you got 89% enter 89"
+      name = 'mweight'
+      title="Enter your grade. Example: If you got 89% enter 89"
         placeholder="${x.weight}%" />
       </div>
     </h4>`;
@@ -123,11 +127,12 @@ function genComponent(x) {
   } else {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     let contribuition = calcC(num, x.weight);
-    return `<div class="bb"><div class="del-com">&#xd7;</div>
-    <input class="cc nakinput ric mheader"
+    return `
+    <div class="bb"> <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
     name = "mtitle"
     placeholder="${x.name}" />
+    <div class="del-com">&#xd7;</div>
     <h4 class="nomargin">
     
     <div class = "full-comp">
