@@ -52,7 +52,7 @@ function delcom(e) {
   let dad = store[searchObj(store, name)];
   let child =
     dad.weights[
-      searchObj(dad.weights, e.target.parentElement.parentElement.firstElementChild.placeholder)
+      searchObj(dad.weights, e.target.parentElement.firstElementChild.placeholder)
     ];
   if (child.weight != 0) {
     alert("Change this component's weight to zero first please.");
