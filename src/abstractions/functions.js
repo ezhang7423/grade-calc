@@ -2,7 +2,7 @@ function print(thing) {
   console.log(thing);
 }
 
-let alph = num => {
+let alph = (num) => {
   return String.fromCharCode(97 + num);
 };
 
@@ -15,7 +15,7 @@ function getColors(num) {
     colormap: "summer", //allow user customization
     nshades: num,
     format: "rgba",
-    alpha: 1
+    alpha: 1,
   });
   for (let x of colors) {
     [r, g, b] = lighten(x);
@@ -58,7 +58,7 @@ let addFake = () => {
     "3": 4,
     "4": 5,
     "5": 6,
-    "6": 7
+    "6": 7,
   };
   y.weights[1].grade = { a: 1, b: 2, c: 3, d: 4, e: 50, f: 6, g: 7 };
   y.weights[2].grade = {
@@ -68,7 +68,7 @@ let addFake = () => {
     "-3": 40,
     "-4": 5,
     "-5": 6,
-    "-6": 70
+    "-6": 70,
   };
   save(x, "course");
   save(y, "course");
@@ -125,6 +125,9 @@ function save(data, type) {
   store = reconstruct();
   try {
     var storelen = Object.keys(store).reduce((a, b) => {
+      a = parseInt(a);
+      b = parseInt(b);
+
       return a > b ? a : b;
     });
   } catch {

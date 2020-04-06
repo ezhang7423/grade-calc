@@ -46,10 +46,21 @@ save
   <div class="mgrid">
   ${genComponents(name)}
   `;
-  modalContent += `<button class="naked madd">
-    add<i class="fas fa-plus-square"></i>
+  modalContent += `
+
+  <div style =     "display: flex;
+    flex-direction: column;
+    align-items: center;">
+  <button name = "l" class="naked madd">
+  <i class="fas fa-list-ul"></i>
+  
+  </button>
+  <button name = "t" class="naked madd">
+  <i style="margin-right: 0;" class="fas fa-check-square"></i>
   </button>
   </div>
+  </div>
+  
   <div class="ri">
   <span class='unsaved hidden'>unsaved &nbsp;</span>
   <span class = "modal-save">save</span>
@@ -116,7 +127,7 @@ function genComponent(x) {
         placeholder="${x.grad[i].gradie}%" />
       </div>`;
     }
-    comp += `<button class="naked nomargin">
+    comp += `<button class="addmcc naked nomargin">
       <i class="fas fa-plus-square"></i>
     </button>
     <div class="mup">

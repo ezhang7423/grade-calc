@@ -32,8 +32,52 @@ function togandPopModal(e) {
   }
   document.querySelector(".modal-save").addEventListener("click", saveModal);
   modal.classList.toggle("show-modal");
+  for (let x of document.querySelectorAll(".addmcc")) {
+    x.addEventListener("click", addcomcom);
+  }
+  for (let x of document.querySelectorAll(".madd")) {
+    x.addEventListener("click", addcom);
+  }
 }
 
+function addcom(e) {
+  e.preventDefault();
+  let name = getParentCourse();
+  let dad = store[searchObj(store, name)];
+  let id = e.target.parentElement.getAttribute("name");
+  if (id === "t") {
+    print("hi t");
+  } else {
+    print("bad");
+  }
+  print(dad);
+}
+
+function addcomcom(e) {
+  e.preventDefault();
+  let name = getParentCourse();
+  let cname =
+    e.target.parentElement.parentElement.firstElementChild.placeholder;
+  let dad = store[searchObj(store, name)];
+  dad = dad.weights[searchObj(dad.weights, cname)];
+  try {
+    var storelen = Object.keys(dad.grad).reduce((a, b) => {
+      a = parseInt(a);
+      b = parseInt(b);
+      return a > b ? a : b;
+    });
+  } catch {
+    var storelen = -1;
+  }
+  storelen++;
+  dad.grad[storelen] = { name: `untitled ${storelen}`, gradie: 100 };
+  let mu = create(`<div class="full-comp">
+      <input class="cc nakinput lic" name="mcomp-gradename" title="Enter your grade. Example: If you got 89% enter 89" placeholder="untitled ${storelen}">
+      <input class="cc nakinput ric" name="mcomp-grade" title="Enter your grade. Example: If you got 89% enter 89" placeholder="100%">
+      </div>`);
+  e.target.parentElement.parentElement.insertBefore(mu, e.target.parentElement);
+  unsaved();
+}
 function recalc() {
   let dad = store[searchObj(store, getParentCourse())];
   document.querySelector(
