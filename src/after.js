@@ -27,11 +27,11 @@ if (name !== null && name !== "") {
   input.classList.add("hidden");
 }
 
-document.querySelector(".modal").addEventListener("click", e => {
+document.querySelector(".modal").addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target === document.querySelector(".modal")) {
     document.querySelector(".modal").classList.toggle("show-modal");
   }
 });
 generate(store, numClasses);
-document.querySelectorAll(".addcc")[0].click();
+document.querySelectorAll(".addcc")[1].click();

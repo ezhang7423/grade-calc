@@ -63,6 +63,13 @@
   cursor: pointer;
 }
 
+.lic {
+  text-align: left;
+  width: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
 .ric {
   text-align: right;
   width: inherit;

@@ -208,7 +208,11 @@ function saveMe(e) {
         toUpdate.grad[
           searchObj(toUpdate.grad, e.target.parentElement.innerText)
         ];
-      ccname.gradie = validNum(val);
+      try {
+        ccname.gradie = validNum(val);
+      } catch (e) {
+        throw e;
+      }
       e.target["placeholder"] = String(val) + "%";
       e.target.value = "";
       unsaved();
@@ -221,7 +225,11 @@ function saveMe(e) {
       let dad = store[searchObj(store, name)];
       let toUpdate = dad.weights[searchObj(dad.weights, wname)];
       let val = e.target.value;
-      toUpdate.grad = validNum(val);
+      try {
+        toUpdate.grad = validNum(val);
+      } catch (e) {
+        throw e;
+      }
       e.target["placeholder"] = String(val) + "%";
       e.target.value = "";
       unsaved();

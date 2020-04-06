@@ -104,7 +104,10 @@ function genComponent(x) {
     </h4>`;
     for (let i of Object.keys(x.grad)) {
       comp += `<div class = "full-comp">
-      ${x.grad[i].name}
+      <input class="cc nakinput lic"
+      name="mcomp-gradename"
+        title="Enter your grade. Example: If you got 89% enter 89"
+        placeholder="${x.grad[i].name}" />
       <input class="cc nakinput ric"
       name="mcomp-grade"
         title="Enter your grade. Example: If you got 89% enter 89"
