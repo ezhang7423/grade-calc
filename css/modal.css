@@ -47,6 +47,7 @@
   padding: 1vw;
   position: relative;
   min-width: 13vw;
+  margin-bottom: 5vh;
 }
 
 .unsaved {

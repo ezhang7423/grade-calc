@@ -47,12 +47,14 @@ function togandPopModal(e) {
 }
 function delcom(e) {
   e.preventDefault();
-  print("hi");
   let name = getParentCourse();
   let dad = store[searchObj(store, name)];
   let child =
     dad.weights[
-      searchObj(dad.weights, e.target.parentElement.firstElementChild.placeholder)
+      searchObj(
+        dad.weights,
+        e.target.parentElement.firstElementChild.placeholder
+      )
     ];
   if (child.weight != 0) {
     alert("Change this component's weight to zero first please.");
@@ -66,10 +68,12 @@ function delcom(e) {
     alert("Weights do not add up to 100");
     throw "effed weights";
   }
-
+  // print(e.target.parentElement);
+  // print(dad.weights);
   delete dad.weights[
-    searchObj(dad.weights, e.target.nextElementSibling.placeholder)
+    searchObj(dad.weights, e.target.parentElement.firstElementChild.placeholder)
   ];
+  // print(dad.weights);
   save(dad, "component");
   location.reload();
 }
@@ -179,6 +183,9 @@ function saveModal(e) {
 }
 function toggleModal() {
   document.querySelector(".modal").classList.toggle("show-modal");
+  if (document.querySelector(".modal").classList.contains("show-modal")) {
+    localStorage.removeItem("modal");
+  }
 }
 
 function saveMeBlur(e) {

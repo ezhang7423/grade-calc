@@ -33,7 +33,7 @@ function populateModal(name) {
   </div> 
   </div>`;
 
-  if (num <= 6) {
+  if (num <= 5) {
     editCSS(
       `.mgrid { grid-template-columns: ${Array(num + 1).join("1fr ")}0.1fr`
     );
@@ -63,8 +63,6 @@ function genComponents(name) {
 function calcC(num, weight) {
   let contribuition = num * weight;
   let lc = String(contribuition).replace(".", "").length;
-  print(contribuition);
-  print(lc);
   if (lc > 4) {
     contribuition = Math.round(contribuition);
   }

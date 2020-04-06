@@ -32,13 +32,18 @@ document.querySelector(".modal").addEventListener("click", (e) => {
   if (e.target === document.querySelector(".modal")) {
     document.querySelector(".modal").classList.toggle("show-modal");
   }
+  localStorage.removeItem("modal");
 });
 generate(store, numClasses);
 
 let reloadModal = localStorage.getItem("modal");
 print(reloadModal);
 if (reloadModal != null) {
-  document
-    .querySelectorAll(".addcc.naked")
-    [searchObj(store, reloadModal)].click();
+  try {
+    document
+      .querySelectorAll(".addcc.naked")
+      [searchObj(store, reloadModal)].click();
+  } catch {
+    localStorage.removeItem("modal");
+  }
 }
