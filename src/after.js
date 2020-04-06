@@ -34,3 +34,11 @@ document.querySelector(".modal").addEventListener("click", (e) => {
   }
 });
 generate(store, numClasses);
+
+let reloadModal = localStorage.getItem("modal");
+print(reloadModal);
+if (reloadModal != null) {
+  document
+    .querySelectorAll(".addcc.naked")
+    [searchObj(store, reloadModal)].click();
+}

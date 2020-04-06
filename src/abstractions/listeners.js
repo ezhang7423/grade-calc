@@ -91,12 +91,6 @@ function addcom(e) {
     }
     storelen++;
     dad.weights[storelen] = new GradeComponent(`untitled ${storelen}`, 100, 0);
-    try {
-      saveModal(e);
-    } catch (e) {
-      throw e;
-    }
-    location.reload();
   } else {
     try {
       var storelen = Object.keys(dad.weights).reduce((a, b) => {
@@ -110,14 +104,14 @@ function addcom(e) {
     storelen++;
     dad.weights[storelen] = new GradeComponent(`untitled ${storelen}`, 100, 0);
     dad.weights[storelen].grade = { "0": 100 };
-    try {
-      saveModal(e);
-    } catch (e) {
-      throw e;
-    }
-    location.reload();
   }
-  print(dad);
+  try {
+    saveModal(e);
+  } catch (e) {
+    throw e;
+  }
+  localStorage.setItem("modal", name);
+  location.reload();
 }
 
 function addcomcom(e) {
