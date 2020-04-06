@@ -74,7 +74,7 @@ function genComponent(x) {
     // print(num); //maxlen = 4
     //print(x.weight) // maxlen = 4
     let contribuition = calcC(num, x.weight);
-    let comp = `<div class="bb">
+    let comp = `<div class="bb"><div class="del-com">&#xd7;</div>
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
     name = "mtitle"
@@ -123,7 +123,7 @@ function genComponent(x) {
   } else {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     let contribuition = calcC(num, x.weight);
-    return `<div class="bb">
+    return `<div class="bb"><div class="del-com">&#xd7;</div>
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
     name = "mtitle"

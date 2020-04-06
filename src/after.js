@@ -34,4 +34,3 @@ document.querySelector(".modal").addEventListener("click", (e) => {
   }
 });
 generate(store, numClasses);
-

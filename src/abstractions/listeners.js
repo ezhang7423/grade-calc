@@ -41,6 +41,37 @@ function togandPopModal(e) {
       x.addEventListener("click", addcom);
     }
   }
+  for (let x of document.querySelectorAll(".del-com")) {
+    x.addEventListener("click", delcom);
+  }
+}
+function delcom(e) {
+  e.preventDefault();
+  print("hi");
+  let name = getParentCourse();
+  let dad = store[searchObj(store, name)];
+  let child =
+    dad.weights[
+      searchObj(dad.weights, e.target.nextElementSibling.placeholder)
+    ];
+  if (child.weight != 0) {
+    alert("Change this component's weight to zero first please.");
+    return;
+  }
+  let totalW = 0;
+  for (let x of Object.keys(dad.weights)) {
+    totalW += dad.weights[x].weight;
+  }
+  if (totalW != 100) {
+    alert("Weights do not add up to 100");
+    throw "effed weights";
+  }
+
+  delete dad.weights[
+    searchObj(dad.weights, e.target.nextElementSibling.placeholder)
+  ];
+  save(dad, "component");
+  location.reload();
 }
 
 function addcom(e) {

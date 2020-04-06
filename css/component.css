@@ -38,6 +38,16 @@
 .course-naked.disabled:hover {
   color: grey;
 }
+
+.del-com {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 25px;
+  color: crimson;
+  cursor: pointer;
+}
+
 .course-naked {
   font-family: "Font Awesome\ 5 Free", "Baloo Chettan 2", Arial, Helvetica,
     sans-serif;
