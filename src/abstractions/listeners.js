@@ -35,8 +35,11 @@ function togandPopModal(e) {
   for (let x of document.querySelectorAll(".addmcc")) {
     x.addEventListener("click", addcomcom);
   }
-  for (let x of document.querySelectorAll(".madd")) {
-    x.addEventListener("click", addcom);
+  let num = numComponents(name);
+  if (num < 8) {
+    for (let x of document.querySelectorAll(".madd")) {
+      x.addEventListener("click", addcom);
+    }
   }
 }
 
@@ -57,10 +60,31 @@ function addcom(e) {
     }
     storelen++;
     dad.weights[storelen] = new GradeComponent(`untitled ${storelen}`, 100, 0);
-    $(".modal-save").click();
+    try {
+      saveModal(e);
+    } catch (e) {
+      throw e;
+    }
     location.reload();
   } else {
-    print("bad");
+    try {
+      var storelen = Object.keys(dad.weights).reduce((a, b) => {
+        a = parseInt(a);
+        b = parseInt(b);
+        return a > b ? a : b;
+      });
+    } catch {
+      var storelen = -1;
+    }
+    storelen++;
+    dad.weights[storelen] = new GradeComponent(`untitled ${storelen}`, 100, 0);
+    dad.weights[storelen].grade = { "0": 100 };
+    try {
+      saveModal(e);
+    } catch (e) {
+      throw e;
+    }
+    location.reload();
   }
   print(dad);
 }

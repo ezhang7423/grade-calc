@@ -1,40 +1,4 @@
 function populateModal(name) {
-  ` 
-  <div class="bb">
-    <h2 class="nomargin" title="assuming equal weighting">
-      new component
-    </h2>
-    <h4 class="nomargin">
-      <div>Weight: 0/100</div>
-    </h4>
-    <select style="width: 10vw;" class="type-sel" name="type-sel">
-      <option value="simple">Simple</option>
-      <option value="list">List</option>
-    </select>
-    <div>hw1<span class="ri">30/100</span></div>
-    <div>hw1<span class="ri">30/100</span></div>
-    <div>hw1<span class="ri">30/100</span></div>
-    <div>hw1<span class="ri">30/100</span></div>
-    <div>hw1<span class="ri">30/100</span></div>
-    <button class="naked nomargin">
-      <i class="fas fa-plus-square"></i>
-    </button>
-    <div class="mup">
-      <h4 class="nomargin">Total<span class="ri">30/100</span></h4>
-      <h4 class="nomargin">
-        Contribution<span class="ri">9/100</span>
-      </h4>
-    </div>
-  </div>
-  <button class="naked madd">
-    add<i class="fas fa-plus-square"></i>
-  </button>
-</div>
-<div class="ri">
-save
-</div> 
-</div>
-`;
   let modalContent = `<div class="modal-content">
 <span onclick="toggleModal()" class="mc">&#xf00d;</span>`;
   let comp = store[searchObj(store, name)];
@@ -46,16 +10,17 @@ save
   <div class="mgrid">
   ${genComponents(name)}
   `;
+  let num = numComponents(name);
   modalContent += `
 
   <div style =     "display: flex;
     flex-direction: column;
     align-items: center;">
-  <button name = "l" class="naked madd">
+  <button name = "l" class="naked madd ${num == 8 ? "disabled" : ""} ">
   <i class="fas fa-list-ul"></i>
   
   </button>
-  <button name = "t" class="naked madd">
+  <button name = "t" class="naked madd ${num == 8 ? "disabled" : ""} ">
   <i style="margin-right: 0;" class="fas fa-check-square"></i>
   </button>
   </div>
@@ -67,10 +32,18 @@ save
   
   </div> 
   </div>`;
-  let num = numComponents(name);
-  editCSS(
-    `.mgrid { grid-template-columns: ${Array(num + 1).join("1fr ")}0.1fr`
-  );
+
+  if (num <= 6) {
+    editCSS(
+      `.mgrid { grid-template-columns: ${Array(num + 1).join("1fr ")}0.1fr`
+    );
+  } else {
+    editCSS(
+      `.mgrid { grid-template-columns: ${Array(5).join("1fr ")} 0.1fr ${Array(
+        num - 5
+      ).join("1 fr ")}`
+    );
+  }
   return modalContent;
 }
 

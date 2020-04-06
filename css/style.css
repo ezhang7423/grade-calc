@@ -51,7 +51,7 @@
 .course {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   max-width: 30vw;
-  max-height: 80vh;
+  min-height: 80vh;
   font-size: 3vw;
   /* width: 10vw; */
   width: 30vw;
