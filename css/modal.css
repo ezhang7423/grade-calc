@@ -18,7 +18,7 @@
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 1rem 1.5rem;
-  width: 80%;
+  width: auto;
   z-index: 100;
   max-height: 70%;
   border-radius: 0.5rem;
@@ -39,12 +39,14 @@
   display: grid;
   grid-gap: 2vw;
   grid-template-columns: 1fr 1fr 1fr 1fr 0.1fr;
+  /* margin: 0 auto; */
 }
 
 .bb {
   border: 1px solid black;
   padding: 1vw;
   position: relative;
+  min-width: 15vw;
 }
 
 .unsaved {
@@ -54,7 +56,6 @@
 @media only screen and (min-width: 1300px) {
   .mgrid {
     width: 70%;
-    /* margin: 0 auto; */
   }
 }
 .ri {

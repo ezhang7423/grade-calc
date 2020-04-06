@@ -83,7 +83,6 @@ function genComponent(x) {
     let contribuition = Math.round(num * x.weight + Number.EPSILON);
     let lc = String(contribuition).replace(".", "").length;
     print(contribuition);
-    print("hi");
     print(Math.pow(10, lc - 4));
     contribuition = Math.round(lc / Math.pow(10, lc - 4));
     print(contribuition);
