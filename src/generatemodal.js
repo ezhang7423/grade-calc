@@ -38,12 +38,11 @@ save
   let modalContent = `<div class="modal-content">
 <span onclick="toggleModal()" class="mc">&#xf00d;</span>`;
   let comp = store[searchObj(store, name)];
-
-  modalContent += `<h1 class = "modalcoursename" >${name}: ${calcSum(
-    comp
-  )}% <span class=${calcSum(comp) < 93 ? "bad" : "good"}>${letterGrade(
-    comp
-  )}</span></h1>
+  modalContent += `<div class = "mcn-wrapper">
+  <h1 class = "modalcoursename" >${name}: ${calcSum(comp)}% <span class=${
+    calcSum(comp) < 93 ? "bad" : "good"
+  }>${letterGrade(comp)}</span></h1>
+  </div>
   <div class="mgrid">
   ${genComponents(name)}
   `;
@@ -77,17 +76,20 @@ function genComponents(name) {
   return compString;
 }
 
+function calcC(num, weight) {
+  let contribuition = num * weight;
+  let lc = String(contribuition).replace(".", "").length;
+  if (lc > 4) {
+    contribuition = Math.round(contribuition);
+  }
+  return contribuition / 100;
+}
 function genComponent(x) {
   if (x.isList) {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
     // print(num); //maxlen = 4
     //print(x.weight) // maxlen = 4
-    let contribuition = num * x.weight;
-    let lc = String(contribuition).replace(".", "").length;
-    if (lc > 4) {
-      contribuition = Math.round(contribuition);
-    }
-    contribuition /= 100;
+    let contribuition = calcC(num, x.weight);
     let comp = `<div class="bb">
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"
@@ -136,12 +138,7 @@ function genComponent(x) {
     return comp;
   } else {
     let num = Math.round((x.grade + Number.EPSILON) * 100) / 100;
-    let contribuition = num * x.weight;
-    let lc = String(contribuition).replace(".", "").length;
-    if (lc > 4) {
-      contribuition = Math.round(contribuition);
-    }
-    contribuition /= 100;
+    let contribuition = calcC(num, x.weight);
     return `<div class="bb">
     <input class="cc nakinput ric mheader"
     title="Enter your grade. Example: If you got 89% enter 89"

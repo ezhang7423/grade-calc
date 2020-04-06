@@ -25,7 +25,7 @@ function generate(store, numClasses) {
 
 function addListeners() {
   let canChanges = document.querySelectorAll(".cc");
-  document.querySelector(".namecc.cc").addEventListener("click", e => {
+  document.querySelector(".namecc.cc").addEventListener("click", (e) => {
     e.preventDefault();
     e.target.style.width = `40vw`;
   });

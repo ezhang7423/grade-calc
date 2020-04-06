@@ -25,7 +25,7 @@ function togandPopModal(e) {
     e.target.parentElement.parentElement.parentElement.children[1].placeholder;
   let modal = document.querySelector(".modal");
   modal.innerHTML = populateModal(name);
-  let canChanges = document.querySelectorAll(".ric.cc");
+  let canChanges = document.querySelectorAll(".ric.cc, .lic.cc");
   for (let x of canChanges) {
     x.addEventListener("focusout", saveMeBlur);
     x.addEventListener("keyup", saveMeEnter);
@@ -34,13 +34,39 @@ function togandPopModal(e) {
   modal.classList.toggle("show-modal");
 }
 
+function recalc() {
+  let dad = store[searchObj(store, getParentCourse())];
+  document.querySelector(
+    ".mcn-wrapper"
+  ).innerHTML = `<h1 class = "modalcoursename"> ${dad.name}: ${calcSum(dad)}%
+  <span class=${calcSum(dad) < 93 ? "bad" : "good"}>${letterGrade(
+    dad
+  )}</span></h1></div>
+  `;
+  let c = 0;
+  let d;
+  for (let x of document.querySelectorAll("[title='Contribution']")) {
+    d = dad.weights[c];
+    x.nextElementSibling.innerText = `${calcC(d.grade, d.weight)}%`;
+    c++;
+  }
+}
+
 function saveModal(e) {
   e.preventDefault();
   let course = getParentCourse();
   let dad = store[searchObj(store, course)];
-  //do checks
-  // do weights add up to 100?
+  let weights = dad.weights;
+  let totalW = 0;
+  for (let x of Object.keys(weights)) {
+    totalW += weights[x].weight;
+  }
+  if (totalW != 100) {
+    alert("Weights do not add up to 100");
+    throw "effed weights";
+  }
   // after update contribuitons and title score
+  recalc();
   save(dad, "component");
   if (!document.querySelector(".unsaved").classList.value.includes("hidden")) {
     document.querySelector(".unsaved").classList.toggle("hidden");
@@ -206,7 +232,10 @@ function saveMe(e) {
       let val = e.target.value;
       let ccname =
         toUpdate.grad[
-          searchObj(toUpdate.grad, e.target.parentElement.innerText)
+          searchObj(
+            toUpdate.grad,
+            e.target.parentElement.firstElementChild.placeholder
+          )
         ];
       try {
         ccname.gradie = validNum(val);
@@ -231,6 +260,20 @@ function saveMe(e) {
         throw e;
       }
       e.target["placeholder"] = String(val) + "%";
+      e.target.value = "";
+      unsaved();
+    } else if (id === "mcomp-gradename") {
+      let name = getParentCourse();
+      let wname =
+        e.target.parentElement.parentElement.firstElementChild.placeholder;
+      let dad = store[searchObj(store, name)];
+      let toUpdate = dad.weights[searchObj(dad.weights, wname)];
+      let val = e.target.value;
+      let ccname =
+        toUpdate.grad[searchObj(toUpdate.grad, e.target.placeholder)];
+
+      ccname.name = val;
+      e.target["placeholder"] = String(val);
       e.target.value = "";
       unsaved();
     } else {
