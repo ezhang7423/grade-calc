@@ -71,7 +71,11 @@
             </button>
           </div>
           <div>
-            <button title="Theme" class="naked" onclick="chooseTheme()">
+            <button
+              title="Theme"
+              class="naked"
+              onclick="document.querySelector('.theme-modal').classList.toggle('show-modal')"
+            >
               <i class="fas fa-moon"></i>
             </button>
           </div>
@@ -82,6 +86,22 @@
     <div class="main-content"></div>
 
     <div class="modal"></div>
+    <div class="theme-modal">
+      <div class="theme-modal-content">
+        <select id="theme-pick">
+          <option value="Jet">Jet</option>
+          <option value="Hot">Hot</option>
+          <option value="Cool">Cool</option>
+          <option value="Spring">Spring</option>
+          <option selected value="Summer">Summer</option>
+          <option value="Autumn">Autumn</option>
+          <option value="Winter">Winter </option>
+          <option value="Bone">Bone </option>
+        </select>
+        <img src="modules/colors.png" />
+        <button style="font-size: 15px;" class="naked save-theme">save</button>
+      </div>
+    </div>
   </body>
   <input type="file" id="upload" />
   <script src="src/generate.js"></script>

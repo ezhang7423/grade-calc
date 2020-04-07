@@ -38,7 +38,7 @@ function lighten(dat) {
   // Calculate saturation
   s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 
-  l += 0.3; // the key line
+  l += 0.45; // the key line
 
   let c = (1 - Math.abs(2 * l - 1)) * s,
     x = c * (1 - Math.abs(((h / 60) % 2) - 1)),

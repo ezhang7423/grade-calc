@@ -36,13 +36,32 @@ document.querySelector(".modal").addEventListener("click", (e) => {
     localStorage.removeItem("modal");
   }
 });
-let theme = localStorage.getItem("theme");
 
+document.querySelector(".save-theme").addEventListener("click", () => {
+  localStorage.setItem("theme", document.querySelector("#theme-pick").value);
+  location.reload();
+});
+
+document.querySelector(".theme-modal").addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target === document.querySelector(".theme-modal")) {
+    localStorage.setItem("theme", document.querySelector("#theme-pick").value);
+    location.reload();
+  }
+});
+let theme = localStorage.getItem("theme")
+  ? localStorage.getItem("theme")
+  : undefined;
+if (theme != undefined) {
+  for (let x of document.querySelector("#theme-pick").children) {
+    if (x.getAttribute("value") === theme) {
+      x.setAttribute("selected", "");
+    }
+  }
+}
 generate(store, numClasses, theme);
 
-let reloadModal = localStorage.getItem("modal")
-  ? localStorage.getItem("modal")
-  : undefined;
+let reloadModal = localStorage.getItem("modal");
 if (reloadModal != null) {
   try {
     document

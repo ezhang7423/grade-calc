@@ -10,9 +10,7 @@ function getColors(num, theme) {
   if (theme == undefined) {
     theme = "summer";
   }
-  if (num < 2) {
-    num = 2;
-  }
+  num = 15;
   let act = [];
   let colors = colormap({
     colormap: theme, //allow user customization
