@@ -14,3 +14,5 @@ parcel build index.html```
 ````
 
 or just use it lol
+
+check out an example of the core data structure @ core.json
