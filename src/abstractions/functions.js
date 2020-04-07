@@ -93,31 +93,35 @@ function largestUntitled() {
 }
 
 function reconstruct() {
-  let store = JSON.parse(localStorage.getItem("gc-datastore"));
-  let act = {};
-  if (store !== null) {
-    for (let course of Object.keys(store)) {
-      let weights = [];
-      for (let component of Object.keys(store[course].weights)) {
-        weights.push(store[course].weights[component].weight);
-      }
-      act[course] = new Course(store[course].name, weights);
-      for (let component of Object.keys(store[course].weights)) {
-        if (typeof store[course].weights[component].grad === "object") {
-          act[course].weights[component].grad =
-            store[course].weights[component].grad;
-          act[course].weights[component].isList = true;
-        } else {
-          act[course].weights[component].grade =
-            store[course].weights[component].grad;
+  try {
+    let store = JSON.parse(localStorage.getItem("gc-datastore"));
+    let act = {};
+    if (store !== null) {
+      for (let course of Object.keys(store)) {
+        let weights = [];
+        for (let component of Object.keys(store[course].weights)) {
+          weights.push(store[course].weights[component].weight);
         }
-        act[course].weights[component].name =
-          store[course].weights[component].name;
+        act[course] = new Course(store[course].name, weights);
+        for (let component of Object.keys(store[course].weights)) {
+          if (typeof store[course].weights[component].grad === "object") {
+            act[course].weights[component].grad =
+              store[course].weights[component].grad;
+            act[course].weights[component].isList = true;
+          } else {
+            act[course].weights[component].grade =
+              store[course].weights[component].grad;
+          }
+          act[course].weights[component].name =
+            store[course].weights[component].name;
+        }
       }
+      return act;
+    } else {
+      return null;
     }
-    return act;
-  } else {
-    return null;
+  } catch (e) {
+    cClear();
   }
 }
 
