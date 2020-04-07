@@ -94,7 +94,11 @@ function addcom(e) {
       var storelen = -1;
     }
     storelen++;
-    dad.weights[storelen] = new GradeComponent(`untitled ${storelen}`, 100, 0);
+    dad.weights[storelen] = new GradeComponent(
+      `untitled ${storelen + 1}`,
+      100,
+      0
+    );
   } else {
     try {
       var storelen = Object.keys(dad.weights).reduce((a, b) => {
@@ -106,7 +110,11 @@ function addcom(e) {
       var storelen = -1;
     }
     storelen++;
-    dad.weights[storelen] = new GradeComponent(`untitled ${storelen}`, 100, 0);
+    dad.weights[storelen] = new GradeComponent(
+      `untitled ${storelen + 1}`,
+      100,
+      0
+    );
     dad.weights[storelen].grade = { "0": 100 };
   }
   try {
