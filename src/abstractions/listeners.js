@@ -5,7 +5,67 @@ function saveMeEnter(e) {
     print("enter called");
   }
 }
+function importt(e) {
+  let inputt = document.querySelector("#upload");
+  e.preventDefault();
+  inputt.click();
+  pollFI = setInterval(pollFile, 500);
+}
 
+function pollFile() {
+  let inputt = document.querySelector("#upload");
+  let file = inputt.files[0];
+  if (file !== undefined) {
+    clearInterval(pollFI);
+    file.text().then((res) => {
+      try {
+        var data = JSON.parse(res);
+        var act = {};
+        if (data !== null) {
+          for (let course of Object.keys(data)) {
+            let weights = [];
+            for (let component of Object.keys(data[course].weights)) {
+              weights.push(data[course].weights[component].weight);
+            }
+            act[course] = new Course(data[course].name, weights);
+            for (let component of Object.keys(data[course].weights)) {
+              if (typeof data[course].weights[component].grad === "object") {
+                act[course].weights[component].grad =
+                  data[course].weights[component].grad;
+                act[course].weights[component].isList = true;
+              } else {
+                act[course].weights[component].grade =
+                  data[course].weights[component].grad;
+              }
+              act[course].weights[component].name =
+                data[course].weights[component].name;
+            }
+          }
+        }
+      } catch (e) {
+        alert("that file ain't valid ma boi");
+        throw "wrong file";
+      }
+      try {
+        var storelen = Object.keys(store).reduce((a, b) => {
+          a = parseInt(a);
+          b = parseInt(b);
+
+          return a > b ? a : b;
+        });
+      } catch {
+        var storelen = -1;
+      }
+
+      for (let x of Object.keys(act)) {
+        store[storelen + 1] = act[x];
+        storelen++;
+      }
+      localStorage.setItem("gc-datastore", JSON.stringify(store));
+      location.reload();
+    });
+  }
+}
 function openTooltip(e) {
   e.preventDefault();
   let tooltip = e.target.firstElementChild;

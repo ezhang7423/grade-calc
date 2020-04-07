@@ -3,11 +3,13 @@ let nameContainer = document.querySelector(".name-container");
 let classContainer = document.querySelector(".main-content");
 let addClass = document.querySelector(".add-class");
 let exportData = document.querySelector(".export-data");
+let importData = document.querySelector(".import-data");
 store = reconstruct();
 numClasses = Object.keys(store).length;
 let tmp;
 
 exportData.addEventListener("click", exportt);
+importData.addEventListener("click", importt);
 input.addEventListener("keyup", setName);
 
 if (numClasses < 8) {
@@ -37,7 +39,6 @@ document.querySelector(".modal").addEventListener("click", (e) => {
 generate(store, numClasses);
 
 let reloadModal = localStorage.getItem("modal");
-print(reloadModal);
 if (reloadModal != null) {
   try {
     document
