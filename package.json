@@ -1,0 +1,20 @@
+{
+  "name": "grade-calc",
+  "version": "1.0.0",
+  "description": "calc ur grades bruh with localstorage and stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezhang7423/grade-calc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ezhang7423/grade-calc/issues"
+  },
+  "homepage": "https://github.com/ezhang7423/grade-calc#readme"
+}
