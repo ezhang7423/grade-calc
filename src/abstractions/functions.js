@@ -81,7 +81,7 @@ let cClear = () => {
 
 function largestUntitled() {
   store = reconstruct();
-  let max = -1;
+  let max = 0;
   for (let x of Object.keys(store)) {
     if (store[x].name.includes("untitled")) {
       if (parseInt(store[x].name.split(" ")[2]) > max) {
