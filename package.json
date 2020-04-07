@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/ezhang7423/grade-calc/issues"
   },
-  "homepage": "https://github.com/ezhang7423/grade-calc#readme"
+  "homepage": "https://github.com/ezhang7423/grade-calc#readme",
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  },
+  "dependencies": {
+    "parcel": "^1.12.4"
+  }
 }

@@ -1,2 +1,4 @@
 grades
 .vscode
+node_modules
+.cache
