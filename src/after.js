@@ -36,9 +36,13 @@ document.querySelector(".modal").addEventListener("click", (e) => {
     localStorage.removeItem("modal");
   }
 });
-generate(store, numClasses);
+let theme = localStorage.getItem("theme");
 
-let reloadModal = localStorage.getItem("modal");
+generate(store, numClasses, theme);
+
+let reloadModal = localStorage.getItem("modal")
+  ? localStorage.getItem("modal")
+  : undefined;
 if (reloadModal != null) {
   try {
     document

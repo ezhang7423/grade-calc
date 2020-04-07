@@ -8,8 +8,8 @@ function calcGrad(grade, weight) {
   let num = (grade / 100) * weight;
   return Math.round((num + Number.EPSILON) * 100) / 100;
 }
-function generate(store, numClasses) {
-  colors = getColors(numClasses);
+function generate(store, numClasses, theme) {
+  colors = getColors(numClasses, theme);
   let count = 0;
   for (let component of Object.keys(store)) {
     // let tmp = `<div class="course ${alph(count)}">${component}</div>`;

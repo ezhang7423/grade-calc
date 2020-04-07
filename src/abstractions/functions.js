@@ -6,13 +6,16 @@ let alph = (num) => {
   return String.fromCharCode(97 + num);
 };
 
-function getColors(num) {
+function getColors(num, theme) {
+  if (theme == undefined) {
+    theme = "summer";
+  }
   if (num < 2) {
     num = 2;
   }
   let act = [];
   let colors = colormap({
-    colormap: "summer", //allow user customization
+    colormap: theme, //allow user customization
     nshades: num,
     format: "rgba",
     alpha: 1,
