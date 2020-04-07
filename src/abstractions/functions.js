@@ -157,6 +157,17 @@ function searchObj(store, name) {
     }
   }
 }
+function searchObjPos(store, name) {
+  let c = 0;
+  for (let course of Object.keys(store)) {
+    if (store[course].name === name) {
+      return c;
+    }
+    c++;
+  }
+  return -1;
+}
+
 function calcSum(data) {
   let sum = 0;
   for (let i of Object.keys(data.weights)) {
