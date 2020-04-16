@@ -372,6 +372,12 @@ function saveMe(e) {
           )
         );
         daddy[0] = daddychange.join("/");
+        let total =
+          e.target.parentElement.parentElement.parentElement.parentElement
+            .parentElement.parentElement.parentElement.lastElementChild
+            .children[1].firstElementChild;
+
+        total.innerText = `${calcSum(store[name])}/100`;
         e.target.parentElement.parentElement.parentElement.parentElement.innerHTML = daddy.join(
           "\n"
         );
